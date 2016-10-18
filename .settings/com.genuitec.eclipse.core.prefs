@@ -1,0 +1,4 @@
+#Fri Aug 07 00:34:00 CST 2015
+eclipse.preferences.version=1
+validator.Checked=WebRoot/jslib/security/sha1Authority.js,WebRoot/jslib/Utils.js,src/mvc_config.xml
+validator.Unchecked=

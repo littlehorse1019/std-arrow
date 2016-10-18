@@ -4,11 +4,11 @@ std-arrow is a simple JavaWeb + ORM Framework , It helps create simple javaee ap
 ##IOC Support:
 ```java
 private BookFacade bookFacade;
-  @Autowired
+  	@Autowired
 	private String name;
-  @Autowired
+  	@Autowired
 	private String password;
-  @Autowired
+  	@Autowired
 	private Integer age;
 
 	public void setName(String name) {
@@ -38,7 +38,7 @@ public class BookFacadeImpl implements BookFacade {
 
 ##Service and Transaction Support:
 ```java
-@ActionService
+	@ActionService
 	@Transactional
 	@Clear
 	public void testing() {}
@@ -75,7 +75,7 @@ public void testingParam(User user) {
 ```
 
 
-##Start up with no web-server dependency:
+##Start up , none web-server dependency:
 ```java
 public class ServerTest {
 

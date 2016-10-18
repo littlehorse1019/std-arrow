@@ -1,5 +1,9 @@
+**This project is still under active development, though largely finished. It is currently being tested in a production environment. The documentation is being incrementally completed.**
+
+
 # std-arrow
 std-arrow is a simple JavaWeb + ORM Framework , It helps create simple javaee applets easily and no web server dependency.
+------------
 
 ##IOC Support:
 ```java
@@ -21,6 +25,7 @@ private BookFacade bookFacade;
 		this.age = age;
 	}
 ```
+------------
 
 ##AOP Support:
 ```java
@@ -35,6 +40,7 @@ public class BookFacadeImpl implements BookFacade {
     public void addBook(String bookName,String userName) {}
 } 
 ```
+------------
 
 ##Service and Transaction Support:
 ```java
@@ -55,13 +61,14 @@ public class ActionTest extends CoreAction {}
 @Interceptor( { MethodInterceptor1.class, MethodInterceptor2.class })
 	public void testing(User user) {}
 ```
-
+------------
 
 ##ORM Support:
 ```java
 @Entity(MappingByClass.class)
 public class TestBo {}
 ```
+------------
 
 ##ParamFill and Renders Support:
 ```java
@@ -73,7 +80,7 @@ public void testingParam(User user) {
 		render.forwardJsp("/Test2");
 	}
 ```
-
+------------
 
 ##Schedule Job Support:
 ```java
@@ -84,7 +91,7 @@ public class TestJob {
 	}
 }
 ```
-
+------------
 
 ##Start up , none web-server dependency:
 ```java
@@ -110,3 +117,4 @@ public class ServerTest {
 	}
 }
 ```
+------------

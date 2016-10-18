@@ -75,6 +75,17 @@ public void testingParam(User user) {
 ```
 
 
+##Schedule Job Support:
+```java
+@Job(Name = "TestJob", Main = "testJob", Cron = "0-10 0/1 09-17 * * ?")
+public class TestJob {
+	public void testJob() {
+		System.out.println("I am a testing job ~ ");
+	}
+}
+```
+
+
 ##Start up , none web-server dependency:
 ```java
 public class ServerTest {

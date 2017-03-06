@@ -3,12 +3,16 @@ std-arrow is a simple JavaWeb + ORM Framework , It helps create simple javaee ap
 
 **This project is still under active development, though largely finished. It is currently being tested in a production environment. The documentation is being incrementally completed.**
 
-##This is a demo website build by arrow.
+
+
+##This is a website build by arrow as a demo.
 A web site that helps programmer find jobs.
 
 http://www.stupideer.cn:8080/offer/job/actionJob.index.do
 
-##basic usage as blow :
+
+
+##Basic usage as blow :
 ###IOC Support:
 ```java
 private BookFacade bookFacade;

@@ -8,8 +8,11 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
 public @interface Job {
-	public String Name();
-	public String Main();
-	public String Cron();
-	public long Times() default 0l;
+    public String Name();
+
+    public String Main();
+
+    public String Cron();
+
+    public long Times() default 0l;
 }

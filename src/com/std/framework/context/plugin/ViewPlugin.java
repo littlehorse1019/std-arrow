@@ -6,11 +6,11 @@ import com.std.framework.core.log.LogFactory;
 
 public class ViewPlugin implements ContextPlugin {
 
-	private static Log logger = LogFactory.getLogger();
+    private static Log logger = LogFactory.getLogger();
 
-	@Override
-	public void plugin() {
-		logger.debug("加载显示层插件 : " + this.getClass().getName() + "...");
-	}
+    @Override
+    public void plugin() {
+        logger.debug("加载显示层插件 : " + this.getClass().getName() + "...");
+    }
 
 }

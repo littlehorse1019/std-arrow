@@ -10,16 +10,16 @@ import java.util.Properties;
  */
 public class PropertyUtil {
 
-	public static Properties loadProperties(String filepath, String fileName) {
-		Properties prop = new Properties();
-		try {
-			File file = new File(filepath + fileName);
-			FileInputStream fileInputStream = new FileInputStream(file);
-			InputStreamReader in = new InputStreamReader(fileInputStream);
-			prop.load(in);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return prop;
-	}
+    public static Properties loadProperties(String filepath, String fileName) {
+        Properties prop = new Properties();
+        try {
+            File file = new File(filepath + fileName);
+            FileInputStream fileInputStream = new FileInputStream(file);
+            InputStreamReader in = new InputStreamReader(fileInputStream);
+            prop.load(in);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return prop;
+    }
 }

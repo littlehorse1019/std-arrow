@@ -1,5 +1,7 @@
 package com.std.server.http;
 
+import com.std.server.servlet.HttpServletResponseWrapper;
+
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -9,11 +11,9 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 
-import com.std.server.servlet.HttpServletResponseWrapper;
-
 /**
  * HttpWriter
- * 
+ *
  * @author LUOXIAO
  * @since 1.0
  */
@@ -43,13 +43,13 @@ public class HttpWriter extends BufferedWriter {
      * Response header "Server".
      */
     public static final String SERVER = "Server";
-    
+
     private final String CRLF = "\r\n";
     private HttpServletResponseWrapper response;
-	
-	public HttpWriter(OutputStream outStream) {
-		super(new OutputStreamWriter(outStream));
-	}
+
+    public HttpWriter(OutputStream outStream) {
+        super(new OutputStreamWriter(outStream));
+    }
 
     /**
      * Writes out the "Content-Length" header entry to the response output stream, appending "\r\n".
@@ -57,21 +57,21 @@ public class HttpWriter extends BufferedWriter {
      * @param length the content-length header entry value
      * @throws IOException indicating an error occurred while writing out to the output stream
      */
-	public void writeContentLength(long length) throws IOException{
-		writeHeader(CONTENT_LENGTH, length);
-	}
-	
+    public void writeContentLength(long length) throws IOException {
+        writeHeader(CONTENT_LENGTH, length);
+    }
+
     /**
      * Writes out the "Content-Type" header entry to the response output stream, appending "\r\n".
      *
      * @param type the content-type header entry value
      * @throws IOException indicating an error occurred while writing out to the output stream
      */
-	public void writeContentType(String type) throws IOException{
-		writeHeader(CONTENT_TYPE, type);
-	}
-	
-	 /**
+    public void writeContentType(String type) throws IOException {
+        writeHeader(CONTENT_TYPE, type);
+    }
+
+    /**
      * Writes out the "Date" header entry to the response output stream, appending "\r\n".
      * <p>
      * The date is formatted using {@code DateTimeFormatter.RFC_1123_DATE_TIME}.
@@ -116,10 +116,10 @@ public class HttpWriter extends BufferedWriter {
      * @param server the server header entry value
      * @throws IOException indicating an error occurred while writing out to the output stream
      */
-	public void writeServer(String server) throws IOException{
-		writeHeader(SERVER, server);
-	}
-	
+    public void writeServer(String server) throws IOException {
+        writeHeader(SERVER, server);
+    }
+
     /**
      * Writes out the response header entry to the response output stream, appending "\r\n".
      *
@@ -157,7 +157,7 @@ public class HttpWriter extends BufferedWriter {
     public void writeHeader(String key, Object value) throws IOException {
         writeHeader(key, String.valueOf(value));
     }
-    
+
     /**
      * Writes out a header entry to the response output stream, appending "\r\n".
      * <p>
@@ -167,35 +167,35 @@ public class HttpWriter extends BufferedWriter {
      * @param value the header entry value
      * @throws IOException indicating an error occurred while writing out to the output stream
      */
-	public void writeHeader(String key, String value) throws IOException{
-		writeHeader(key + ":" + value );
-	}
-	
-	
+    public void writeHeader(String key, String value) throws IOException {
+        writeHeader(key + ":" + value);
+    }
+
+
     /**
      * Writes out a header entry to the response output stream, appending "\r\n".
      * <p>
      * The header entry value is written using {@code String.valueOf(Object)}.
      *
-     * @param header   the header entry
+     * @param header the header entry
      * @throws IOException indicating an error occurred while writing out to the output stream
      */
-    public void writeHeader(String header) throws IOException{
-    	write(header + CRLF);
+    public void writeHeader(String header) throws IOException {
+        write(header + CRLF);
     }
-	
-	public void endHeader() throws IOException {
-		write(CRLF);
-	}
 
-	
-	public HttpServletResponseWrapper getResponse() {
-		return this.response;
-	}
+    public void endHeader() throws IOException {
+        write(CRLF);
+    }
 
-	public HttpServletResponseWrapper parseResponse() {
-		this.response = new HttpServletResponseWrapper();
-		return this.response;
-	}
+
+    public HttpServletResponseWrapper getResponse() {
+        return this.response;
+    }
+
+    public HttpServletResponseWrapper parseResponse() {
+        this.response = new HttpServletResponseWrapper();
+        return this.response;
+    }
 
 }

@@ -6,11 +6,11 @@ import com.std.framework.core.log.LogFactory;
 
 public class ControllerPlugin implements ContextPlugin {
 
-	private static Log logger = LogFactory.getLogger();
-	
-	@Override
-	public void plugin() {
-		logger.debug("加载控制器插件 : "+this.getClass().getName()+"...");
-	}
+    private static Log logger = LogFactory.getLogger();
+
+    @Override
+    public void plugin() {
+        logger.debug("加载控制器插件 : " + this.getClass().getName() + "...");
+    }
 
 }

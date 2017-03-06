@@ -6,20 +6,20 @@ import com.std.server.routes.Controller;
 import com.std.server.routes.Route;
 import com.std.server.routes.Router;
 
-public class HttpServer extends Server{
-	
+public class HttpServer extends Server {
+
     /**
      * Default HTTP version used when creating HTTP messages.
      */
-	public static final String VERSION = "HTTP/1.1";
+    public static final String VERSION = "HTTP/1.1";
 
     private final Router router;
-    
-	private HttpServer(ExchangeFactory factory, Router router) {
-		super(factory, new HttpExchangeHandler(router));
-		this.router = router;
-	}
-	
+
+    private HttpServer(ExchangeFactory factory, Router router) {
+        super(factory, new HttpExchangeHandler(router));
+        this.router = router;
+    }
+
     public static HttpServer bind(int port) {
         return new HttpServer(new SocketExchangeFactory(port), new Router());
     }
@@ -32,10 +32,10 @@ public class HttpServer extends Server{
      * @param path the route path
      * @return the newly created route
      */
-    public Route get(String path){
-    	return router.get(path);
+    public Route get(String path) {
+        return router.get(path);
     }
-	
+
     /**
      * Create a new {@code Route} with a "Post" request type and specified path
      * <p>
@@ -44,10 +44,10 @@ public class HttpServer extends Server{
      * @param path the route path
      * @return the newly created route
      */
-    public Route post(String path){
-    	return router.post(path);
+    public Route post(String path) {
+        return router.post(path);
     }
-    
+
     /**
      * Create a new {@code Route} with a "Delete" request type and specified path
      * <p>
@@ -56,11 +56,11 @@ public class HttpServer extends Server{
      * @param path the route path
      * @return the newly created route
      */
-    public Route delete(String path){
-    	return router.delete(path);
+    public Route delete(String path) {
+        return router.delete(path);
     }
-    
-    
+
+
     /**
      * Converts the methods annotated with {@code Get}, {@code Post}, and {@code Delete} to routes and adds them to the router.
      * <p>
@@ -74,7 +74,7 @@ public class HttpServer extends Server{
         Router.addRoutes(controller, router);
         return this;
     }
-    
+
     /**
      * Converts the methods annotated with {@code Get}, {@code Post}, and {@code Delete} to routes and adds them to the router.
      * <p>
@@ -92,5 +92,5 @@ public class HttpServer extends Server{
         Router.addRoutes(c, router);
         return this;
     }
-    
+
 }

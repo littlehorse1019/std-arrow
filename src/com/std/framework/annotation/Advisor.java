@@ -8,7 +8,9 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
 public @interface Advisor {
-	public Class<?>[] value();
-	public PointCut[] cutPosition();
-	public String[] cutMethod();
+    public Class<?>[] value();
+
+    public PointCut[] cutPosition();
+
+    public String[] cutMethod();
 }

@@ -4,22 +4,22 @@ import java.lang.reflect.Constructor;
 
 public class SessionFactory {
 
-	private static Session session = null;
+    private final static Object syncLock = new Object();
+    private static Session session = null;
 
-	private final static Object syncLock = new Object();  
-	public static Session getCurrentSession() {
-		if (session == null) {
-			synchronized (syncLock) {
-				try {
-					Constructor<Session> constructor = Session.class.getDeclaredConstructor(new Class[]{});
-					constructor.setAccessible(true);
-					session = constructor.newInstance(new Object[]{});
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		}
-		return session;
-	}
+    public static Session getCurrentSession() {
+        if (session == null) {
+            synchronized (syncLock) {
+                try {
+                    Constructor<Session> constructor = Session.class.getDeclaredConstructor();
+                    constructor.setAccessible(true);
+                    session = constructor.newInstance();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return session;
+    }
 
 }

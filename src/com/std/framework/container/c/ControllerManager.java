@@ -14,28 +14,28 @@ import com.std.framework.core.log.LogFactory;
  */
 public class ControllerManager extends ContainerManager {
 
-	private static Log logger = LogFactory.getLogger();
+    private static Log logger = LogFactory.getLogger();
 
-	public static void loadCtrlContext() throws Exception {
-		loadAOP();
-		loadIOC();
-	}
+    public static void loadCtrlContext() throws Exception {
+        loadAOP();
+        loadIOC();
+    }
 
-	private static void loadAOP() throws Exception {
-		logger.debug(">>>>>Stupideer øÚº‹◊∞‘ÿ... >>>>>>>—È÷§AOP≈‰÷√...");
-		boolean valid = new AOPValidator().valid();
-		logger.debug(">>>>>Stupideer øÚº‹◊∞‘ÿ... >>>>>>>º”‘ÿAOP≈‰÷√...");
-		AOPCache aopCache = AOPCache.instance();
-		aopCache.loadAOP(valid);
-	}
-	
-	private static void loadIOC() throws Exception {
-		logger.debug(">>>>>Stupideer øÚº‹◊∞‘ÿ... >>>>>>>—È÷§IOC≈‰÷√...");
-		if (new IOCValidator().valid()) {
-			logger.debug(">>>>>Stupideer øÚº‹◊∞‘ÿ... >>>>>>>º”‘ÿIOC≈‰÷√...");
-			IOCCache iocCache = IOCCache.instance();
-			iocCache.loadIOC();
-		}
-	}
+    private static void loadAOP() throws Exception {
+        logger.debug(">>>>>Stupideer øÚº‹◊∞‘ÿ... >>>>>>>—È÷§AOP≈‰÷√...");
+        boolean valid = new AOPValidator().valid();
+        logger.debug(">>>>>Stupideer øÚº‹◊∞‘ÿ... >>>>>>>º”‘ÿAOP≈‰÷√...");
+        AOPCache aopCache = AOPCache.instance();
+        aopCache.loadAOP(valid);
+    }
+
+    private static void loadIOC() throws Exception {
+        logger.debug(">>>>>Stupideer øÚº‹◊∞‘ÿ... >>>>>>>—È÷§IOC≈‰÷√...");
+        if (new IOCValidator().valid()) {
+            logger.debug(">>>>>Stupideer øÚº‹◊∞‘ÿ... >>>>>>>º”‘ÿIOC≈‰÷√...");
+            IOCCache iocCache = IOCCache.instance();
+            iocCache.loadIOC();
+        }
+    }
 
 }

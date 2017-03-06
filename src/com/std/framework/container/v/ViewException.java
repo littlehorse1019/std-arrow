@@ -6,22 +6,22 @@ import com.std.framework.core.log.LogFactory;
 @SuppressWarnings("serial")
 public class ViewException extends RuntimeException {
 
-	private static final Log logger = LogFactory.getLogger();
+    private static final Log logger = LogFactory.getLogger();
 
-	public ViewException() {
-		super();
-		logger.error("");
-	}
+    public ViewException() {
+        super();
+        logger.error("");
+    }
 
-	public ViewException(String message) {
-		super(message);
-	}
+    public ViewException(String message) {
+        super(message);
+    }
 
-	public ViewException(Throwable cause) {
-		super(cause);
-	}
+    public ViewException(Throwable cause) {
+        super(cause);
+    }
 
-	public ViewException(String message, Throwable cause) {
-		super(message, cause);
-	}
+    public ViewException(String message, Throwable cause) {
+        super(message, cause);
+    }
 }

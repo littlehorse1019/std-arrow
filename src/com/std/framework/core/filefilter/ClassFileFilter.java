@@ -8,19 +8,19 @@ import java.io.FileFilter;
  */
 public class ClassFileFilter implements FileFilter {
 
-	private static final String CLAZZ_SUFFIX = ".class";
+    private static final String CLAZZ_SUFFIX = ".class";
 
-	@Override
-	public boolean accept(File file) {
-		if (file.isDirectory()) {
-			return true;
-		} else {
-			String name = file.getName();
-			if (name.endsWith(CLAZZ_SUFFIX)) {
-				return true;
-			} else {
-				return false;
-			}
-		}
-	}
+    @Override
+    public boolean accept(File file) {
+        if (file.isDirectory()) {
+            return true;
+        } else {
+            String name = file.getName();
+            if (name.endsWith(CLAZZ_SUFFIX)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    }
 }

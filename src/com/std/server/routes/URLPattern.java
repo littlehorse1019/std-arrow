@@ -14,26 +14,13 @@ import java.util.regex.PatternSyntaxException;
  */
 public class URLPattern {
 
-	private Pattern pattern;
-	
+    private Pattern pattern;
+
     public URLPattern(String patternStr) {
-    	this.pattern = URLPattern.compile(patternStr);
-	}
-    
-    /**
-     * url grammar as " <scheme>://<user>:<password>@<host>:<port>/<path>;<params>?<query>#<frag>
-     * decode url <path> and test matches with pattern
-     * 
-     * @param url
-     * @return
-     */
-    public boolean matches(String url) {
-    	int pathEndIdx = url.indexOf(";") > 0 ? url.indexOf(";") : url.indexOf("?") > 0 ? url.indexOf("?") : url.indexOf("#") > 0 ? url.indexOf("#") : url.length();
-        String path = url.substring(0, pathEndIdx);
-    	return this.pattern.matcher(path).matches();
+        this.pattern = URLPattern.compile(patternStr);
     }
 
-	/**
+    /**
      * Escapes the query string and compiles the given regular expression into a value.
      *
      * @param pattern The expression to be compiled
@@ -54,6 +41,19 @@ public class URLPattern {
      */
     public static String escape(String pattern) {
         return pattern.replace("/?", "/\\?").replace('{', '(').replace('}', ')');
+    }
+
+    /**
+     * url grammar as " <scheme>://<user>:<password>@<host>:<port>/<path>;<params>?<query>#<frag>
+     * decode url <path> and test matches with pattern
+     *
+     * @param url
+     * @return
+     */
+    public boolean matches(String url) {
+        int pathEndIdx = url.indexOf(";") > 0 ? url.indexOf(";") : url.indexOf("?") > 0 ? url.indexOf("?") : url.indexOf("#") > 0 ? url.indexOf("#") : url.length();
+        String path = url.substring(0, pathEndIdx);
+        return this.pattern.matcher(path).matches();
     }
 
 }

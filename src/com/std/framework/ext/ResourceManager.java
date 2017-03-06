@@ -5,8 +5,8 @@ package com.std.framework.ext;
  */
 public class ResourceManager {
 
-	public static void loadResources() {
+    public static void loadResources() {
 
-	}
+    }
 
 }

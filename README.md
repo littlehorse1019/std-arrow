@@ -3,7 +3,12 @@ std-arrow is a simple JavaWeb + ORM Framework , It helps create simple javaee ap
 
 **This project is still under active development, though largely finished. It is currently being tested in a production environment. The documentation is being incrementally completed.**
 
-##IOC Support:
+##This is a demo website build by arrow.
+A web site that helps programmer find jobs.
+http://www.stupideer.cn:8080/offer/job/actionJob.index.do
+
+##basic usage as blow :
+###IOC Support:
 ```java
 private BookFacade bookFacade;
   	@Autowired
@@ -24,7 +29,7 @@ private BookFacade bookFacade;
 	}
 ```
 
-##AOP Support:
+###AOP Support:
 ```java
 @Proxy
 public class BookFacadeImpl implements BookFacade {
@@ -38,7 +43,7 @@ public class BookFacadeImpl implements BookFacade {
 } 
 ```
 
-##Service and Transaction Support:
+###Service and Transaction Support:
 ```java
 	@ActionService
 	@Transactional
@@ -46,25 +51,25 @@ public class BookFacadeImpl implements BookFacade {
 	public void testing() {}
 ```
 
-##Leveled Interceptor Support:
-###Class scope
+###Leveled Interceptor Support:
+####Class scope
 ```java
 @Interceptor( { ClassInterceptor1.class, ClassInterceptor2.class })
 public class ActionTest extends CoreAction {}
 ```
-###Method scope
+####Method scope
 ```java
 @Interceptor( { MethodInterceptor1.class, MethodInterceptor2.class })
 	public void testing(User user) {}
 ```
 
-##ORM Support:
+###ORM Support:
 ```java
 @Entity(MappingByClass.class)
 public class TestBo {}
 ```
 
-##ParamFill and Renders Support:
+###ParamFill and Renders Support:
 ```java
 public void testingParam(User user) {
    List<TestBo> testBoList = doTestModelView();
@@ -75,7 +80,7 @@ public void testingParam(User user) {
 	}
 ```
 
-##Schedule Job Support:
+###Schedule Job Support:
 ```java
 @Job(Name = "TestJob", Main = "testJob", Cron = "0-10 0/1 09-17 * * ?")
 public class TestJob {
@@ -85,7 +90,7 @@ public class TestJob {
 }
 ```
 
-##Start up , none web-server dependency:
+###Start up , none web-server dependency:
 ```java
 public class ServerTest {
 

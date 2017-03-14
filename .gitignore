@@ -71,3 +71,4 @@ WebRoot/WEB-INF/classes/com/std/view/interceptor/
 WebRoot/WEB-INF/classes/com/std/view/servlet/
 WebRoot/WEB-INF/classes/test/
 std-arrow.iml
+lib/

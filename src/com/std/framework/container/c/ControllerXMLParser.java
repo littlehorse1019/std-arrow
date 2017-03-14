@@ -14,7 +14,7 @@ import java.util.Map;
 
 import static com.std.framework.container.c.ControllerXMLConstants.*;
 
-public class ControllerXMLParserBase extends BaseContainerXMLParser {
+public class ControllerXMLParser extends BaseContainerXMLParser {
 
     public static Node getIOCNode() throws Exception {
         Node controllerNode = getControllerNode();

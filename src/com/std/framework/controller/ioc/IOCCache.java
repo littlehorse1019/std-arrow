@@ -2,7 +2,7 @@ package com.std.framework.controller.ioc;
 
 
 import com.std.framework.container.c.ControllerXMLConstants;
-import com.std.framework.container.c.ControllerXMLParserBase;
+import com.std.framework.container.c.ControllerXMLParser;
 import com.std.framework.controller.BeansHolder;
 import com.std.framework.controller.aop.AOPCache;
 import com.std.framework.controller.aop.AOPDefinition;
@@ -184,8 +184,8 @@ public class IOCCache {
 
     //加载IOC相关配置，并根据配置生成实体bean置入容器中。
     public void loadIOC() throws Exception {
-        Node iocNode = ControllerXMLParserBase.getIOCNode();
-        List<Node> beanNodeList = ControllerXMLParserBase.getBeanNodeList(iocNode);
+        Node iocNode = ControllerXMLParser.getIOCNode();
+        List<Node> beanNodeList = ControllerXMLParser.getBeanNodeList(iocNode);
 
         for (Node beanNode : beanNodeList) {
             IOCDefinition iocDefine = new IOCDefinition();

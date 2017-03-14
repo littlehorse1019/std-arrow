@@ -1,7 +1,7 @@
 package com.std.framework.controller.aop;
 
 
-import com.std.framework.container.c.ControllerXMLParserBase;
+import com.std.framework.container.c.ControllerXMLParser;
 import com.std.framework.context.ClassScanner;
 import com.std.framework.core.extraction.AOPExtraction;
 import org.w3c.dom.Node;
@@ -42,8 +42,8 @@ public class AOPCache {
 
     private void loadXMLAOP(boolean valid) throws Exception {
         if (valid) {
-            Node aopNode = ControllerXMLParserBase.getAOPNode();
-            List<Node> advisorNodeList = ControllerXMLParserBase.getAopNodeList(aopNode);
+            Node aopNode = ControllerXMLParser.getAOPNode();
+            List<Node> advisorNodeList = ControllerXMLParser.getAopNodeList(aopNode);
             for (Node advisorNode : advisorNodeList) {
                 AOPDefinition aopDefine = new AOPDefinition();
                 aopDefine.loadAOPDefine2Cache(advisorNode, aopCache);

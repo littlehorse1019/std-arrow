@@ -2,25 +2,37 @@ package test.bo;
 
 import com.std.framework.annotation.Entity;
 import com.std.framework.annotation.PrimaryKey;
-import com.std.framework.model.ormap.MappingByClass;
+import com.std.framework.model.orm.MapByClass;
 
 
-@Entity(MappingByClass.class)
+@Entity(MapByClass.class)
 public class TestBo {
 
     @PrimaryKey
-    private int id;
+    private Integer id;
     private String name;
-    private int age;
+    private Integer age;
     private String lolLevel;
     private String war3Level;
     private String javaLevel;
 
-    public int getId() {
+    @Override
+    public String toString() {
+        return "TestBo{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", lolLevel='" + lolLevel + '\'' +
+                ", war3Level='" + war3Level + '\'' +
+                ", javaLevel='" + javaLevel + '\'' +
+                '}';
+    }
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -32,11 +44,11 @@ public class TestBo {
         this.name = name;
     }
 
-    public int getAge() {
+    public Integer getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(Integer age) {
         this.age = age;
     }
 
@@ -63,5 +75,4 @@ public class TestBo {
     public void setJavaLevel(String javaLevel) {
         this.javaLevel = javaLevel;
     }
-
 }

@@ -5,7 +5,7 @@ import org.w3c.dom.Node;
 
 import java.util.List;
 
-import static com.std.framework.container.c.ControllerXMLParserBase.*;
+import static com.std.framework.container.c.ControllerXMLParser.*;
 
 /**
  * @author Luox 该类用于保存配置文件中类的配置元素对象关系

@@ -5,11 +5,8 @@ import java.security.MessageDigest;
 import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Map;
+import java.util.*;
 import java.util.Map.Entry;
-import java.util.Random;
-import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -63,14 +60,16 @@ public class StringUtil {
      * 字符串为 null 或者为 "" 时返回 true
      */
     public static boolean isBlank(String str) {
-        return str == null || "".equals(str.trim()) ? true : false;
+        boolean b = Objects.isNull(str) || Objects.equals("", str.trim());
+        return b;
     }
 
     /**
      * 字符串不为 null 而且不为 "" 时返回 true
      */
     public static boolean notBlank(String str) {
-        return str == null || "".equals(str.trim()) ? false : true;
+        boolean b = Objects.isNull(str) || Objects.equals("", str.trim());
+        return !b;
     }
 
     /**

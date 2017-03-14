@@ -22,14 +22,14 @@ public class JsonUtil {
     }
 
     public static void setTimestampPattern(String timestampPattern) {
-        if (timestampPattern == null || "".equals(timestampPattern.trim())) {
+        if (Objects.isNull(timestampPattern) || Objects.equals("", timestampPattern.trim())) {
             throw new IllegalArgumentException("timestampPattern can not be blank.");
         }
         JsonUtil.timestampPattern = timestampPattern;
     }
 
     public static void setDatePattern(String datePattern) {
-        if (datePattern == null || "".equals(datePattern.trim())) {
+        if (Objects.isNull(datePattern) || Objects.equals("", datePattern.trim())) {
             throw new IllegalArgumentException("datePattern can not be blank.");
         }
         JsonUtil.datePattern = datePattern;

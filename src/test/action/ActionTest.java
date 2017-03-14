@@ -82,12 +82,11 @@ public class ActionTest extends BaseAction {
         log.info("数据库操作开始(增删改查)" + System.currentTimeMillis());
         TestBo tb1 = new TestBo();
         List<TestBo> list = session.list(tb1);
-
         tb1.setAge(25);
         tb1.setJavaLevel("软件架构师");
-        String pk = session.save(tb1);
+        TestBo tb1save = session.save(tb1);
         log.info(list.size() + " " + list.get(1).getJavaLevel());
-        tb1.setId(Integer.parseInt(pk));
+        tb1.setId(tb1save.getId());
         session.remove(tb1);
 
         TestBo tb2 = new TestBo();

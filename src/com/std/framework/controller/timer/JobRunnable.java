@@ -11,9 +11,9 @@ import java.util.concurrent.ExecutorService;
 public class JobRunnable implements Runnable {
 
     private static final Object syncObj = new Object();
-    private static final Long SLEEP_MAX_TIME = 86400000l;
-    private static final Long SLEEP_MIN_TIME = 100l;
-    private static final Long ALLOW_DIFFERENCE = 1000l;
+    private static final Long SLEEP_MAX_TIME = 86400000L;
+    private static final Long SLEEP_MIN_TIME = 100L;
+    private static final Long ALLOW_DIFFERENCE = 1000L;
     private static Log logger = LogFactory.getLogger();
     private String jobName;
     private Class<?> jobClass;

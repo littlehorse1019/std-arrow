@@ -28,9 +28,9 @@ public class ModelAct<T> {
     /**
      * 保存对象到数据库
      */
-    public T save() {
+    public T insert() {
         try {
-            return excutor.excuteSave(entity);
+            return excutor.excuteInsert(entity);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -66,7 +66,7 @@ public class ModelAct<T> {
     /**
      * 根据对象主键，查找并返回数据库中记录对应的类实例
      */
-    public T findByPK() {
+    public T get() {
         T obj = null;
         try {
             obj = excutor.excuteFindByPK(entity);
@@ -79,7 +79,7 @@ public class ModelAct<T> {
     /**
      * 根据对象与数据库表映射，查找并返回数据库对应表中所有记录对应的类实例
      */
-    public List<T> findAll() {
+    public List<T> list() {
         List<T> list = new ArrayList<>();
         try {
             list = excutor.excuteFindAll(entity.getClass());
@@ -89,14 +89,14 @@ public class ModelAct<T> {
         return list;
     }
 
-    public List<T> findAll(OrderAct orderAct) {
+    public List<T> list(OrderAct orderAct) {
         return new ArrayList<>();
     }
 
     /**
      * 根据对象与数据库表映射，依照当前对象各属性值，查找并返回数据库对应表中所有记录对应的类实例
      */
-    public List<T> findByEntity() {
+    public List<T> listByEntity() {
         List<T> list = new ArrayList<>();
         try {
             list = excutor.excuteFindAll(entity.getClass());
@@ -106,7 +106,7 @@ public class ModelAct<T> {
         return list;
     }
 
-    public List<T> findByEntity(OrderAct orderAct) {
+    public List<T> listByEntity(OrderAct orderAct) {
         List<T> list = new ArrayList<>();
         return list;
     }

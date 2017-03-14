@@ -12,14 +12,14 @@ import java.util.*;
  */
 public class ClassInterceptorStation {
 
-    private static Map<String, Queue<CoreInterceptor>> classIntecptMap = new HashMap<String, Queue<CoreInterceptor>>();
+    private static Map<String, Queue<BaseInterceptor>> classIntecptMap = new HashMap<String, Queue<BaseInterceptor>>();
 
-    public static Collection<? extends CoreInterceptor> getQueueByClass(String className) {
-        Queue<CoreInterceptor> queue = classIntecptMap.get(className);
+    public static Collection<? extends BaseInterceptor> getQueueByClass(String className) {
+        Queue<BaseInterceptor> queue = classIntecptMap.get(className);
         if (queue != null) {
             return queue;
         }
-        return new LinkedList<CoreInterceptor>();
+        return new LinkedList<BaseInterceptor>();
     }
 
     public static void loadInterceptor() throws Exception {
@@ -28,14 +28,14 @@ public class ClassInterceptorStation {
         List<Class<?>> classes = cs.findMacthedClass(new ClassInterceptorExtraction());
         for (Class<?> c : classes) {
             Interceptor ic = c.getAnnotation(Interceptor.class);
-            Class<? extends CoreInterceptor>[] interceptors = ic.value();
+            Class<? extends BaseInterceptor>[] interceptors = ic.value();
             cacheIntoMap(c.getName(), interceptors);
         }
     }
 
-    private static void cacheIntoMap(String name, Class<? extends CoreInterceptor>[] interceptors) throws Exception {
-        Queue<CoreInterceptor> queue = new LinkedList<CoreInterceptor>();
-        for (Class<? extends CoreInterceptor> intceptClazz : interceptors) {
+    private static void cacheIntoMap(String name, Class<? extends BaseInterceptor>[] interceptors) throws Exception {
+        Queue<BaseInterceptor> queue = new LinkedList<BaseInterceptor>();
+        for (Class<? extends BaseInterceptor> intceptClazz : interceptors) {
             queue.offer(intceptClazz.newInstance());
         }
         classIntecptMap.put(name, queue);

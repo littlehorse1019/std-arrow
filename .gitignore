@@ -45,3 +45,30 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+.idea/
+.myeclipse/
+WebRoot/WEB-INF/classes/com/std/annotation/
+WebRoot/WEB-INF/classes/com/std/container/
+WebRoot/WEB-INF/classes/com/std/context/
+WebRoot/WEB-INF/classes/com/std/controller/aop/
+WebRoot/WEB-INF/classes/com/std/controller/ioc/
+WebRoot/WEB-INF/classes/com/std/controller/security/
+WebRoot/WEB-INF/classes/com/std/controller/timer/quartz/
+WebRoot/WEB-INF/classes/com/std/controller/timer/stepor/
+WebRoot/WEB-INF/classes/com/std/controller/timer/validator/
+WebRoot/WEB-INF/classes/com/std/core/extraction/
+WebRoot/WEB-INF/classes/com/std/core/filefilter/
+WebRoot/WEB-INF/classes/com/std/core/log/
+WebRoot/WEB-INF/classes/com/std/core/proxy/
+WebRoot/WEB-INF/classes/com/std/core/util/
+WebRoot/WEB-INF/classes/com/std/core/xml/
+WebRoot/WEB-INF/classes/com/std/ext/
+WebRoot/WEB-INF/classes/com/std/model/actor/
+WebRoot/WEB-INF/classes/com/std/model/connection/
+WebRoot/WEB-INF/classes/com/std/model/ormap/
+WebRoot/WEB-INF/classes/com/std/view/handle/
+WebRoot/WEB-INF/classes/com/std/view/interceptor/
+WebRoot/WEB-INF/classes/com/std/view/servlet/
+WebRoot/WEB-INF/classes/test/
+std-arrow.iml
+lib/

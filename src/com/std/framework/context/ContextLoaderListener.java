@@ -1,7 +1,7 @@
 package com.std.framework.context;
 
+import com.std.framework.container.BaseContainerXMLParser;
 import com.std.framework.container.ContainerManager;
-import com.std.framework.container.ContainerXMLParser;
 import com.std.framework.container.c.ControllerManager;
 import com.std.framework.container.m.ModelManager;
 import com.std.framework.container.v.ViewManager;
@@ -64,10 +64,10 @@ public class ContextLoaderListener implements ServletContextListener {
 
     private void validConfig(ServletContextEvent sec) throws Exception {
         String configFilePath = (String) sec.getServletContext().getAttribute(CONFIG_FILE_PROPERTY);
-        ContainerXMLParser.setConfigResource(configFilePath);
+        BaseContainerXMLParser.setConfigResource(configFilePath);
         boolean valid = XMLValidator.validMVCConfig();
         if (!valid) {
-            throw new Exception(ContainerXMLParser.getConfigResource() + "配置文件格式校验错误!");
+            throw new Exception(BaseContainerXMLParser.getConfigResource() + "配置文件格式校验错误!");
         }
     }
 

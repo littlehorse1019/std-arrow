@@ -14,5 +14,5 @@ public @interface Job {
 
     public String Cron();
 
-    public long Times() default 0l;
+    public long Times() default 0L;
 }

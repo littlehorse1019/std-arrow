@@ -14,7 +14,7 @@ import org.w3c.dom.Node;
  */
 public class ModelManager extends ContainerManager {
 
-    private static final ModelXMLParser modelXMLParser = new ModelXMLParser();
+    private static final ModelXMLParserBase modelXMLParser = new ModelXMLParserBase();
     private static Log logger = LogFactory.getLogger();
 
     public static void loadModelContext() throws Exception {

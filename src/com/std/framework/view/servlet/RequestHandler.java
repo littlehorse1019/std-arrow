@@ -3,7 +3,7 @@ package com.std.framework.view.servlet;
 import com.std.framework.controller.BeanFactory;
 import com.std.framework.core.util.ReflectionUtil;
 import com.std.framework.view.ViewSetting;
-import com.std.framework.view.handle.CoreAction;
+import com.std.framework.view.handle.BaseAction;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.UnsupportedEncodingException;
@@ -26,18 +26,18 @@ public class RequestHandler {
     /**
      * 获取request中的参数自动填充到action同名属性中
      */
-    public static void prepareActionFiled(CoreAction action) throws Exception {
+    public static void prepareActionFiled(BaseAction action) throws Exception {
         prepareObjectField(action, null);
     }
 
     /**
      * 获取request中的参数自动填充到action对应的方法参数中
      */
-    public static void prepareParamFiled(CoreAction action, Object object) throws Exception {
+    public static void prepareParamFiled(BaseAction action, Object object) throws Exception {
         prepareObjectField(action, object);
     }
 
-    private static void prepareObjectField(CoreAction action, Object object) throws Exception {
+    private static void prepareObjectField(BaseAction action, Object object) throws Exception {
         HttpServletRequest request = action.awareRequest();
         Enumeration<?> e = request.getParameterNames();
         while (e.hasMoreElements()) {
@@ -71,15 +71,15 @@ public class RequestHandler {
         }
     }
 
-    public CoreAction getServiceAction() throws Exception {
+    public BaseAction getServiceAction() throws Exception {
         Object action = BeanFactory.getMVCBean(invokedClassName);
         if (action == null) {
             action = Class.forName(invokedClassName).newInstance();
         }
-        return (CoreAction) action;
+        return (BaseAction) action;
     }
 
-    public Method getServiceMethod(CoreAction action) throws Exception {
+    public Method getServiceMethod(BaseAction action) throws Exception {
         Method method = null;
         Method[] serviceMethods = action.getClass().getDeclaredMethods();
         for (Method servMethod : serviceMethods) {

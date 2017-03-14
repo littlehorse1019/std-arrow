@@ -14,10 +14,10 @@ public class Session {
 
     public <T> T save(T entity) {
         ModelAct<T> modelAct = new ModelAct<>(entity);
-        return modelAct.save();
+        return modelAct.insert();
     }
 
-    public <T> boolean delete(T entity) {
+    public <T> boolean remove(T entity) {
         ModelAct<T> modelAct = new ModelAct<>(entity);
         return modelAct.delete();
     }
@@ -27,29 +27,29 @@ public class Session {
         return modelAct.update();
     }
 
-    public <T> T findByPK(T entity) {
+    public <T> T get(T entity) {
         ModelAct<T> modelAct = new ModelAct<>(entity);
-        return modelAct.findByPK();
+        return modelAct.get();
     }
 
-    public <T> List<T> findAll(T entity) {
+    public <T> List<T> list(T entity) {
         ModelAct<T> modelAct = new ModelAct<>(entity);
-        return modelAct.findAll();
+        return modelAct.list();
     }
 
-    public <T> List<T> findAll(T entity, OrderAct order) {
+    public <T> List<T> list(T entity, OrderAct order) {
         ModelAct<T> modelAct = new ModelAct<>(entity);
-        return modelAct.findAll(order);
+        return modelAct.list(order);
     }
 
     public <T> List<T> findByEntity(T entity) {
         ModelAct<T> modelAct = new ModelAct<>(entity);
-        return modelAct.findByEntity();
+        return modelAct.listByEntity();
     }
 
     public <T> List<T> findByEntity(T entity, OrderAct order) {
         ModelAct<T> modelAct = new ModelAct<>(entity);
-        return modelAct.findByEntity(order);
+        return modelAct.listByEntity(order);
     }
 
 }

@@ -16,7 +16,7 @@ public class AOPCache {
     private static AOPCache aopCache = null;
 
     ;
-    private static Map<String, AOPDefinition> aopDefineMap = new HashMap<String, AOPDefinition>();
+    private static Map<String, AOPDefinition> aopDefineMap = new HashMap<>();
 
     private AOPCache() {
     }

@@ -101,7 +101,7 @@ public class ProxyGenerator {
 
     // 抽取被代理方法集合
     private List<Method> getProxyMethods(Class<?> targetClazz) throws SecurityException, NoSuchMethodException {
-        List<Method> methodList = new ArrayList<Method>();
+        List<Method> methodList = new ArrayList<>();
         for (AdvisorBean advisorBean : proxyCfg.getAdvisorBeanList()) {
             Method matchedMethod = targetClazz.getDeclaredMethod(advisorBean.getMethodName(), advisorBean.getMethodArguments());
             methodList.add(matchedMethod);

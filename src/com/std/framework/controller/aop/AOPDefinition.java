@@ -16,7 +16,7 @@ import java.util.List;
 public class AOPDefinition {
 
     private String className = "";
-    private List<AdvisorBean> list = new ArrayList<AdvisorBean>();
+    private List<AdvisorBean> list = new ArrayList<>();
 
     public String getClassName() {
         return className;
@@ -37,7 +37,7 @@ public class AOPDefinition {
     }
 
     private List<AdvisorBean> getAdvisorBeanList(Class<?> clazz) {
-        List<AdvisorBean> advisorList = new ArrayList<AdvisorBean>();
+        List<AdvisorBean> advisorList = new ArrayList<>();
         List<Method> methodList = getAdvisorMethod(clazz);
         for (Method m : methodList) {
             AdvisorBean advisorBean = generateAdvisorBean(m);
@@ -88,7 +88,7 @@ public class AOPDefinition {
     }
 
     private List<Method> getAdvisorMethod(Class<?> clazz) {
-        List<Method> list = new ArrayList<Method>();
+        List<Method> list = new ArrayList<>();
         Method[] methods = clazz.getDeclaredMethods();
         for (Method m : methods) {
             if (m.isAnnotationPresent(Advisor.class)) {

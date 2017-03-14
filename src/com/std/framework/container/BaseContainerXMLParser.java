@@ -15,11 +15,11 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class ContainerXMLParser {
+public abstract class BaseContainerXMLParser {
 
     protected static String configFilePath;
 
-    protected ContainerXMLParser() {
+    protected BaseContainerXMLParser() {
     }
 
     public static String getConfigResource() {
@@ -29,9 +29,9 @@ public abstract class ContainerXMLParser {
     public static void setConfigResource(String configResource) {
         if (StringUtil.isBlank(configResource)) {
             String resourePath = PathUtil.getRootClassPath();
-            ContainerXMLParser.configFilePath = resourePath + XMLValidator.DEFAULT_MVC_FILE_NAME;
+            BaseContainerXMLParser.configFilePath = resourePath + XMLValidator.DEFAULT_MVC_FILE_NAME;
         } else {
-            ContainerXMLParser.configFilePath = configResource;
+            BaseContainerXMLParser.configFilePath = configResource;
         }
     }
 

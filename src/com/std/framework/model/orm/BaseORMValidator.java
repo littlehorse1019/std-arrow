@@ -5,7 +5,7 @@ import java.util.Map;
 /**
  * @author Luox ORMMAPING校验器，验证表，序列，字段是否在数据库中存在
  */
-public abstract class ORMValidator {
+public abstract class BaseORMValidator {
 
     private String tableName;
     private Map<String, String> colMap = null;

@@ -1,12 +1,12 @@
 package com.std.framework.container.v;
 
-import com.std.framework.container.ContainerXMLParser;
+import com.std.framework.container.BaseContainerXMLParser;
 import org.w3c.dom.Node;
 
 import static com.std.framework.container.v.ViewXMLConstants.*;
 
 
-public class ViewXMLParser extends ContainerXMLParser {
+public class ViewXMLParserBase extends BaseContainerXMLParser {
 
     public static Node getAcceptNode() throws Exception {
         Node viewNode = getViewNode();

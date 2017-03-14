@@ -1,12 +1,12 @@
 package com.std.framework.container.m;
 
 
-import com.std.framework.container.ContainerXMLParser;
+import com.std.framework.container.BaseContainerXMLParser;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 
 
-public class ModelXMLParser extends ContainerXMLParser {
+public class ModelXMLParserBase extends BaseContainerXMLParser {
 
     public Node getDataSourceNode() {
         Node ctrlNode = null;

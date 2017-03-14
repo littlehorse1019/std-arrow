@@ -2,7 +2,7 @@ package com.std.framework.model.orm;
 
 import com.std.framework.annotation.PrimaryKey;
 import com.std.framework.model.actor.BaseSqlGenerator;
-import com.std.framework.model.orm.dialact.mysql.MysqlValidator;
+import com.std.framework.model.orm.dialact.mysql.MysqlValidatorBase;
 
 import java.lang.reflect.Field;
 import java.util.LinkedHashMap;
@@ -38,7 +38,7 @@ public class Obj2TabContainer {
         try {
             setTableName(className, mappingRule);
             setColumnsName(className, mappingRule);
-            ORMValidator ormValid = new MysqlValidator();
+            BaseORMValidator ormValid = new MysqlValidatorBase();
             // 测试表名，序列和列名的映射关系
             boolean testResult = ormValid.validOrmmap(this);
             // 测试通过则生成基础操作Sql

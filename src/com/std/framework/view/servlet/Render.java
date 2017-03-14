@@ -2,7 +2,7 @@ package com.std.framework.view.servlet;
 
 import com.std.framework.core.util.JsonUtil;
 import com.std.framework.view.ViewSetting;
-import com.std.framework.view.handle.CoreAction;
+import com.std.framework.view.handle.BaseAction;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,9 +18,9 @@ public class Render {
 
     private HttpServletRequest request;
     private HttpServletResponse response;
-    private CoreAction action;
+    private BaseAction action;
 
-    public Render(HttpServletRequest request, HttpServletResponse response, CoreAction action) {
+    public Render(HttpServletRequest request, HttpServletResponse response, BaseAction action) {
         this.request = request;
         this.response = response;
         this.action = action;

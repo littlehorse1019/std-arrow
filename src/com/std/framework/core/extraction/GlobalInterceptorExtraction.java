@@ -2,7 +2,7 @@ package com.std.framework.core.extraction;
 
 
 import com.std.framework.annotation.Global;
-import com.std.framework.view.interceptor.CoreInterceptor;
+import com.std.framework.view.interceptor.BaseInterceptor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +12,7 @@ import java.util.List;
  */
 public class GlobalInterceptorExtraction implements Extraction {
 
-    private Class<CoreInterceptor> clazz = CoreInterceptor.class;
+    private Class<BaseInterceptor> clazz = BaseInterceptor.class;
 
     public List<Class<?>> extract(List<String> classFileList) throws Exception {
         List<Class<?>> classList = new ArrayList<Class<?>>();

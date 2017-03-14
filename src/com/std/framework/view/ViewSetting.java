@@ -1,6 +1,6 @@
 package com.std.framework.view;
 
-import static com.std.framework.container.v.ViewXMLParser.*;
+import static com.std.framework.container.v.ViewXMLParserBase.*;
 
 public class ViewSetting {
 

@@ -2,7 +2,7 @@ package com.std.framework.core.extraction;
 
 
 import com.std.framework.annotation.Interceptor;
-import com.std.framework.view.handle.CoreAction;
+import com.std.framework.view.handle.BaseAction;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +12,7 @@ import java.util.List;
  */
 public class ClassInterceptorExtraction implements Extraction {
 
-    private Class<CoreAction> clazz = CoreAction.class;
+    private Class<BaseAction> clazz = BaseAction.class;
 
     public List<Class<?>> extract(List<String> classFileList) throws Exception {
         List<Class<?>> classList = new ArrayList<Class<?>>();

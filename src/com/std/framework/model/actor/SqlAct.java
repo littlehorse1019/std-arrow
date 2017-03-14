@@ -21,7 +21,7 @@ public class SqlAct {
     /**
      * 从ORMMAPING中获取基础语句，继续拼装成插入语句
      **/
-    public String createSaveSql() {
+    public String createInsertSql() {
         String saveSql;
         saveSql = obj2TabContainer.getBasicSqls().get(BaseSqlEnum.Save.toString());
         log.debug(clazz.getName() + "==>saveSql:" + saveSql);
@@ -51,7 +51,7 @@ public class SqlAct {
     /**
      * 从ORMMAPING中获取根据主键查询基础语句
      **/
-    public String createFindByPKSql() {
+    public String createGetSql() {
         String findByPKSql;
         findByPKSql = obj2TabContainer.getBasicSqls().get(BaseSqlEnum.FindByPK.toString());
         log.debug(clazz.getName() + "==>findByPKSql:" + findByPKSql);
@@ -61,7 +61,7 @@ public class SqlAct {
     /**
      * 从ORMMAPING中获取查询全部基础语句
      **/
-    public String createFindAllSql() {
+    public String createListSql() {
         String findAllSql;
         findAllSql = obj2TabContainer.getBasicSqls().get(BaseSqlEnum.FindAll.toString());
         log.debug(clazz.getName() + "==>findAllSql:" + findAllSql);

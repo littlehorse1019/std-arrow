@@ -28,12 +28,12 @@ public class ExcutorAct<T> {
     /**
      * 类->数据库表 ，基础增加语句
      */
-    T excuteSave(T entity) throws SQLException {
+    T excuteInsert(T entity) throws SQLException {
         Connection conn = null;
         PreparedStatement pstmt = null;
         try {
             conn = TransactionHolder.getConn();
-            String saveSql = sqlAct.createSaveSql();
+            String saveSql = sqlAct.createInsertSql();
             pstmt = conn.prepareStatement(saveSql);
             Map<String, String> fieldsName = t2oContainer.getFieldNames();
             Iterator<String> filedIterator = fieldsName.values().iterator();
@@ -120,7 +120,7 @@ public class ExcutorAct<T> {
      */
     T excuteFindByPK(T tInstance) throws SQLException {
         T rtnObj = null;
-        String findByPKSql = sqlAct.createFindByPKSql();
+        String findByPKSql = sqlAct.createGetSql();
         Connection conn = null;
         try {
             conn = TransactionHolder.getConn();
@@ -161,7 +161,7 @@ public class ExcutorAct<T> {
      */
     List<T> excuteFindAll(Class tClass) throws SQLException {
         List<T> list = new ArrayList<>();
-        String findAllSql = sqlAct.createFindAllSql();
+        String findAllSql = sqlAct.createListSql();
         Connection conn = null;
         try {
             conn = TransactionHolder.getConn();

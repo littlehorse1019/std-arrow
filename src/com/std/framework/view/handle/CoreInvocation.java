@@ -1,6 +1,6 @@
 package com.std.framework.view.handle;
 
-import com.std.framework.view.interceptor.CoreInterceptor;
+import com.std.framework.view.interceptor.BaseInterceptor;
 import com.std.framework.view.interceptor.InterceptorStore;
 
 import java.lang.reflect.Method;
@@ -12,11 +12,11 @@ import java.util.Queue;
 public class CoreInvocation {
 
     private Method method;
-    private CoreAction action;
+    private BaseAction action;
     private Object[] paramObj;
-    private Queue<CoreInterceptor> interceptors = null;
+    private Queue<BaseInterceptor> interceptors = null;
 
-    public CoreInvocation(Method method, CoreAction action) {
+    public CoreInvocation(Method method, BaseAction action) {
         this.method = method;
         this.action = action;
         this.paramObj = action.getParamObj();
@@ -24,12 +24,12 @@ public class CoreInvocation {
         interceptors = interceptStore.getInterceptorQueue(action, method);
     }
 
-    public CoreAction getAction() {
+    public BaseAction getAction() {
         return action;
     }
 
     public void invoke() throws Exception {
-        CoreInterceptor interceptor = null;
+        BaseInterceptor interceptor = null;
         // 依次调用拦截器堆栈中的拦截器代码执行
         if ((interceptor = interceptors.poll()) != null) {
             interceptor.intercept(this);

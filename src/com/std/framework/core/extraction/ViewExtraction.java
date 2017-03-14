@@ -1,17 +1,17 @@
 package com.std.framework.core.extraction;
 
 
-import com.std.framework.view.handle.CoreAction;
+import com.std.framework.view.handle.BaseAction;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author Luox CoreAction 继承类抽取器 在工程下所有类文件名（包括指定的jar包中的类）集合中，抽取所有继承自CoreAction的类。
+ * @author Luox BaseAction 继承类抽取器 在工程下所有类文件名（包括指定的jar包中的类）集合中，抽取所有继承自CoreAction的类。
  */
 public class ViewExtraction implements Extraction {
 
-    private Class<CoreAction> clazz = CoreAction.class;
+    private Class<BaseAction> clazz = BaseAction.class;
 
     public List<Class<?>> extract(List<String> classFileList) throws Exception {
         List<Class<?>> classList = new ArrayList<Class<?>>();

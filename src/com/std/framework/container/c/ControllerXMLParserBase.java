@@ -1,6 +1,6 @@
 package com.std.framework.container.c;
 
-import com.std.framework.container.ContainerXMLParser;
+import com.std.framework.container.BaseContainerXMLParser;
 import com.std.framework.controller.ioc.PropertyBean;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -14,7 +14,7 @@ import java.util.Map;
 
 import static com.std.framework.container.c.ControllerXMLConstants.*;
 
-public class ControllerXMLParser extends ContainerXMLParser {
+public class ControllerXMLParserBase extends BaseContainerXMLParser {
 
     public static Node getIOCNode() throws Exception {
         Node controllerNode = getControllerNode();

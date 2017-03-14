@@ -19,9 +19,9 @@ public class GlobalInterceptorStation {
 
     private static Log log = LogFactory.getLogger();
 
-    private static List<CoreInterceptor> globalInterceptorList = new LinkedList<CoreInterceptor>();
+    private static List<BaseInterceptor> globalInterceptorList = new LinkedList<BaseInterceptor>();
 
-    public static Collection<? extends CoreInterceptor> getGlobalQueue() {
+    public static Collection<? extends BaseInterceptor> getGlobalQueue() {
         return globalInterceptorList;
     }
 
@@ -31,7 +31,7 @@ public class GlobalInterceptorStation {
         cs.shiftViewJars();
         List<Class<?>> classes = cs.findMacthedClass(new GlobalInterceptorExtraction());
         for (Class<?> c : classes) {
-            globalInterceptorList.add((CoreInterceptor) c.newInstance());
+            globalInterceptorList.add((BaseInterceptor) c.newInstance());
         }
         Collections.sort(globalInterceptorList, (arg0, arg1) -> {
             Global global0 = arg0.getClass().getAnnotation(Global.class);

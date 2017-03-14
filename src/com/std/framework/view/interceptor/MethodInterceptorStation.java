@@ -15,16 +15,16 @@ import java.util.*;
  */
 public class MethodInterceptorStation {
 
-    private static Map<String, Queue<CoreInterceptor>> methodIntecptMap = new HashMap<String, Queue<CoreInterceptor>>();
+    private static Map<String, Queue<BaseInterceptor>> methodIntecptMap = new HashMap<String, Queue<BaseInterceptor>>();
     private static List<String> clearIntecptList = new ArrayList<String>();
     private static List<String> transactionIntecptList = new ArrayList<String>();
 
-    public static Collection<? extends CoreInterceptor> getQueueByMethod(String methodName) {
-        Queue<CoreInterceptor> queue = methodIntecptMap.get(methodName);
+    public static Collection<? extends BaseInterceptor> getQueueByMethod(String methodName) {
+        Queue<BaseInterceptor> queue = methodIntecptMap.get(methodName);
         if (queue != null) {
             return queue;
         }
-        return new LinkedList<CoreInterceptor>();
+        return new LinkedList<BaseInterceptor>();
     }
 
     public static boolean isCleared(String methodName) {
@@ -43,7 +43,7 @@ public class MethodInterceptorStation {
             for (Method m : c.getDeclaredMethods()) {
                 Interceptor ic = (Interceptor) m.getAnnotation(Interceptor.class);
                 if (ic != null) {
-                    Class<? extends CoreInterceptor>[] interceptors = ic.value();
+                    Class<? extends BaseInterceptor>[] interceptors = ic.value();
                     cacheIntoMap(c.getName() + "-" + m.getName(), interceptors);
                 }
                 Clear cc = (Clear) m.getAnnotation(Clear.class);
@@ -58,9 +58,9 @@ public class MethodInterceptorStation {
         }
     }
 
-    private static void cacheIntoMap(String name, Class<? extends CoreInterceptor>[] interceptors) throws Exception {
-        Queue<CoreInterceptor> queue = new LinkedList<CoreInterceptor>();
-        for (Class<? extends CoreInterceptor> intceptClazz : interceptors) {
+    private static void cacheIntoMap(String name, Class<? extends BaseInterceptor>[] interceptors) throws Exception {
+        Queue<BaseInterceptor> queue = new LinkedList<BaseInterceptor>();
+        for (Class<? extends BaseInterceptor> intceptClazz : interceptors) {
             queue.offer(intceptClazz.newInstance());
         }
         methodIntecptMap.put(name, queue);

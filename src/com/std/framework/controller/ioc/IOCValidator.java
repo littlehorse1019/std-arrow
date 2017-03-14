@@ -6,7 +6,7 @@ import org.w3c.dom.NodeList;
 
 import java.util.List;
 
-import static com.std.framework.container.c.ControllerXMLParser.*;
+import static com.std.framework.container.c.ControllerXMLParserBase.*;
 
 /**
  * @author Luox IOC配置校验器(配置合法性校验，并非格式校验)

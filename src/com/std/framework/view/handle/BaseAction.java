@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * @author Luox Action处理基础类
  */
-public abstract class CoreAction {
+public abstract class BaseAction {
 
     protected Render render;
     ;

@@ -5,7 +5,7 @@ import com.std.framework.view.handle.CoreInvocation;
 /**
  * @author Luox 拦截器处理基类
  */
-public abstract class CoreInterceptor {
+public abstract class BaseInterceptor {
 
     public void intercept(CoreInvocation invocation) throws Exception {
         before(invocation);

@@ -57,7 +57,7 @@ public class CoreServlet extends HttpServlet {
             /** 解析action处理类的类名和方法名 */
             RequestHandler reqHandler = new RequestHandler(request);
             /** 预处理所调用服务的Action和Method */
-            CoreAction action = reqHandler.getServiceAction();
+            BaseAction action = reqHandler.getServiceAction();
             action.awareServlet(request, response);
             Method method = reqHandler.getServiceMethod(action);
             /** 执行业务处理方法,包含拦截器调用 */
@@ -81,7 +81,7 @@ public class CoreServlet extends HttpServlet {
         return method.isAnnotationPresent(ActionService.class);
     }
 
-    private void WriteNoServiceError(HttpServletRequest request, HttpServletResponse response, CoreAction action) {
+    private void WriteNoServiceError(HttpServletRequest request, HttpServletResponse response, BaseAction action) {
         Render render = new Render(request, response, action);
         render.toText("请求的Http服务不存在，请核对URL!");
     }

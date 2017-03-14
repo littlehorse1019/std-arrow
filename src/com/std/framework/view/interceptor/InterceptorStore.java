@@ -2,7 +2,7 @@ package com.std.framework.view.interceptor;
 
 
 import com.std.framework.model.connection.AutoTx;
-import com.std.framework.view.handle.CoreAction;
+import com.std.framework.view.handle.BaseAction;
 
 import java.lang.reflect.Method;
 import java.util.LinkedList;
@@ -28,8 +28,8 @@ public class InterceptorStore {
         return interceptorStore;
     }
 
-    public Queue<CoreInterceptor> getInterceptorQueue(CoreAction action, Method method) {
-        Queue<CoreInterceptor> queue = new LinkedList<>();
+    public Queue<BaseInterceptor> getInterceptorQueue(BaseAction action, Method method) {
+        Queue<BaseInterceptor> queue = new LinkedList<>();
         String methodName = getMethodInterceptorMappingName(action.getClass(), method);
         if (!MethodInterceptorStation.isCleared(methodName)) {
             queue.addAll(GlobalInterceptorStation.getGlobalQueue());
@@ -48,7 +48,7 @@ public class InterceptorStore {
         MethodInterceptorStation.loadInterceptor();
     }
 
-    private String getMethodInterceptorMappingName(Class<? extends CoreAction> clazz, Method method) {
+    private String getMethodInterceptorMappingName(Class<? extends BaseAction> clazz, Method method) {
         return clazz.getName() + "-" + method.getName();
     }
 

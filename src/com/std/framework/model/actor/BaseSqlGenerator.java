@@ -28,11 +28,12 @@ public class BaseSqlGenerator {
     public Map<String, String> genBaseSqlMap(Obj2TabContainer obj2Tab) throws Exception {
         initMaps(obj2Tab);
         Map<String, String> baseSqlMap = new HashMap<>();
-        baseSqlMap.put(BaseSqlEnum.Save.toString(), prepareSaveSql());
-        baseSqlMap.put(BaseSqlEnum.Delete.toString(), prepareDeleteSql());
-        baseSqlMap.put(BaseSqlEnum.Update.toString(), prepareUpdateSql());
-        baseSqlMap.put(BaseSqlEnum.FindByPK.toString(), prepareFindByPKSql());
-        baseSqlMap.put(BaseSqlEnum.FindAll.toString(), prepareFindAllSql());
+        baseSqlMap.put(BaseSqlEnum.SAVE.toString(), prepareSaveSql());
+        baseSqlMap.put(BaseSqlEnum.DELETE.toString(), prepareDeleteSql());
+        baseSqlMap.put(BaseSqlEnum.UPDATE.toString(), prepareUpdateSql());
+        baseSqlMap.put(BaseSqlEnum.GET.toString(), prepareGetSql());
+        baseSqlMap.put(BaseSqlEnum.LIST_All.toString(), prepareListAllSql());
+        baseSqlMap.put(BaseSqlEnum.COUNT.toString(), prepareCountSql());
         return baseSqlMap;
     }
 
@@ -92,7 +93,7 @@ public class BaseSqlGenerator {
     /**
      * Ô¤Ìî³äFindByPK»ù´¡²Ù×÷Sql
      */
-    private String prepareFindByPKSql() throws Exception {
+    private String prepareGetSql() throws Exception {
         StringBuilder findByPKSql = new StringBuilder();
         findByPKSql.append(" SELECT ");
         Iterator<String> colName = columnsName.values().iterator();
@@ -111,11 +112,20 @@ public class BaseSqlGenerator {
     /**
      * Ô¤Ìî³äFindAll»ù´¡²Ù×÷Sql
      */
-    private String prepareFindAllSql() throws Exception {
-        StringBuilder findAllSql = new StringBuilder();
-        findAllSql.append(" SELECT * FROM ");
-        findAllSql.append(tableName);
-        return findAllSql.toString();
+    private String prepareListAllSql() throws Exception {
+        StringBuilder listAllSql = new StringBuilder();
+        listAllSql.append(" SELECT * FROM ");
+        listAllSql.append(tableName);
+        return listAllSql.toString();
     }
 
+    /**
+     * Ô¤Ìî³äFindAll»ù´¡²Ù×÷Sql
+     */
+    private String prepareCountSql() throws Exception {
+        StringBuilder countSql = new StringBuilder();
+        countSql.append(" SELECT COUNT(*) AS COUNTS FROM ");
+        countSql.append(tableName);
+        return countSql.toString();
+    }
 }

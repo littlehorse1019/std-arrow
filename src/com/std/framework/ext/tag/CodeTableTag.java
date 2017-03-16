@@ -122,7 +122,7 @@ public class CodeTableTag extends TagSupport {
         String sql = "SELECT * FROM T_CODE_TABLE T WHERE T.CODE_TABLE_ID = ?";
         List<String> paramList = new ArrayList<String>();
         paramList.add(ctId);
-        List<TCodeTable> list = ModelHelper.findORMClassListBySql(new TCodeTable(), sql, paramList);
+        List<TCodeTable> list = ModelHelper.findEntityListBySql(new TCodeTable(), sql, paramList);
         if (!list.isEmpty()) {
             tCodeTable = list.get(0);
         }
@@ -141,7 +141,7 @@ public class CodeTableTag extends TagSupport {
         }
         sql = sql + " ORDER BY " + tCodeTable.getCodeColumn() + " ASC ";
 
-        List<TCodeDic> list = ModelHelper.findORMClassListBySql(new TCodeDic(), sql, null);
+        List<TCodeDic> list = ModelHelper.findEntityListBySql(new TCodeDic(), sql, null);
         return list;
     }
 

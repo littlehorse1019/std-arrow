@@ -41,7 +41,7 @@ public class ResultAct<T> {
     /**
      * 将ResultSet中的值填充到对象实例集合中
      */
-    List<T> resultFindAll(Class<? extends ModelAct> tClass, ResultSet rs) throws Exception {
+    List<T> resultListAll(Class<? extends ModelAct> tClass, ResultSet rs) throws Exception {
         List<T> list = new ArrayList<>();
         ResultSetMetaData rsmd = rs.getMetaData();
         int columnCount = rsmd.getColumnCount();
@@ -60,5 +60,6 @@ public class ResultAct<T> {
         }
         return list;
     }
+
 
 }

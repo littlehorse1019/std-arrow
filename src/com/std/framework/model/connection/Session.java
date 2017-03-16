@@ -42,14 +42,18 @@ public class Session {
         return modelAct.list(order);
     }
 
-    public <T> List<T> findByEntity(T entity) {
+    public <T> List<T> listByEntity(T entity) {
         ModelAct<T> modelAct = new ModelAct<>(entity);
         return modelAct.listByEntity();
     }
 
-    public <T> List<T> findByEntity(T entity, OrderAct order) {
+    public <T> List<T> listByEntity(T entity, OrderAct order) {
         ModelAct<T> modelAct = new ModelAct<>(entity);
         return modelAct.listByEntity(order);
     }
 
+    public <T> Long count(T entity) {
+        ModelAct<T> modelAct = new ModelAct<>(entity);
+        return modelAct.count();
+    }
 }

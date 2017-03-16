@@ -24,7 +24,6 @@ import static com.std.server.http.Status.ok;
 
 /**
  * @author LUOXIAO
- *
  */
 public class ServerTest {
 

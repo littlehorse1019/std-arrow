@@ -20,7 +20,7 @@ public class ModelHelper {
     /**
      * 将Sql查找的结果存放到类T中，映射关系以Ormmap中存储的为准
      */
-    public static <T> List<T> findDIYClassListBySql(T t, MapRule maprule, String sql, List parameters) {
+    public static <T> List<T> findClassListBySql(T t, MapRule maprule, String sql, List parameters) {
         Class<T> c = (Class<T>) t.getClass();
         ResultSet rs = null;
         try {
@@ -44,7 +44,7 @@ public class ModelHelper {
     /**
      * 将Sql查找的结果存放到类T中，映射关系以Ormmap中存储的为准
      */
-    public static <T> List<T> findORMClassListBySql(T t, String sql, List parameters) {
+    public static <T> List<T> findEntityListBySql(T t, String sql, List parameters) {
         Class<T> c = (Class<T>) t.getClass();
         ModelBuilder.checkOrm(c);
         ResultSet rs = null;

@@ -23,7 +23,7 @@ public class SqlAct {
      **/
     public String createInsertSql() {
         String saveSql;
-        saveSql = obj2TabContainer.getBasicSqls().get(BaseSqlEnum.Save.toString());
+        saveSql = obj2TabContainer.getBasicSqls().get(BaseSqlEnum.SAVE.toString());
         log.debug(clazz.getName() + "==>saveSql:" + saveSql);
         return saveSql;
     }
@@ -33,7 +33,7 @@ public class SqlAct {
      **/
     public String createDeleteSql() {
         String deleteSql;
-        deleteSql = obj2TabContainer.getBasicSqls().get(BaseSqlEnum.Delete.toString());
+        deleteSql = obj2TabContainer.getBasicSqls().get(BaseSqlEnum.DELETE.toString());
         log.debug(clazz.getName() + "==>deleteSql:" + deleteSql);
         return deleteSql;
     }
@@ -43,7 +43,7 @@ public class SqlAct {
      **/
     public String createUpdateSql() {
         String updateSql;
-        updateSql = obj2TabContainer.getBasicSqls().get(BaseSqlEnum.Update.toString());
+        updateSql = obj2TabContainer.getBasicSqls().get(BaseSqlEnum.UPDATE.toString());
         log.debug(clazz.getName() + "==>updateSql:" + updateSql);
         return updateSql;
     }
@@ -52,19 +52,26 @@ public class SqlAct {
      * 从ORMMAPING中获取根据主键查询基础语句
      **/
     public String createGetSql() {
-        String findByPKSql;
-        findByPKSql = obj2TabContainer.getBasicSqls().get(BaseSqlEnum.FindByPK.toString());
-        log.debug(clazz.getName() + "==>findByPKSql:" + findByPKSql);
-        return findByPKSql;
+        String getSql;
+        getSql = obj2TabContainer.getBasicSqls().get(BaseSqlEnum.GET.toString());
+        log.debug(clazz.getName() + "==>getSql:" + getSql);
+        return getSql;
     }
 
     /**
      * 从ORMMAPING中获取查询全部基础语句
      **/
     public String createListSql() {
-        String findAllSql;
-        findAllSql = obj2TabContainer.getBasicSqls().get(BaseSqlEnum.FindAll.toString());
-        log.debug(clazz.getName() + "==>findAllSql:" + findAllSql);
-        return findAllSql;
+        String listAllSql;
+        listAllSql = obj2TabContainer.getBasicSqls().get(BaseSqlEnum.LIST_All.toString());
+        log.debug(clazz.getName() + "==>listAllSql:" + listAllSql);
+        return listAllSql;
+    }
+
+    public String createCountSql() {
+        String countSql;
+        countSql = obj2TabContainer.getBasicSqls().get(BaseSqlEnum.COUNT.toString());
+        log.debug(clazz.getName() + "==>countSql:" + countSql);
+        return countSql;
     }
 }

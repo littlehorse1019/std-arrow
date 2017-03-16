@@ -69,7 +69,7 @@ public class ModelAct<T> {
     public T get() {
         T obj = null;
         try {
-            obj = excutor.excuteFindByPK(entity);
+            obj = excutor.excuteGet(entity);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -82,7 +82,7 @@ public class ModelAct<T> {
     public List<T> list() {
         List<T> list = new ArrayList<>();
         try {
-            list = excutor.excuteFindAll(entity.getClass());
+            list = excutor.excuteListAll(entity.getClass());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -99,7 +99,7 @@ public class ModelAct<T> {
     public List<T> listByEntity() {
         List<T> list = new ArrayList<>();
         try {
-            list = excutor.excuteFindAll(entity.getClass());
+            list = excutor.excuteListAll(entity.getClass());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -109,5 +109,10 @@ public class ModelAct<T> {
     public List<T> listByEntity(OrderAct orderAct) {
         List<T> list = new ArrayList<>();
         return list;
+    }
+
+
+    public Long count() {
+        return excutor.excuteCount(entity.getClass());
     }
 }

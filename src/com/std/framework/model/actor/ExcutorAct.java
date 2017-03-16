@@ -118,13 +118,13 @@ public class ExcutorAct<T> {
     /**
      * 类->数据库表 ，按照主键查询语句
      */
-    T excuteFindByPK(T tInstance) throws SQLException {
+    T excuteGet(T tInstance) throws SQLException {
         T rtnObj = null;
-        String findByPKSql = sqlAct.createGetSql();
+        String getSql = sqlAct.createGetSql();
         Connection conn = null;
         try {
             conn = TransactionHolder.getConn();
-            try (PreparedStatement pstmt = conn.prepareStatement(findByPKSql)) {
+            try (PreparedStatement pstmt = conn.prepareStatement(getSql)) {
                 String primaryKeyName = t2oContainer.getPrimaryKeyName();
                 prepareStatementSql(primaryKeyName, tInstance, pstmt, 1);
                 try (ResultSet rs = pstmt.executeQuery()) {
@@ -159,24 +159,41 @@ public class ExcutorAct<T> {
     /**
      * 类->数据库表 ，查询全部语句
      */
-    List<T> excuteFindAll(Class tClass) throws SQLException {
+    List<T> excuteListAll(Class tClass) throws SQLException {
         List<T> list = new ArrayList<>();
-        String findAllSql = sqlAct.createListSql();
+        String listAllSql = sqlAct.createListSql();
         Connection conn = null;
         try {
             conn = TransactionHolder.getConn();
-            try (PreparedStatement pstmt = conn.prepareStatement(findAllSql);
+            try (PreparedStatement pstmt = conn.prepareStatement(listAllSql);
                  ResultSet rs = pstmt.executeQuery()) {
-                list = resultAct.resultFindAll(tClass, rs);
+                list = resultAct.resultListAll(tClass, rs);
             }
         } catch (Exception e) {
-            if (conn != null && !conn.getAutoCommit()) {
-                conn.rollback();
-            }
             e.printStackTrace();
         } finally {
             TransactionHolder.releaseConnection(conn);
         }
         return list;
+    }
+
+    Long excuteCount(Class<?> aClass) {
+        Long counts = 0L;
+        String countSql = sqlAct.createCountSql();
+        Connection conn = null;
+        try {
+            conn = TransactionHolder.getConn();
+            try (PreparedStatement pstmt = conn.prepareStatement(countSql);
+                 ResultSet rs = pstmt.executeQuery()) {
+                if (rs.next()) {
+                    counts = rs.getLong("COUNTS");
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            TransactionHolder.releaseConnection(conn);
+        }
+        return counts;
     }
 }

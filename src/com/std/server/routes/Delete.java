@@ -6,7 +6,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Delete annotation
+ * DELETE annotation
  *
  * @author LUOXIAO
  * @since 1.0

@@ -49,7 +49,7 @@ public class HttpServer extends Server {
     }
 
     /**
-     * Create a new {@code Route} with a "Delete" request type and specified path
+     * Create a new {@code Route} with a "DELETE" request type and specified path
      * <p>
      * The method returns the newly created route to allow customizing the routes parameter ordering and patterns.
      *
@@ -62,9 +62,9 @@ public class HttpServer extends Server {
 
 
     /**
-     * Converts the methods annotated with {@code Get}, {@code Post}, and {@code Delete} to routes and adds them to the router.
+     * Converts the methods annotated with {@code Get}, {@code Post}, and {@code DELETE} to routes and adds them to the router.
      * <p>
-     * A method subject to becoming a {@code Route} must be annotated with {@code Get}, {@code Post}, or {@code Delete}.
+     * A method subject to becoming a {@code Route} must be annotated with {@code Get}, {@code Post}, or {@code DELETE}.
      * <p>
      * The method return type must be a {@code HttpHandler}.
      *
@@ -76,9 +76,9 @@ public class HttpServer extends Server {
     }
 
     /**
-     * Converts the methods annotated with {@code Get}, {@code Post}, and {@code Delete} to routes and adds them to the router.
+     * Converts the methods annotated with {@code Get}, {@code Post}, and {@code DELETE} to routes and adds them to the router.
      * <p>
-     * A method subject to becoming a {@code Route} must be annotated with {@code Get}, {@code Post}, or {@code Delete}.
+     * A method subject to becoming a {@code Route} must be annotated with {@code Get}, {@code Post}, or {@code DELETE}.
      * <p>
      * The method return type must be a {@code HttpHandler}.
      * <p>

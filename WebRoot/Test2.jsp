@@ -1,41 +1,41 @@
-<%@ page language="java" import="java.util.*" pageEncoding="GBK"%>
+<%@ page language="java" pageEncoding="GBK" %>
 
 <html>
-  <head>
+<head>
     <title>Testing</title>
-  </head>
-  
-  <body>
-  	<form action="actionTest.testingParam.do" method="get">
-  	<table>
-  		<tr>
-  			<td>
-  				Name ：
-  			</td>
-  			<td>
-  				<input type="text" name="name" value="${name}" />
-  			</td>
-  		</tr>
-  		<tr>
-  		  	<td>
-  				PassWord ：
-  			</td>
-  			<td>
-  				<input type="text" name="password" value="${password}" />
-  			</td>
-  		</tr>
-  		<tr>
-  		  	<td>
-  				Age ：
-  			</td>
-  			<td>
-  				<input type="text" name="age" value="${age}" />
-  			</td>
-  		</tr>
-  	</table>
-  	
-  		<input type="submit" id="subBtn" value="提交" />
-  	
-  	</form>
-  </body>
+</head>
+
+<body>
+<form action="actionTest.testingParam.do" method="get">
+    <table>
+        <tr>
+            <td>
+                Name ：
+            </td>
+            <td>
+                <input type="text" name="name" value="${name}"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                PassWord ：
+            </td>
+            <td>
+                <input type="text" name="password" value="${password}"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Age ：
+            </td>
+            <td>
+                <input type="text" name="age" value="${age}"/>
+            </td>
+        </tr>
+    </table>
+
+    <input type="submit" id="subBtn" value="提交"/>
+
+</form>
+</body>
 </html>

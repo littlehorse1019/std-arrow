@@ -2,7 +2,10 @@ package com.std.framework.model.connection;
 
 import org.w3c.dom.Node;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DatabaseMetaData;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.Enumeration;
 import java.util.Vector;
 

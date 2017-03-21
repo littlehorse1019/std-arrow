@@ -43,8 +43,7 @@ public class ConnectionsPool {
             return; // 如果己经创建，则返回
         }
         // 实例化 JDBC Driver 中指定的驱动类实例
-        Driver driver = (Driver) (Class.forName(this.jdbcDriver).newInstance());
-        DriverManager.registerDriver(driver); // 注册 JDBC 驱动程序
+        Class.forName(this.jdbcDriver).newInstance();// 注册 JDBC 驱动程序
         // 创建保存连接的向量 , 初始时有 0 个元素
         connections = new Vector<PooledConnection>();
         // 根据 initialConnections 中设置的值，创建连接。

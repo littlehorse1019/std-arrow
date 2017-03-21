@@ -7,7 +7,6 @@ public class LogFactory {
     private LogFactory() {
     }
 
-    ;
 
     public static Log getLogger() {
         Log logger = null;

@@ -50,10 +50,10 @@ public class BookFacadeImpl implements BookFacade {
 
 ### Service and Transaction Support:
 ```java
-	@ActionService
-	@Transactional
-	@Clear
-	public void testing() {}
+@ActionService
+@Transactional
+@Clear
+public void testing() {}
 ```
 
 ### Leveled Interceptor Support:
@@ -78,8 +78,11 @@ public class TestBo {}
 ```java
 public void testingParam(User user) {
    List<TestBo> testBoList = doTestModelView();
-    render.toJson(testBoList);
-		log.info(" ActionTest - test => Name : " + user.getName() + ", PassWord : " + user.getPassword() + ", Age : " + user.getAge());
+    		render.toJson(testBoList);
+		log.info(
+			" ActionTest - test => Name : " + user.getName() + 
+			", PassWord : " + user.getPassword() + 
+			", Age : " + user.getAge());
 		render.setReqAttr("user", "admin");
 		render.forwardJsp("/Test2");
 	}
@@ -102,7 +105,7 @@ public class ServerTest {
 	public static void main(String args[]){
 		
 		HttpServer server = HttpServer.bind(8080);
-	    server.accept(new Controller() {
+	    	server.accept(new Controller() {
 	        @Get("/test/get")
 	        public HttpHandler testGet(HttpServletRequest request, HttpServletResponse response) {
 	        	System.out.println("Test HTTP GET success!");

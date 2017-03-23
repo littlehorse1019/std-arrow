@@ -38,7 +38,7 @@ private BookFacade bookFacade;
 ```java
 @Proxy
 public class BookFacadeImpl implements BookFacade {
-	private String hahaha = "hahahaha~";
+    private String hahaha = "hahahaha~";
   
     @Advisor(value={BeforeAop.class,AfterAop.class},cutPosition={PointCut.Before,PointCut.After} ,cutMethod={"beforeTest","afterTest"})
     public void addBook(String bookName) {}  
@@ -60,18 +60,21 @@ public void testing() {}
 #### Class scope
 ```java
 @Interceptor( { ClassInterceptor1.class, ClassInterceptor2.class })
-public class ActionTest extends CoreAction {}
+public class ActionTest extends CoreAction {
+}
 ```
 #### Method scope
 ```java
 @Interceptor( { MethodInterceptor1.class, MethodInterceptor2.class })
-	public void testing(User user) {}
+	public void testing(User user) {
+	}
 ```
 
 ### ORM Support:
 ```java
 @Entity(MappingByClass.class)
-public class TestBo {}
+public class TestBo {
+}
 ```
 
 ### ParamFill and Renders Support:

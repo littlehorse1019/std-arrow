@@ -12,8 +12,8 @@ http://www.stupideer.cn:8080/offer/job/actionJob.index.do
 
 
 
-##Basic usage as blow :
-###IOC Support:
+## Basic usage as blow :
+### IOC Support:
 ```java
 private BookFacade bookFacade;
   	@Autowired

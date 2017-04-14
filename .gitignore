@@ -52,3 +52,5 @@ lib/
 
 bin/
 
+target/
+out/

@@ -2,7 +2,7 @@ package com.std.framework.model.actor;
 
 public enum BaseSqlEnum {
 
-    Save(1), Delete(2), Update(3), FindByPK(4), FindAll(5);
+    Save(1), Remove(2), Update(3), FindByPK(4), FindAll(5);
 
     // 定义私有变量
     private int nCode;
@@ -20,7 +20,7 @@ public enum BaseSqlEnum {
                 rtnStr = "Save";
                 break;
             case 2:
-                rtnStr = "Delete";
+                rtnStr = "Remove";
                 break;
             case 3:
                 rtnStr = "Update";

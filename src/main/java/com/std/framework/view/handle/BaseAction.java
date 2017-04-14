@@ -9,7 +9,8 @@ import javax.servlet.http.HttpServletResponse;
  */
 public abstract class BaseAction {
 
-    protected Render render;;
+    protected Render render;
+    ;
     private HttpServletRequest  request;
     private HttpServletResponse response;
     private Object[] paramObj = null;

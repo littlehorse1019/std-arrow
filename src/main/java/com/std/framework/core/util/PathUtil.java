@@ -1,11 +1,17 @@
 package com.std.framework.core.util;
 
 import java.io.File;
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.net.URLDecoder;
 
 /**
- * @author Luox new File("..\path\abc.txt") 中的三个方法获取路径的方 1.getPath() 获取相对路径，例 ..\path\abc.txt 2.getAbslutlyPath()
- *         获取绝对路径，但可能包含 "..""." 字符，例D:\otherPath\..\path\abc.txt 3.getCanonicalPath() 获取绝对路径，但不包".." "." 字符，例
- *         D:\path\abc.txt
+ * @author Luox
+ *         new File("..\path\abc.txt") 中的三个方法获取路径的方
+ *         1.getPath() 获取相对路径，例 ..\path\abc.txt
+ *         2.getAbslutlyPath() 获取绝对路径，但可能包含 "..""." 字符，例D:\otherPath\..\path\abc.txt
+ *         3.getCanonicalPath() 获取绝对路径，但不包".." "." 字符，例 D:\path\abc.txt
  */
 public class PathUtil {
 
@@ -38,22 +44,29 @@ public class PathUtil {
         return rootClassPath + "/";
     }
 
-    public void setRootClassPath (String rootClassPath) {
-        PathUtil.rootClassPath = rootClassPath;
-    }
-
     public static String getPackagePath (Object object) {
         Package p = object.getClass().getPackage();
         return p != null ? p.getName().replaceAll("\\.", "/") : "";
     }
 
-    public static File getFileFromJar (String file) {
-        throw new RuntimeException("Not finish. Do not use this method.");
+    public static String getJarPath (Class clazz, String file) {
+        URL fileURL = clazz.getResource(file);
+        return fileURL.getFile();
     }
 
     public static String getWebRootPath () {
         if (webRootPath == null) {
-            webRootPath = detectWebRootPath();
+            String path = null;
+            try {
+                path = PathUtil.class.getResource("/").toURI().getPath();
+            } catch (URISyntaxException e) {
+                e.printStackTrace();
+            }
+            try {
+                webRootPath = new File(path).getParentFile().getParentFile().getCanonicalPath();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
         return webRootPath;
     }
@@ -62,26 +75,15 @@ public class PathUtil {
         if (webRootPath == null) {
             return;
         }
-
         if (webRootPath.endsWith(File.separator)) {
             webRootPath = webRootPath.substring(0, webRootPath.length() - 1);
         }
         PathUtil.webRootPath = webRootPath;
     }
 
-    private static String detectWebRootPath () {
-        try {
-            String path = PathUtil.class.getResource("/").toURI().getPath();
-            return new File(path).getParentFile().getParentFile()
-                                 .getCanonicalPath();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
-
     public static String getProjectPath () {
-        java.net.URL url = PathUtil.class.getProtectionDomain().getCodeSource()
-                                         .getLocation();
+        URL url = PathUtil.class.getProtectionDomain().getCodeSource()
+                                .getLocation();
         String filePath = null;
         try {
             filePath = java.net.URLDecoder.decode(url.getPath(), "utf-8");
@@ -91,26 +93,26 @@ public class PathUtil {
         if (filePath.endsWith(".jar")) {
             filePath = filePath.substring(0, filePath.lastIndexOf("/") + 1);
         }
-        java.io.File file = new java.io.File(filePath);
+        File file = new java.io.File(filePath);
         filePath = file.getAbsolutePath();
         return filePath;
     }
 
     public static String getRealPath () {
-        String realPath = PathUtil.class.getClassLoader().getResource("")
+        String realPath = PathUtil.class.getClassLoader().getResource("/")
                                         .getFile();
-        java.io.File file = new java.io.File(realPath);
+        File file = new java.io.File(realPath);
         realPath = file.getAbsolutePath();
         try {
             realPath = java.net.URLDecoder.decode(realPath, "utf-8");
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return realPath;
+        return realPath + "/";
     }
 
     public static String getAppPath (Class<?> cls) {
-        // �?��用户传入的参数是否为�?
+        // 用户传入的参数是否为空?
         if (cls == null) {
             throw new java.lang.IllegalArgumentException("参数不能为空");
         }
@@ -126,7 +128,7 @@ public class PathUtil {
         String clsPath = clsName.replace(".", "/") + ".class";
 
         // 调用ClassLoader的getResource方法，传入包含路径信息的类文件名
-        java.net.URL url = loader.getResource(clsPath);
+        URL url = loader.getResource(clsPath);
         // 从URL对象中获取路径信
         String realPath = url.getPath();
         // 去掉路径信息中的协议file:"
@@ -141,15 +143,15 @@ public class PathUtil {
         if (realPath.endsWith("!")) {
             realPath = realPath.substring(0, realPath.lastIndexOf("/"));
         }
-        java.io.File file = new java.io.File(realPath);
+        File file = new File(realPath);
         realPath = file.getAbsolutePath();
 
         try {
-            realPath = java.net.URLDecoder.decode(realPath, "utf-8");
+            realPath = URLDecoder.decode(realPath, "utf-8");
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
         return realPath;
-    }// getAppPath定义结束
+    }
 
 }

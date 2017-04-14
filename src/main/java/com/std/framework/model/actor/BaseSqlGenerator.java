@@ -28,7 +28,7 @@ public class BaseSqlGenerator {
         initMaps(obj2Tab);
         Map<String, String> baseSqlMap = new HashMap<>();
         baseSqlMap.put(BaseSqlEnum.Save.toString(), prepareSaveSql());
-        baseSqlMap.put(BaseSqlEnum.Delete.toString(), prepareDeleteSql());
+        baseSqlMap.put(BaseSqlEnum.Remove.toString(), prepareDeleteSql());
         baseSqlMap.put(BaseSqlEnum.Update.toString(), prepareUpdateSql());
         baseSqlMap.put(BaseSqlEnum.FindByPK.toString(), prepareFindByPKSql());
         baseSqlMap.put(BaseSqlEnum.FindAll.toString(), prepareFindAllSql());

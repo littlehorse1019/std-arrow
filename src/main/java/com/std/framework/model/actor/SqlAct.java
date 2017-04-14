@@ -32,10 +32,10 @@ public class SqlAct {
      * 从ORMMAPING中获取基础语句，继续拼装成删除语句
      **/
     public String createDeleteSql () {
-        String deleteSql;
-        deleteSql = obj2TabContainer.getBasicSqls().get(BaseSqlEnum.Delete.toString());
-        log.debug(clazz.getName() + "==>deleteSql:" + deleteSql);
-        return deleteSql;
+        String removeSql;
+        removeSql = obj2TabContainer.getBasicSqls().get(BaseSqlEnum.Remove.toString());
+        log.debug(clazz.getName() + "==>removeSql:" + removeSql);
+        return removeSql;
     }
 
     /**
@@ -52,19 +52,19 @@ public class SqlAct {
      * 从ORMMAPING中获取根据主键查询基础语句
      **/
     public String createGetSql () {
-        String findByPKSql;
-        findByPKSql = obj2TabContainer.getBasicSqls().get(BaseSqlEnum.FindByPK.toString());
-        log.debug(clazz.getName() + "==>findByPKSql:" + findByPKSql);
-        return findByPKSql;
+        String getSql;
+        getSql = obj2TabContainer.getBasicSqls().get(BaseSqlEnum.FindByPK.toString());
+        log.debug(clazz.getName() + "==>getSql:" + getSql);
+        return getSql;
     }
 
     /**
      * 从ORMMAPING中获取查询全部基础语句
      **/
     public String createListSql () {
-        String findAllSql;
-        findAllSql = obj2TabContainer.getBasicSqls().get(BaseSqlEnum.FindAll.toString());
-        log.debug(clazz.getName() + "==>findAllSql:" + findAllSql);
-        return findAllSql;
+        String listSql;
+        listSql = obj2TabContainer.getBasicSqls().get(BaseSqlEnum.FindAll.toString());
+        log.debug(clazz.getName() + "==>listSql:" + listSql);
+        return listSql;
     }
 }

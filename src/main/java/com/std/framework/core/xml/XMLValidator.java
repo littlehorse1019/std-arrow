@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import org.xml.sax.SAXException;
@@ -44,9 +45,10 @@ public class XMLValidator {
      */
     public static boolean validMVCConfig () throws SAXException, FileNotFoundException {
         String rootClassPath = PathUtil.getRootClassPath();
-        File   xsdfile       = new File(rootClassPath + "com/std/framework/core/" + XMLValidator.MVC_CONFIG_XSD);
-        File   xmlfile       = new File(rootClassPath + XMLValidator.DEFAULT_MVC_FILE_NAME);
-        return XMLParser.validateWithSingleSchema(xmlfile, xsdfile);
+        URL    xsdURL        = XMLValidator.class.getResource(MVC_CONFIG_XSD);
+        File   xmlfile       = new File(rootClassPath + DEFAULT_MVC_FILE_NAME);
+        return XMLParser.validateWithSingleSchema(xmlfile, xsdURL);
     }
+
 
 }

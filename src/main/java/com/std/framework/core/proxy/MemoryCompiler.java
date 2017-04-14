@@ -15,7 +15,8 @@ import javax.tools.ToolProvider;
  *         其中，可能的选项包括： -g 生成所有调试信息 -g:none 不生成任何调试信息 -g:{lines,vars,source} 只生成某些调试信息 -nowarn 不生成任何警告 -verbose
  *         输出有关编译器正在执行的操作的消息 -deprecation 输出使用已过时的 API 的源位置 -classpath <路径> 指定查找用户类文件的位置 -cp <路径> 指定查找用户类文件的位置
  *         -sourcepath <路径> 指定查找输入源文件的位置 -bootclasspath <路径> 覆盖引导类文件的位置 -extdirs <目录> 覆盖安装的扩展目录的位置 -endorseddirs <目录>
- *         覆盖签名的标准路径的位置 -d <目录> 指定存放生成的类文件的位置 -encoding <编码> 指定源文件使用的字符编码 -source <版本> 提供与指定版本的源兼容性 -target <版本> 生成特定 VM
+ *         覆盖签名的标准路径的位置 -d <目录> 指定存放生成的类文件的位置 -encoding <编码> 指定源文件使用的字符编码 -source <版本> 提供与指定版本的源兼容性 -target <版本> 生成特定
+ *         VM
  *         版本的类文件 -version 版本信息 -help 输出标准选项的提要 -X 输出非标准选项的提要 -J<标志> 直接将 <标志> 传递给运行时系统
  */
 public class MemoryCompiler {

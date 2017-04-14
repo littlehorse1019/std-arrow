@@ -9,7 +9,7 @@ public class IOCTest {
 
     private static Log log = LogFactory.getLogger();
 
-    public static void testIOC() {
+    public static void testIOC () {
         try {
             TestClass1 tc1 = (TestClass1) BeanFactory.getMVCBean("testClass1");
             log.info(tc1);

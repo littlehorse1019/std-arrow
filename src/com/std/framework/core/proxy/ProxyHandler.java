@@ -6,6 +6,7 @@ import java.lang.reflect.Method;
  * 代理类的代理程序接口
  */
 public interface ProxyHandler {
+
     // 代理对象的实际调用方法
-    public Object invoke(Method method, Object... args);
+    public Object invoke (Method method, Object... args);
 }

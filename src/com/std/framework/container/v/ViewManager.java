@@ -14,17 +14,17 @@ public class ViewManager extends ContainerManager {
 
     private static Log logger = LogFactory.getLogger();
 
-    public static void loadViewContext() throws Exception {
+    public static void loadViewContext () throws Exception {
         loadInterceptor();
         loadReqAndRespSetting();
     }
 
-    private static void loadInterceptor() throws Exception {
+    private static void loadInterceptor () throws Exception {
         logger.debug(">>>>>Stupideer øÚº‹◊∞‘ÿ... >>>>>>>¿πΩÿ∆˜º”‘ÿ...");
         InterceptorStore.instance().loadInterceptor();
     }
 
-    private static void loadReqAndRespSetting() throws Exception {
+    private static void loadReqAndRespSetting () throws Exception {
         logger.debug(">>>>>Stupideer øÚº‹◊∞‘ÿ... >>>>>>>Request∫ÕResponse≥ı ºªØ...");
         ViewSetting.init();
     }

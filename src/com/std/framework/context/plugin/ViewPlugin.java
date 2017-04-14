@@ -9,7 +9,7 @@ public class ViewPlugin implements ContextPlugin {
     private static Log logger = LogFactory.getLogger();
 
     @Override
-    public void plugin() {
+    public void plugin () {
         logger.debug("º”‘ÿœ‘ æ≤„≤Âº˛ : " + this.getClass().getName() + "...");
     }
 

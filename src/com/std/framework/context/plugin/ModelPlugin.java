@@ -9,7 +9,7 @@ public class ModelPlugin implements ContextPlugin {
     private static Log logger = LogFactory.getLogger();
 
     @Override
-    public void plugin() {
+    public void plugin () {
         logger.debug("加载数据模型插件 : " + this.getClass().getName() + "...");
     }
 

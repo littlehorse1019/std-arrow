@@ -8,29 +8,29 @@ public class JobDetail {
     private String jobClass;
     private String jobMethod;
     private String jobCron;
-    private long jobTimes;
+    private long   jobTimes;
 
-    public String getJobName() {
+    public String getJobName () {
         return jobName;
     }
 
-    public String getJobClass() {
+    public String getJobClass () {
         return jobClass;
     }
 
-    public String getJobMethod() {
+    public String getJobMethod () {
         return jobMethod;
     }
 
-    public String getJobCron() {
+    public String getJobCron () {
         return jobCron;
     }
 
-    public long getJobTimes() {
+    public long getJobTimes () {
         return jobTimes;
     }
 
-    public JobDetail createInstance(Class<?> jobClazz) {
+    public JobDetail createInstance (Class<?> jobClazz) {
         Job annotation = jobClazz.getAnnotation(Job.class);
         this.jobName = annotation.Name();
         this.jobClass = jobClazz.getName();

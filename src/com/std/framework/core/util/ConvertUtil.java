@@ -17,14 +17,14 @@ public class ConvertUtil {
     /**
      * 将字段值转换成相应sql 字符串 类型
      */
-    public static String castToSqlType(Object value, Class<?> targetType) throws ParseException {
+    public static String castToSqlType (Object value, Class<?> targetType) throws ParseException {
         String rtnStr = "";
         if (value != null) {
             if (targetType.isPrimitive()) {
                 rtnStr = String.valueOf(value);
             } else if (targetType == Integer.class || targetType == Float.class || targetType == Double.class
-                    || targetType == Byte.class || targetType == BigDecimal.class || targetType == Short.class
-                    || targetType == String.class) {
+                || targetType == Byte.class || targetType == BigDecimal.class || targetType == Short.class
+                || targetType == String.class) {
                 rtnStr = String.valueOf(value);
             } else if (targetType == Date.class) {
                 rtnStr = "TO_DATE('YYYYMMDD HH24MISS','" + String.valueOf(value) + "')";
@@ -36,7 +36,7 @@ public class ConvertUtil {
     /**
      * 将value转换成目标类型实例
      */
-    public static Object castToFieldType(Object value, Class<?> targetType) throws ParseException {
+    public static Object castToFieldType (Object value, Class<?> targetType) throws ParseException {
         Object rtnValue = null;
         if (targetType.isPrimitive()) {
             if (targetType == int.class) {
@@ -86,14 +86,16 @@ public class ConvertUtil {
         return rtnValue;
     }
 
-    private static void chooseParser(String dateString) {
+    private static void chooseParser (String dateString) {
         if (Pattern.compile("[0-9]{4}[01][0-9][0-3][0-9]").matcher(dateString).matches()) {
             dateFormat = new SimpleDateFormat("yyyyMMdd");
         } else if (Pattern.compile("[0-9]{4}-[01][0-9]-[0-3][0-9]").matcher(dateString).matches()) {
             dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        } else if (Pattern.compile("[0-9]{4}[01][0-9][0-3][0-9]\t[0-2][0-9]:[0-5][0-9]:[0-5][0-9]").matcher(dateString).matches()) {
+        } else if (Pattern.compile("[0-9]{4}[01][0-9][0-3][0-9]\t[0-2][0-9]:[0-5][0-9]:[0-5][0-9]").matcher(dateString)
+                          .matches()) {
             dateFormat = new SimpleDateFormat("yyyyMMdd hh24:mi:ss");
-        } else if (Pattern.compile("[0-9]{4}-[01][0-9]-[0-3][0-9]\t[0-2][0-9]:[0-5][0-9]:[0-5][0-9]").matcher(dateString).matches()) {
+        } else if (Pattern.compile("[0-9]{4}-[01][0-9]-[0-3][0-9]\t[0-2][0-9]:[0-5][0-9]:[0-5][0-9]")
+                          .matcher(dateString).matches()) {
             dateFormat = new SimpleDateFormat("yyyy-MM-dd hh24:mi:ss");
         }
     }
@@ -101,33 +103,34 @@ public class ConvertUtil {
     /**
      * 将value转换成简单类型的对象
      */
-    public static Object castToSimpleType(Object value, Class<?> targetType) throws ParseException {
+    public static Object castToSimpleType (Object value, Class<?> targetType) throws ParseException {
         return targetType.cast(value);
     }
 
     /**
      * 获取原型对象的强制转换字符
      */
-    public static String primitiveToObjCastString(Class<?> returnType) {
+    public static String primitiveToObjCastString (Class<?> returnType) {
         if (returnType != void.class) {
-            if (returnType == boolean.class)
+            if (returnType == boolean.class) {
                 return " (Boolean)";
-            else if (returnType == int.class)
+            } else if (returnType == int.class) {
                 return " (Integer)";
-            else if (returnType == byte.class)
+            } else if (returnType == byte.class) {
                 return " (Byte)";
-            else if (returnType == short.class)
+            } else if (returnType == short.class) {
                 return " (Short)";
-            else if (returnType == long.class)
+            } else if (returnType == long.class) {
                 return " (Long)";
-            else if (returnType == float.class)
+            } else if (returnType == float.class) {
                 return " (Float)";
-            else if (returnType == double.class)
+            } else if (returnType == double.class) {
                 return " (Double)";
-            else if (returnType == char.class)
+            } else if (returnType == char.class) {
                 return " (Character)";
-            else
+            } else {
                 return " (" + returnType.getCanonicalName() + ")";
+            }
         } else {
             return "";
         }
@@ -136,8 +139,8 @@ public class ConvertUtil {
     /**
      * 将字符串转换为相应的类
      */
-    @SuppressWarnings("rawtypes")
-    public static Class stringToClass(String typeString) {
+    @SuppressWarnings ("rawtypes")
+    public static Class stringToClass (String typeString) {
         try {
             return Class.forName(typeString);
         } catch (ClassNotFoundException e) {
@@ -149,12 +152,12 @@ public class ConvertUtil {
     /**
      * 判断是否为基本数据类型
      */
-    public static boolean isBaseDataType(Class<?> clazz) throws Exception {
+    public static boolean isBaseDataType (Class<?> clazz) throws Exception {
         return (clazz.equals(String.class) || clazz.equals(Integer.class) || clazz.equals(Byte.class)
-                || clazz.equals(Long.class) || clazz.equals(Double.class) || clazz.equals(Float.class)
-                || clazz.equals(Character.class) || clazz.equals(Short.class) || clazz.equals(BigDecimal.class)
-                || clazz.equals(BigInteger.class) || clazz.equals(Boolean.class) || clazz.equals(Date.class) || clazz
-                .isPrimitive());
+            || clazz.equals(Long.class) || clazz.equals(Double.class) || clazz.equals(Float.class)
+            || clazz.equals(Character.class) || clazz.equals(Short.class) || clazz.equals(BigDecimal.class)
+            || clazz.equals(BigInteger.class) || clazz.equals(Boolean.class) || clazz.equals(Date.class) || clazz
+            .isPrimitive());
     }
 
 }

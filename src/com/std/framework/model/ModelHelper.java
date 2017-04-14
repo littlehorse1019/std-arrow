@@ -2,7 +2,6 @@ package com.std.framework.model;
 
 import com.std.framework.model.connection.TransactionHolder;
 import com.std.framework.model.orm.MapRule;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,14 +13,14 @@ import java.util.Map;
 /**
  * @author Luox SQL自定义操作工具类
  */
-@SuppressWarnings({"unchecked", "rawtypes"})
+@SuppressWarnings ({"unchecked", "rawtypes"})
 public class ModelHelper {
 
     /**
      * 将Sql查找的结果存放到类T中，映射关系以Ormmap中存储的为准
      */
-    public static <T> List<T> findDIYClassListBySql(T t, MapRule maprule, String sql, List parameters) {
-        Class<T> c = (Class<T>) t.getClass();
+    public static <T> List<T> findDIYClassListBySql (T t, MapRule maprule, String sql, List parameters) {
+        Class<T>  c  = (Class<T>) t.getClass();
         ResultSet rs = null;
         try {
             rs = excuteQuerySql(sql, parameters);
@@ -44,7 +43,7 @@ public class ModelHelper {
     /**
      * 将Sql查找的结果存放到类T中，映射关系以Ormmap中存储的为准
      */
-    public static <T> List<T> findORMClassListBySql(T t, String sql, List parameters) {
+    public static <T> List<T> findORMClassListBySql (T t, String sql, List parameters) {
         Class<T> c = (Class<T>) t.getClass();
         ModelBuilder.checkOrm(c);
         ResultSet rs = null;
@@ -67,7 +66,7 @@ public class ModelHelper {
     /**
      * 将Sql查找的结果存放到List<Map>中，
      */
-    public static List<Map<String, Object>> findMapListBySql(String sql, List parameters) {
+    public static List<Map<String, Object>> findMapListBySql (String sql, List parameters) {
         try (ResultSet rs = excuteQuerySql(sql, parameters)) {
             return ModelBuilder.buildMapResult(rs);
         } catch (Exception e) {
@@ -79,7 +78,7 @@ public class ModelHelper {
     /**
      * 执行DML语句
      */
-    public static boolean excuteDMLSql(String sql, List parameters) throws SQLException {
+    public static boolean excuteDMLSql (String sql, List parameters) throws SQLException {
         Connection conn = null;
         try {
             conn = TransactionHolder.getConn();
@@ -93,18 +92,19 @@ public class ModelHelper {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            if (conn != null)
+            if (conn != null) {
                 conn.rollback();
+            }
         } finally {
             TransactionHolder.releaseConnection(conn);
         }
         return true;
     }
 
-    private static ResultSet excuteQuerySql(String sql, List parameters) throws SQLException {
-        Connection conn = null;
+    private static ResultSet excuteQuerySql (String sql, List parameters) throws SQLException {
+        Connection        conn = null;
         PreparedStatement pstmt;
-        ResultSet rs = null;
+        ResultSet         rs   = null;
         try {
             conn = TransactionHolder.getConn();
             pstmt = conn.prepareStatement(sql);
@@ -116,8 +116,9 @@ public class ModelHelper {
             rs = pstmt.executeQuery();
         } catch (Exception e) {
             e.printStackTrace();
-            if (conn != null)
+            if (conn != null) {
                 conn.rollback();
+            }
         } finally {
             TransactionHolder.releaseConnection(conn);
         }

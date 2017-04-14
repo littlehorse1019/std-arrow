@@ -6,20 +6,25 @@ import com.std.framework.annotation.Interceptor;
 import com.std.framework.annotation.Transactional;
 import com.std.framework.context.ClassScanner;
 import com.std.framework.core.extraction.ViewExtraction;
-
 import java.lang.reflect.Method;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.Queue;
 
 /**
  * @author Luox Method¼¶±ðÀ¹½ØÆ÷ÈÝÆ÷
  */
 public class MethodInterceptorStation {
 
-    private static Map<String, Queue<BaseInterceptor>> methodIntecptMap = new HashMap<String, Queue<BaseInterceptor>>();
-    private static List<String> clearIntecptList = new ArrayList<String>();
-    private static List<String> transactionIntecptList = new ArrayList<String>();
+    private static Map<String, Queue<BaseInterceptor>> methodIntecptMap       = new HashMap<String, Queue<BaseInterceptor>>();
+    private static List<String>                        clearIntecptList       = new ArrayList<String>();
+    private static List<String>                        transactionIntecptList = new ArrayList<String>();
 
-    public static Collection<? extends BaseInterceptor> getQueueByMethod(String methodName) {
+    public static Collection<? extends BaseInterceptor> getQueueByMethod (String methodName) {
         Queue<BaseInterceptor> queue = methodIntecptMap.get(methodName);
         if (queue != null) {
             return queue;
@@ -27,15 +32,15 @@ public class MethodInterceptorStation {
         return new LinkedList<BaseInterceptor>();
     }
 
-    public static boolean isCleared(String methodName) {
+    public static boolean isCleared (String methodName) {
         return clearIntecptList.contains(methodName);
     }
 
-    public static boolean isTransactional(String methodName) {
+    public static boolean isTransactional (String methodName) {
         return transactionIntecptList.contains(methodName);
     }
 
-    public static void loadInterceptor() throws Exception {
+    public static void loadInterceptor () throws Exception {
         ClassScanner cs = ClassScanner.instance();
         cs.shiftViewJars();
         List<Class<?>> classes = cs.findMacthedClass(new ViewExtraction());
@@ -58,7 +63,7 @@ public class MethodInterceptorStation {
         }
     }
 
-    private static void cacheIntoMap(String name, Class<? extends BaseInterceptor>[] interceptors) throws Exception {
+    private static void cacheIntoMap (String name, Class<? extends BaseInterceptor>[] interceptors) throws Exception {
         Queue<BaseInterceptor> queue = new LinkedList<BaseInterceptor>();
         for (Class<? extends BaseInterceptor> intceptClazz : interceptors) {
             queue.offer(intceptClazz.newInstance());

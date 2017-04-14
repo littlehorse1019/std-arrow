@@ -3,6 +3,7 @@ package com.std.framework.core.proxy;
 import java.util.Map;
 
 public class ByteArrayClassLoader extends ClassLoader {
+
     /**
      * Maps binary class names to class files stored as byte arrays.
      */
@@ -13,7 +14,7 @@ public class ByteArrayClassLoader extends ClassLoader {
      *
      * @param a map from binary class names to class files stored as byte arrays
      */
-    public ByteArrayClassLoader(Map<String, byte[]> classes) {
+    public ByteArrayClassLoader (Map<String, byte[]> classes) {
 //		super(new URL[]{}); // π”√URLClassLoader
         this.classes = classes;
 //		File file = new File(PathPub.getRootClassPath());
@@ -22,7 +23,7 @@ public class ByteArrayClassLoader extends ClassLoader {
     }
 
     @Override
-    public Class<?> loadClass(String className) throws ClassNotFoundException {
+    public Class<?> loadClass (String className) throws ClassNotFoundException {
         try {
 //			return super.loadClass(className);
             return Class.forName(className);

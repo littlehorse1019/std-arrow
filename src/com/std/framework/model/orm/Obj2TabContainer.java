@@ -3,7 +3,6 @@ package com.std.framework.model.orm;
 import com.std.framework.annotation.PrimaryKey;
 import com.std.framework.model.actor.BaseSqlGenerator;
 import com.std.framework.model.orm.dialact.mysql.MysqlValidatorBase;
-
 import java.lang.reflect.Field;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -16,25 +15,25 @@ public class Obj2TabContainer {
     private String tableName;
     private String primaryKeyName;
     private Map<String, String> columnNames = null;
-    private Map<String, String> basicSqls = null;
+    private Map<String, String> basicSqls   = null;
 
-    public String getTableName() {
+    public String getTableName () {
         return tableName;
     }
 
-    public Map<String, String> columnsName() {
+    public Map<String, String> columnsName () {
         return columnNames;
     }
 
-    public Map<String, String> getBasicSqls() {
+    public Map<String, String> getBasicSqls () {
         return basicSqls;
     }
 
-    public String getPrimaryKeyMap() {
+    public String getPrimaryKeyMap () {
         return primaryKeyName;
     }
 
-    public void initMapping(String className, MapRule mappingRule) {
+    public void initMapping (String className, MapRule mappingRule) {
         try {
             setTableName(className, mappingRule);
             setColumnsName(className, mappingRule);
@@ -53,7 +52,7 @@ public class Obj2TabContainer {
     /**
      * 获取表的表名 Class->Table Mapping
      */
-    public void setTableName(String className, MapRule mappingRule) throws Exception {
+    public void setTableName (String className, MapRule mappingRule) throws Exception {
         String simpleName = className.substring(className.lastIndexOf(".") + 1);
         this.tableName = mappingRule.objMapTab(simpleName).toLowerCase();
     }
@@ -61,10 +60,10 @@ public class Obj2TabContainer {
     /**
      * 获取表的字段Class->Table Mapping 使用LinkedHashMap，确保在用Iterator迭代的时候，保证和反射插入的时候值的顺序一样。
      */
-    public void setColumnsName(String className, MapRule mappingRule) throws Exception {
+    public void setColumnsName (String className, MapRule mappingRule) throws Exception {
         columnNames = new LinkedHashMap<>();
         Class<?> ormClass = Class.forName(className);
-        Field[] fields = ormClass.getDeclaredFields();
+        Field[]  fields   = ormClass.getDeclaredFields();
         for (Field field : fields) {
             String fieldName = field.getName();
             columnNames.put(fieldName, mappingRule.objMapCol(fieldName).toLowerCase());

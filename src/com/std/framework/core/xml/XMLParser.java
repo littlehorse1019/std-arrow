@@ -1,7 +1,9 @@
 package com.std.framework.core.xml;
 
-import org.xml.sax.SAXException;
-
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.List;
 import javax.xml.XMLConstants;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -12,22 +14,19 @@ import javax.xml.transform.stream.StreamSource;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
 import javax.xml.validation.Validator;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.List;
+import org.xml.sax.SAXException;
 
 public final class XMLParser {
 
-    private XMLParser() {
+    private XMLParser () {
     }
 
-    public static boolean validateWithSingleSchema(File xml, File xsd) {
+    public static boolean validateWithSingleSchema (File xml, File xsd) {
         boolean legal = false;
 
         try {
-            SchemaFactory sf = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
-            Schema schema = sf.newSchema(xsd);
+            SchemaFactory sf     = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
+            Schema        schema = sf.newSchema(xsd);
 
             Validator validator = schema.newValidator();
             validator.validate(new StreamSource(xml));
@@ -41,7 +40,7 @@ public final class XMLParser {
         return legal;
     }
 
-    public static boolean validateWithMultiSchemas(InputStream xml, List<File> schemas) {
+    public static boolean validateWithMultiSchemas (InputStream xml, List<File> schemas) {
         boolean legal = false;
 
         try {
@@ -59,9 +58,9 @@ public final class XMLParser {
         return legal;
     }
 
-    private static Schema createSchema(List<File> schemas) throws ParserConfigurationException, SAXException,
-            IOException {
-        SchemaFactory sf = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
+    private static Schema createSchema (List<File> schemas) throws ParserConfigurationException, SAXException,
+        IOException {
+        SchemaFactory          sf               = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
         SchemaResourceResolver resourceResolver = new SchemaResourceResolver();
         sf.setResourceResolver(resourceResolver);
 
@@ -73,8 +72,8 @@ public final class XMLParser {
         DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
 
         for (int i = 0; i < schemas.size(); i++) {
-            org.w3c.dom.Document doc = docBuilder.parse(schemas.get(i));
-            DOMSource stream = new DOMSource(doc, schemas.get(i).getAbsolutePath());
+            org.w3c.dom.Document doc    = docBuilder.parse(schemas.get(i));
+            DOMSource            stream = new DOMSource(doc, schemas.get(i).getAbsolutePath());
             sources[i] = stream;
         }
 

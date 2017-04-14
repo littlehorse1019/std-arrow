@@ -4,10 +4,10 @@ import java.lang.reflect.Constructor;
 
 public class SessionFactory {
 
-    private final static Object syncLock = new Object();
-    private static Session session = null;
+    private final static Object  syncLock = new Object();
+    private static       Session session  = null;
 
-    public static Session getCurrentSession() {
+    public static Session getCurrentSession () {
         if (session == null) {
             synchronized (syncLock) {
                 try {

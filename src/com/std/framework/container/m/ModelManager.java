@@ -15,21 +15,21 @@ import org.w3c.dom.Node;
 public class ModelManager extends ContainerManager {
 
     private static final ModelXMLParserBase modelXMLParser = new ModelXMLParserBase();
-    private static Log logger = LogFactory.getLogger();
+    private static       Log                logger         = LogFactory.getLogger();
 
-    public static void loadModelContext() throws Exception {
+    public static void loadModelContext () throws Exception {
         loadConnectionPool();
         loadORM();
         new AutoReconnection().holdConnection();
     }
 
-    private static void loadConnectionPool() throws Exception {
+    private static void loadConnectionPool () throws Exception {
         logger.debug(">>>>>Stupideer 框架装载... >>>>>>>初始化数据库连接池...");
         Node dataSourceNode = modelXMLParser.getDataSourceNode();
         ConnectionsPool.instance().loadDataSource(dataSourceNode);
     }
 
-    private static void loadORM() throws Exception {
+    private static void loadORM () throws Exception {
         logger.debug(">>>>>Stupideer 框架装载... >>>>>>>初始化Ormmaping对象...");
         ORMStore.instance().loadORM();
     }

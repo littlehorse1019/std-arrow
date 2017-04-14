@@ -8,12 +8,12 @@ public enum BaseSqlEnum {
     private int nCode;
 
     // 构造函数，枚举类型只能为私有
-    BaseSqlEnum(int _nCode) {
+    BaseSqlEnum (int _nCode) {
         this.nCode = _nCode;
     }
 
     @Override
-    public String toString() {
+    public String toString () {
         String rtnStr = null;
         switch (nCode) {
             case 1:

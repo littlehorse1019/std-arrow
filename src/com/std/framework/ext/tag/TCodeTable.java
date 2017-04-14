@@ -4,29 +4,29 @@ public class TCodeTable {
 
     private String codeColumn = "";
     private String descColumn = "";
-    private String tableName = "";
+    private String tableName  = "";
 
-    public String getCodeColumn() {
+    public String getCodeColumn () {
         return codeColumn;
     }
 
-    public void setCodeColumn(String codeColumn) {
+    public void setCodeColumn (String codeColumn) {
         this.codeColumn = codeColumn;
     }
 
-    public String getDescColumn() {
+    public String getDescColumn () {
         return descColumn;
     }
 
-    public void setDescColumn(String descColumn) {
+    public void setDescColumn (String descColumn) {
         this.descColumn = descColumn;
     }
 
-    public String getTableName() {
+    public String getTableName () {
         return tableName;
     }
 
-    public void setTableName(String tableName) {
+    public void setTableName (String tableName) {
         this.tableName = tableName;
     }
 }

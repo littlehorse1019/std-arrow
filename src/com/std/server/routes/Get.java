@@ -11,10 +11,10 @@ import java.lang.annotation.Target;
  * @author LUOXIAO
  * @since 1.0
  */
-@Target(ElementType.METHOD)
-@Retention(RetentionPolicy.RUNTIME)
+@Target (ElementType.METHOD)
+@Retention (RetentionPolicy.RUNTIME)
 public @interface Get {
 
-    public String value();
+    public String value ();
 
 }

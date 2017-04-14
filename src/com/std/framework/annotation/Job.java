@@ -5,14 +5,15 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-@Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.TYPE)
+@Retention (RetentionPolicy.RUNTIME)
+@Target (ElementType.TYPE)
 public @interface Job {
-    public String Name();
 
-    public String Main();
+    public String Name ();
 
-    public String Cron();
+    public String Main ();
 
-    public long Times() default 0L;
+    public String Cron ();
+
+    public long Times () default 0L;
 }

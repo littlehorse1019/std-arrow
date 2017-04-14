@@ -1,7 +1,6 @@
 package com.std.framework.core.log;
 
 import com.std.framework.core.util.PathUtil;
-
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.util.Properties;
@@ -12,16 +11,16 @@ import java.util.Properties;
 
 public class LogProps {
 
-    private static LogEnum currentLevel = null;
-    private static String outStreamTarget = null;
-    private static String filePath = null;
+    private static LogEnum currentLevel    = null;
+    private static String  outStreamTarget = null;
+    private static String  filePath        = null;
 
-    private LogProps() {
+    private LogProps () {
     }
 
     ;
 
-    public static void reloadProp() {
+    public static void reloadProp () {
         Properties prop = new Properties();
         try {
             prop.load(new InputStreamReader(new FileInputStream(PathUtil.getRootClassPath() + Log.LOG_OUT_FILE_NAME)));
@@ -33,27 +32,27 @@ public class LogProps {
         }
     }
 
-    public static LogEnum getCurrentLevel() {
+    public static LogEnum getCurrentLevel () {
         return currentLevel;
     }
 
-    public static void setCurrentLevel(LogEnum currentLevel) {
+    public static void setCurrentLevel (LogEnum currentLevel) {
         LogProps.currentLevel = currentLevel;
     }
 
-    public static String getOutStreamTarget() {
+    public static String getOutStreamTarget () {
         return outStreamTarget;
     }
 
-    public static void setOutStreamTarget(String outStreamTarget) {
+    public static void setOutStreamTarget (String outStreamTarget) {
         LogProps.outStreamTarget = outStreamTarget;
     }
 
-    public static String getFilePath() {
+    public static String getFilePath () {
         return filePath;
     }
 
-    public static void setFilePath(String filePath) {
+    public static void setFilePath (String filePath) {
         LogProps.filePath = filePath;
     }
 

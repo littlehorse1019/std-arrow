@@ -3,26 +3,25 @@ package com.std.framework.controller.timer;
 import com.std.framework.controller.timer.quartz.CronExpression;
 import com.std.framework.core.log.Log;
 import com.std.framework.core.log.LogFactory;
-
 import java.lang.reflect.Method;
 import java.util.Date;
 import java.util.concurrent.ExecutorService;
 
 public class JobRunnable implements Runnable {
 
-    private static final Object syncObj = new Object();
-    private static final Long SLEEP_MAX_TIME = 86400000L;
-    private static final Long SLEEP_MIN_TIME = 100L;
-    private static final Long ALLOW_DIFFERENCE = 1000L;
-    private static Log logger = LogFactory.getLogger();
-    private String jobName;
-    private Class<?> jobClass;
-    private Object jobInstance;
-    private Method jobMethod;
-    private CronExpression expression;
+    private static final Object syncObj          = new Object();
+    private static final Long   SLEEP_MAX_TIME   = 86400000L;
+    private static final Long   SLEEP_MIN_TIME   = 100L;
+    private static final Long   ALLOW_DIFFERENCE = 1000L;
+    private static       Log    logger           = LogFactory.getLogger();
+    private String          jobName;
+    private Class<?>        jobClass;
+    private Object          jobInstance;
+    private Method          jobMethod;
+    private CronExpression  expression;
     private ExecutorService service;
 
-    JobRunnable(JobDetail job, ExecutorService service) throws Exception {
+    JobRunnable (JobDetail job, ExecutorService service) throws Exception {
         try {
             jobName = job.getJobName();
             jobClass = Class.forName(job.getJobClass());
@@ -38,7 +37,7 @@ public class JobRunnable implements Runnable {
     }
 
     @Override
-    public void run() {
+    public void run () {
         // 获取最近下一次执行时刻
         long triggerTime = expression.getNextValidTimeAfter(new Date()).getTime();
 
@@ -66,7 +65,7 @@ public class JobRunnable implements Runnable {
     }
 
     //根据下一次任务触发时间来决策当前线程睡眠时间
-    private void sleepByTriTime(long triggerTime) {
+    private void sleepByTriTime (long triggerTime) {
         long sleepTime = triggerTime - System.currentTimeMillis();
         if (sleepTime < SLEEP_MIN_TIME) {
             sleepTime = SLEEP_MIN_TIME;
@@ -77,7 +76,7 @@ public class JobRunnable implements Runnable {
     }
 
     //减轻循环监听探测压力
-    private void sleep(long sleepTime) {
+    private void sleep (long sleepTime) {
         synchronized (syncObj) {
             try {
                 syncObj.wait(sleepTime);

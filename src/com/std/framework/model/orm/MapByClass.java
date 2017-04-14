@@ -7,12 +7,12 @@ public class MapByClass implements MapRule {
 
     private static final char UNDERLINE = '_';
 
-    private static String camelToUnderline(String param) {
+    private static String camelToUnderline (String param) {
         if (param == null || "".equals(param.trim())) {
             return "";
         }
-        int len = param.length();
-        StringBuilder sb = new StringBuilder(len);
+        int           len = param.length();
+        StringBuilder sb  = new StringBuilder(len);
         for (int i = 0; i < len; i++) {
             char c = param.charAt(i);
             if (Character.isUpperCase(c)) {
@@ -25,12 +25,12 @@ public class MapByClass implements MapRule {
         return sb.toString();
     }
 
-    private static String underlineToCamel(String param) {
+    private static String underlineToCamel (String param) {
         if (param == null || "".equals(param.trim())) {
             return "";
         }
-        int len = param.length();
-        StringBuilder sb = new StringBuilder(len);
+        int           len = param.length();
+        StringBuilder sb  = new StringBuilder(len);
         for (int i = 0; i < len; i++) {
             char c = param.charAt(i);
             if (c == UNDERLINE) {
@@ -44,19 +44,19 @@ public class MapByClass implements MapRule {
         return sb.toString();
     }
 
-    public String objMapTab(String table) {
+    public String objMapTab (String table) {
         return "T" + camelToUnderline(table);
     }
 
-    public String objMapCol(String column) {
+    public String objMapCol (String column) {
         return camelToUnderline(column);
     }
 
-    public String tabMapObj(String table) {
+    public String tabMapObj (String table) {
         return underlineToCamel(table.substring(2));
     }
 
-    public String colMapObj(String column) {
+    public String colMapObj (String column) {
         return underlineToCamel(column);
     }
 

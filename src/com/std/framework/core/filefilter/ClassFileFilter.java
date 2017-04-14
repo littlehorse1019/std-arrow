@@ -11,7 +11,7 @@ public class ClassFileFilter implements FileFilter {
     private static final String CLAZZ_SUFFIX = ".class";
 
     @Override
-    public boolean accept(File file) {
+    public boolean accept (File file) {
         if (file.isDirectory()) {
             return true;
         } else {

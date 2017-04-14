@@ -6,7 +6,7 @@ import java.util.concurrent.Executors;
 
 public class JobExcutor {
 
-    public static void runJobs() {
+    public static void runJobs () {
         List<JobDetail> jobList = JobStore.instance().getJobList();
         ExecutorService service = Executors.newFixedThreadPool(jobList.size());
         for (JobDetail job : jobList) {

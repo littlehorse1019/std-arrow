@@ -13,13 +13,13 @@ import java.nio.charset.CharsetDecoder;
 
 public class SocketHttpTest {
 
-    public static void main(String[] args) {
+    public static void main (String[] args) {
 
         try {
             InetAddress inetAddress = InetAddress.getLocalHost();
             System.out.println(inetAddress.getHostAddress());
 
-            SocketAddress serverAddress = new InetSocketAddress(8080);
+            SocketAddress       serverAddress = new InetSocketAddress(8080);
             ServerSocketChannel serverChannel = ServerSocketChannel.open();
             serverChannel.bind(serverAddress);
             serverChannel.configureBlocking(true);
@@ -49,17 +49,17 @@ public class SocketHttpTest {
     /**
      * String ×ª»» ByteBuffer
      */
-    private static ByteBuffer getByteBuffer(String str) {
+    private static ByteBuffer getByteBuffer (String str) {
         return ByteBuffer.wrap(str.getBytes());
     }
 
     /**
      * ByteBuffer ×ª»» String
      */
-    private static String getString(ByteBuffer buffer) {
-        Charset charset = null;
-        CharsetDecoder decoder = null;
-        CharBuffer charBuffer = null;
+    private static String getString (ByteBuffer buffer) {
+        Charset        charset    = null;
+        CharsetDecoder decoder    = null;
+        CharBuffer     charBuffer = null;
         try {
             charset = Charset.forName("UTF-8");
             decoder = charset.newDecoder();

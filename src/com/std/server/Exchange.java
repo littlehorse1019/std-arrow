@@ -8,36 +8,35 @@ import java.io.OutputStream;
  * Exchange
  *
  * @author Administrator
- * @since 1.0
- * Hold the inputStream and outputStream in one request-response communication.
+ * @since 1.0 Hold the inputStream and outputStream in one request-response communication.
  */
 public class Exchange implements AutoCloseable {
 
-    private InputStream inStream;
+    private InputStream  inStream;
     private OutputStream outStream;
 
-    public Exchange(InputStream inStream, OutputStream outStream) {
-        if (inStream == null || outStream == null)
+    public Exchange (InputStream inStream, OutputStream outStream) {
+        if (inStream == null || outStream == null) {
             throw new IllegalArgumentException();
+        }
         this.inStream = inStream;
         this.outStream = outStream;
     }
 
-    public InputStream inStream() {
+    public InputStream inStream () {
         return inStream;
     }
 
-    public OutputStream outStream() {
+    public OutputStream outStream () {
         return outStream;
     }
 
     /**
      * Close input and output streams, AutoCloseable guarantee resource close
      *
-     * @throws IOException
      * @author Administrator
      */
-    public void close() throws IOException {
+    public void close () throws IOException {
 //		try {
         inStream.close();
         outStream.close();

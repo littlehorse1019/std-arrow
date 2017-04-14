@@ -16,12 +16,12 @@ public class ControllerManager extends ContainerManager {
 
     private static Log logger = LogFactory.getLogger();
 
-    public static void loadCtrlContext() throws Exception {
+    public static void loadCtrlContext () throws Exception {
         loadAOP();
         loadIOC();
     }
 
-    private static void loadAOP() throws Exception {
+    private static void loadAOP () throws Exception {
         logger.debug(">>>>>Stupideer 框架装载... >>>>>>>验证AOP配置...");
         boolean valid = new AOPValidator().valid();
         logger.debug(">>>>>Stupideer 框架装载... >>>>>>>加载AOP配置...");
@@ -29,7 +29,7 @@ public class ControllerManager extends ContainerManager {
         aopCache.loadAOP(valid);
     }
 
-    private static void loadIOC() throws Exception {
+    private static void loadIOC () throws Exception {
         logger.debug(">>>>>Stupideer 框架装载... >>>>>>>验证IOC配置...");
         if (new IOCValidator().valid()) {
             logger.debug(">>>>>Stupideer 框架装载... >>>>>>>加载IOC配置...");

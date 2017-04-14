@@ -11,17 +11,17 @@ import com.std.framework.view.interceptor.BaseInterceptor;
  */
 public class AutoTx extends BaseInterceptor {
 
-    Log log = LogFactory.getLogger();
+    Log         log   = LogFactory.getLogger();
     Transaction trans = Transaction.getCurrentTransaction();
 
     @Override
-    public void before(CoreInvocation invocation) throws Exception {
+    public void before (CoreInvocation invocation) throws Exception {
         log.debug(trans + "-->数据库事务对象加载_Before");
         trans.begin();
     }
 
     @Override
-    public void after(CoreInvocation invocation) throws Exception {
+    public void after (CoreInvocation invocation) throws Exception {
         log.debug(trans + "-->数据库事务对象加载_After");
         trans.commit();
     }

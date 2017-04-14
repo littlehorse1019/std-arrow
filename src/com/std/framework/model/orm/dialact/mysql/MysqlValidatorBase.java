@@ -2,7 +2,6 @@ package com.std.framework.model.orm.dialact.mysql;
 
 import com.std.framework.model.connection.ConnectionsPool;
 import com.std.framework.model.orm.BaseORMValidator;
-
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -16,7 +15,7 @@ import java.util.Map;
  */
 public class MysqlValidatorBase extends BaseORMValidator {
 
-    public boolean validTab(String tableName) throws Exception {
+    public boolean validTab (String tableName) throws Exception {
         Connection conn = ConnectionsPool.instance().applyConnection();
         // ◊ÈΩ®≤‚ ‘Sql
         StringBuilder testSql = new StringBuilder();
@@ -25,7 +24,7 @@ public class MysqlValidatorBase extends BaseORMValidator {
         testSql.append("'");
         // ÷¥––≤‚ ‘Sql
         Statement stmt = null;
-        ResultSet rs = null;
+        ResultSet rs   = null;
         try {
             stmt = conn.createStatement();
             rs = stmt.executeQuery(testSql.toString());
@@ -42,11 +41,11 @@ public class MysqlValidatorBase extends BaseORMValidator {
         return true;
     }
 
-    public boolean validSeq(Map<String, String> seqMap) throws Exception {
+    public boolean validSeq (Map<String, String> seqMap) throws Exception {
         return true;
     }
 
-    public boolean validCol(String tableName, Map<String, String> colMap) throws Exception {
+    public boolean validCol (String tableName, Map<String, String> colMap) throws Exception {
         Connection conn = ConnectionsPool.instance().applyConnection();
         // ◊ÈΩ®≤‚ ‘Sql
         StringBuilder testSql = new StringBuilder();
@@ -55,8 +54,8 @@ public class MysqlValidatorBase extends BaseORMValidator {
         testSql.append("'");
         // ÷¥––≤‚ ‘Sql
         List<String> colArray = new ArrayList<String>();
-        Statement stmt = null;
-        ResultSet rs = null;
+        Statement    stmt     = null;
+        ResultSet    rs       = null;
         try {
             stmt = conn.createStatement();
             rs = stmt.executeQuery(testSql.toString());

@@ -5,7 +5,6 @@ import com.std.framework.core.log.LogFactory;
 import com.std.framework.core.util.ReflectionUtil;
 import com.std.framework.view.handle.BaseAction;
 import com.std.framework.view.handle.CoreInvocation;
-
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
@@ -13,7 +12,7 @@ public class ResponseHandler {
 
     private static Log log = LogFactory.getLogger();
 
-    public static String getResponseJsp(String fwJsp, String className) {
+    public static String getResponseJsp (String fwJsp, String className) {
         String forwardJsp = "";
         forwardJsp = fwJsp.concat(".jsp");
         if (!fwJsp.startsWith("/") && className.indexOf(".") != -1) {
@@ -27,7 +26,7 @@ public class ResponseHandler {
     /**
      * @param action 回写action中显示声明的属性到request中
      */
-    public static void prepareFormAttribute(BaseAction action) throws Exception {
+    public static void prepareFormAttribute (BaseAction action) throws Exception {
         boolean needFormed = action.isAttriToForm();
         if (needFormed) {
             Field[] declaredFields = action.getClass().getDeclaredFields();
@@ -38,7 +37,7 @@ public class ResponseHandler {
         }
     }
 
-    public void sendResponse(BaseAction action, Method method) throws Exception {
+    public void sendResponse (BaseAction action, Method method) throws Exception {
         new CoreInvocation(method, action).invoke();
     }
 

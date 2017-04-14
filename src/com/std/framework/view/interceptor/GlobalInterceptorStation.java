@@ -6,7 +6,6 @@ import com.std.framework.context.ClassScanner;
 import com.std.framework.core.extraction.GlobalInterceptorExtraction;
 import com.std.framework.core.log.Log;
 import com.std.framework.core.log.LogFactory;
-
 import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedList;
@@ -21,12 +20,12 @@ public class GlobalInterceptorStation {
 
     private static List<BaseInterceptor> globalInterceptorList = new LinkedList<BaseInterceptor>();
 
-    public static Collection<? extends BaseInterceptor> getGlobalQueue() {
+    public static Collection<? extends BaseInterceptor> getGlobalQueue () {
         return globalInterceptorList;
     }
 
 
-    public static void loadInterceptor() throws Exception {
+    public static void loadInterceptor () throws Exception {
         ClassScanner cs = ClassScanner.instance();
         cs.shiftViewJars();
         List<Class<?>> classes = cs.findMacthedClass(new GlobalInterceptorExtraction());

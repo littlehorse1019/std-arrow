@@ -7,6 +7,6 @@ package com.std.server;
  */
 public interface ExchangeHandler {
 
-    public void accept(Exchange exchange);
+    public void accept (Exchange exchange);
 
 }

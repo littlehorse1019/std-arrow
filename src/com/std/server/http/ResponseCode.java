@@ -64,7 +64,7 @@ public enum ResponseCode {
     SERVICE_UNAVAILABLE(503, "Service Unavailable"),
     GATEWAY_TIMEOUT(504, "Gateway Timeout"),
     HTTP_VERSION_NOT_SUPPORTED(505, "HTTP Version Not Supported");
-    private final int value;
+    private final int    value;
     private final String message;
 
     /**
@@ -76,7 +76,7 @@ public enum ResponseCode {
      * @param value   the response code
      * @param message the response message
      */
-    ResponseCode(int value, String message) {
+    ResponseCode (int value, String message) {
         this.value = value;
         this.message = message;
     }
@@ -86,7 +86,7 @@ public enum ResponseCode {
      *
      * @return the response code
      */
-    public int value() {
+    public int value () {
         return value;
     }
 
@@ -95,7 +95,7 @@ public enum ResponseCode {
      *
      * @return the response message
      */
-    public String message() {
+    public String message () {
         return message;
     }
 }

@@ -11,7 +11,7 @@ public abstract class BaseORMValidator {
     private Map<String, String> colMap = null;
     private Map<String, String> seqMap = null;
 
-    private void initMaps(Obj2TabContainer obj2Tab) {
+    private void initMaps (Obj2TabContainer obj2Tab) {
         this.tableName = obj2Tab.getTableName();
         this.colMap = obj2Tab.columnsName();
     }
@@ -19,7 +19,7 @@ public abstract class BaseORMValidator {
     /**
      * 连通数据库从USER_TABLES,USER_SEQUENCES,USER_TAB_COLUMNS来判断表名， 序列和表列属性名是否正确。
      */
-    public boolean validOrmmap(Obj2TabContainer obj2Tab) throws Exception {
+    public boolean validOrmmap (Obj2TabContainer obj2Tab) throws Exception {
         try {
             initMaps(obj2Tab);
             return validTab(tableName) && validSeq(seqMap) && validCol(tableName, colMap);
@@ -29,9 +29,9 @@ public abstract class BaseORMValidator {
         return false;
     }
 
-    public abstract boolean validTab(String tableName) throws Exception;
+    public abstract boolean validTab (String tableName) throws Exception;
 
-    protected abstract boolean validSeq(Map<String, String> seqMap) throws Exception;
+    protected abstract boolean validSeq (Map<String, String> seqMap) throws Exception;
 
-    protected abstract boolean validCol(String tableName, Map<String, String> colMap) throws Exception;
+    protected abstract boolean validCol (String tableName, Map<String, String> colMap) throws Exception;
 }

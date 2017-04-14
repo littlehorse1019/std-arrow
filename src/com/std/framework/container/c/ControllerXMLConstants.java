@@ -1,8 +1,7 @@
 package com.std.framework.container.c;
 
 /**
- * @author Luox
- *         Controller模块XML配置节点常量
+ * @author Luox Controller模块XML配置节点常量
  */
 public class ControllerXMLConstants {
 

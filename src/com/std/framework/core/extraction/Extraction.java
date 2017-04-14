@@ -7,6 +7,6 @@ import java.util.List;
  */
 public interface Extraction {
 
-    public List<Class<?>> extract(List<String> classFileList) throws Exception;
+    public List<Class<?>> extract (List<String> classFileList) throws Exception;
 
 }

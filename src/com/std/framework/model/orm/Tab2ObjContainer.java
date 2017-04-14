@@ -2,7 +2,6 @@ package com.std.framework.model.orm;
 
 
 import com.std.framework.annotation.PrimaryKey;
-
 import java.lang.reflect.Field;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -16,26 +15,26 @@ public class Tab2ObjContainer {
     private Map<String, String> fieldNames = null;
     private String primaryKeyName;
 
-    public String getClassName() {
+    public String getClassName () {
         return className;
     }
 
     /**
      * 获取表的表名 Table->Class Mapping
      */
-    public void setClassName(String className) throws Exception {
+    public void setClassName (String className) throws Exception {
         this.className = className;
     }
 
-    public Map<String, String> getFieldNames() {
+    public Map<String, String> getFieldNames () {
         return fieldNames;
     }
 
-    public String getPrimaryKeyName() {
+    public String getPrimaryKeyName () {
         return primaryKeyName;
     }
 
-    public void initMapping(String className, MapRule mappingRule) {
+    public void initMapping (String className, MapRule mappingRule) {
         try {
             setClassName(className);
             setFieldNames(className, mappingRule);
@@ -47,7 +46,7 @@ public class Tab2ObjContainer {
     /**
      * 获取表的字段Table->Class Mapping 使用LinkedHashMap，确保在用Iterator迭代的时候，保证和反射插入的时候值的顺序一样。
      */
-    public void setFieldNames(String className, MapRule mappingRule) throws Exception {
+    public void setFieldNames (String className, MapRule mappingRule) throws Exception {
         fieldNames = new LinkedHashMap<>();
         Field[] declaredFields = Class.forName(className).getDeclaredFields();
         for (Field field : declaredFields) {

@@ -5,22 +5,22 @@ package com.std.framework.model.orm;
  */
 public class MapByFile implements MapRule {
 
-    public String objMapCol(String fieldName) throws Exception {
+    public String objMapTab (String className) throws Exception {
+        return "";
+    }
+
+    public String objMapCol (String fieldName) throws Exception {
         return "";
     }
 
     @Override
-    public String tabMapObj(String className) throws Exception {
+    public String tabMapObj (String className) throws Exception {
         return null;
     }
 
     @Override
-    public String colMapObj(String fieldName) throws Exception {
+    public String colMapObj (String fieldName) throws Exception {
         return null;
-    }
-
-    public String objMapTab(String className) throws Exception {
-        return "";
     }
 
 }

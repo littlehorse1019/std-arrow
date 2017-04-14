@@ -1,8 +1,11 @@
 package com.std.framework.core.util;
 
-import javax.net.ssl.*;
-import javax.servlet.http.HttpServletRequest;
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
@@ -13,25 +16,33 @@ import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
 import java.util.Map;
 import java.util.Map.Entry;
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLSession;
+import javax.net.ssl.SSLSocketFactory;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * @author Luox Http协议相关方法工具集
  */
 public class HttpUtil {
 
-    private static final String GET = "GET";
-    private static final String POST = "POST";
-    private static final String CHARSET = "UTF-8";
-    private static final SSLSocketFactory sslSocketFactory = initSSLSocketFactory();
+    private static final String                   GET                      = "GET";
+    private static final String                   POST                     = "POST";
+    private static final String                   CHARSET                  = "UTF-8";
+    private static final SSLSocketFactory         sslSocketFactory         = initSSLSocketFactory();
     private static final TrustAnyHostnameVerifier trustAnyHostnameVerifier = new HttpUtil().new TrustAnyHostnameVerifier();
 
-    private HttpUtil() {
+    private HttpUtil () {
     }
 
-    private static SSLSocketFactory initSSLSocketFactory() {
+    private static SSLSocketFactory initSSLSocketFactory () {
         try {
-            TrustManager[] tm = {new HttpUtil().new TrustAnyTrustManager()};
-            SSLContext sslContext = SSLContext.getInstance("TLS", "SunJSSE");
+            TrustManager[] tm         = {new HttpUtil().new TrustAnyTrustManager()};
+            SSLContext     sslContext = SSLContext.getInstance("TLS", "SunJSSE");
             sslContext.init(null, tm, new java.security.SecureRandom());
             return sslContext.getSocketFactory();
         } catch (Exception e) {
@@ -39,9 +50,9 @@ public class HttpUtil {
         }
     }
 
-    private static HttpURLConnection getHttpConnection(String url, String method, Map<String, String> headers)
-            throws IOException, NoSuchAlgorithmException, NoSuchProviderException, KeyManagementException {
-        URL _url = new URL(url);
+    private static HttpURLConnection getHttpConnection (String url, String method, Map<String, String> headers)
+        throws IOException, NoSuchAlgorithmException, NoSuchProviderException, KeyManagementException {
+        URL               _url = new URL(url);
         HttpURLConnection conn = (HttpURLConnection) _url.openConnection();
         if (conn instanceof HttpsURLConnection) {
             ((HttpsURLConnection) conn).setSSLSocketFactory(sslSocketFactory);
@@ -57,12 +68,14 @@ public class HttpUtil {
 
         conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
         conn
-                .setRequestProperty("User-Agent",
-                        "Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.146 Safari/537.36");
+            .setRequestProperty("User-Agent",
+                                "Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.146 Safari/537.36");
 
-        if (headers != null && !headers.isEmpty())
-            for (Entry<String, String> entry : headers.entrySet())
+        if (headers != null && !headers.isEmpty()) {
+            for (Entry<String, String> entry : headers.entrySet()) {
                 conn.setRequestProperty(entry.getKey(), entry.getValue());
+            }
+        }
 
         return conn;
     }
@@ -70,7 +83,7 @@ public class HttpUtil {
     /**
      * Send GET request
      */
-    public static String get(String url, Map<String, String> queryParas, Map<String, String> headers) {
+    public static String get (String url, Map<String, String> queryParas, Map<String, String> headers) {
         HttpURLConnection conn = null;
         try {
             conn = getHttpConnection(buildUrlWithQueryString(url, queryParas), GET, headers);
@@ -85,18 +98,18 @@ public class HttpUtil {
         }
     }
 
-    public static String get(String url, Map<String, String> queryParas) {
+    public static String get (String url, Map<String, String> queryParas) {
         return get(url, queryParas, null);
     }
 
-    public static String get(String url) {
+    public static String get (String url) {
         return get(url, null, null);
     }
 
     /**
      * Send POST request
      */
-    public static String post(String url, Map<String, String> queryParas, String data, Map<String, String> headers) {
+    public static String post (String url, Map<String, String> queryParas, String data, Map<String, String> headers) {
         HttpURLConnection conn = null;
         try {
             conn = getHttpConnection(buildUrlWithQueryString(url, queryParas), POST, headers);
@@ -117,25 +130,25 @@ public class HttpUtil {
         }
     }
 
-    public static String post(String url, Map<String, String> queryParas, String data) {
+    public static String post (String url, Map<String, String> queryParas, String data) {
         return post(url, queryParas, data, null);
     }
 
-    public static String post(String url, String data, Map<String, String> headers) {
+    public static String post (String url, String data, Map<String, String> headers) {
         return post(url, null, data, headers);
     }
 
-    public static String post(String url, String data) {
+    public static String post (String url, String data) {
         return post(url, null, data, null);
     }
 
-    private static String readResponseString(HttpURLConnection conn) {
-        StringBuilder sb = new StringBuilder();
-        InputStream inputStream = null;
+    private static String readResponseString (HttpURLConnection conn) {
+        StringBuilder sb          = new StringBuilder();
+        InputStream   inputStream = null;
         try {
             inputStream = conn.getInputStream();
             BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, CHARSET));
-            String line = null;
+            String         line;
             while ((line = reader.readLine()) != null) {
                 sb.append(line).append("\n");
             }
@@ -156,13 +169,14 @@ public class HttpUtil {
     /**
      * Build queryString of the url
      */
-    private static String buildUrlWithQueryString(String url, Map<String, String> queryParas) {
-        if (queryParas == null || queryParas.isEmpty())
+    private static String buildUrlWithQueryString (String url, Map<String, String> queryParas) {
+        if (queryParas == null || queryParas.isEmpty()) {
             return url;
+        }
 
         StringBuilder sb = new StringBuilder(url);
-        boolean isFirst;
-        if (url.indexOf("?") == -1) {
+        boolean       isFirst;
+        if (!url.contains("?")) {
             isFirst = true;
             sb.append("?");
         } else {
@@ -170,30 +184,32 @@ public class HttpUtil {
         }
 
         for (Entry<String, String> entry : queryParas.entrySet()) {
-            if (isFirst)
+            if (isFirst) {
                 isFirst = false;
-            else
+            } else {
                 sb.append("&");
+            }
 
-            String key = entry.getKey();
+            String key   = entry.getKey();
             String value = entry.getValue();
-            if (StringUtil.notBlank(value))
+            if (StringUtil.notBlank(value)) {
                 try {
                     value = URLEncoder.encode(value, CHARSET);
                 } catch (UnsupportedEncodingException e) {
                     throw new RuntimeException(e);
                 }
+            }
             sb.append(key).append("=").append(value);
         }
         return sb.toString();
     }
 
-    public static String readIncommingRequestData(HttpServletRequest request) {
+    public static String readIncommingRequestData (HttpServletRequest request) {
         BufferedReader br = null;
         try {
             StringBuilder result = new StringBuilder();
             br = request.getReader();
-            for (String line = null; (line = br.readLine()) != null; ) {
+            for (String line; (line = br.readLine()) != null; ) {
                 result.append(line).append("\n");
             }
 
@@ -201,12 +217,13 @@ public class HttpUtil {
         } catch (IOException e) {
             throw new RuntimeException(e);
         } finally {
-            if (br != null)
+            if (br != null) {
                 try {
                     br.close();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+            }
         }
     }
 
@@ -214,7 +231,8 @@ public class HttpUtil {
      * https 域名校验
      */
     private class TrustAnyHostnameVerifier implements HostnameVerifier {
-        public boolean verify(String hostname, SSLSession session) {
+
+        public boolean verify (String hostname, SSLSession session) {
             return true;
         }
     }
@@ -223,14 +241,15 @@ public class HttpUtil {
      * https 证书管理
      */
     private class TrustAnyTrustManager implements X509TrustManager {
-        public X509Certificate[] getAcceptedIssuers() {
+
+        public void checkClientTrusted (X509Certificate[] chain, String authType) throws CertificateException {
+        }
+
+        public void checkServerTrusted (X509Certificate[] chain, String authType) throws CertificateException {
+        }
+
+        public X509Certificate[] getAcceptedIssuers () {
             return null;
-        }
-
-        public void checkClientTrusted(X509Certificate[] chain, String authType) throws CertificateException {
-        }
-
-        public void checkServerTrusted(X509Certificate[] chain, String authType) throws CertificateException {
         }
     }
 }

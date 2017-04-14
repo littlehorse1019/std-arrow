@@ -4,41 +4,40 @@ package com.std.framework.controller.aop;
 import com.std.framework.annotation.Advisor;
 import com.std.framework.annotation.PointCut;
 import com.std.framework.container.c.ControllerException;
-import org.w3c.dom.Node;
-
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
+import org.w3c.dom.Node;
 
 /**
  * @author Luox 该类用于保存配置文件中类的配置元素对象关系
  */
 public class AOPDefinition {
 
-    private String className = "";
-    private List<AdvisorBean> list = new ArrayList<>();
+    private String            className = "";
+    private List<AdvisorBean> list      = new ArrayList<>();
 
-    public String getClassName() {
+    public String getClassName () {
         return className;
     }
 
-    public List<AdvisorBean> getAdvisorBeanList() {
+    public List<AdvisorBean> getAdvisorBeanList () {
         return list;
     }
 
-    public void loadAOPDefine2Cache(Node advisorNode, AOPCache aopCache) {
+    public void loadAOPDefine2Cache (Node advisorNode, AOPCache aopCache) {
         //TODO 解析AOP XML类型配置
     }
 
-    public void loadAOPDefine2Cache(Class<?> clazz, AOPCache aopCache) {
+    public void loadAOPDefine2Cache (Class<?> clazz, AOPCache aopCache) {
         className = clazz.getName();
         list = getAdvisorBeanList(clazz);
         aopCache.cacheAOPDefine(this);
     }
 
-    private List<AdvisorBean> getAdvisorBeanList(Class<?> clazz) {
+    private List<AdvisorBean> getAdvisorBeanList (Class<?> clazz) {
         List<AdvisorBean> advisorList = new ArrayList<>();
-        List<Method> methodList = getAdvisorMethod(clazz);
+        List<Method>      methodList  = getAdvisorMethod(clazz);
         for (Method m : methodList) {
             AdvisorBean advisorBean = generateAdvisorBean(m);
             advisorList.add(advisorBean);
@@ -46,16 +45,16 @@ public class AOPDefinition {
         return advisorList;
     }
 
-    private AdvisorBean generateAdvisorBean(Method m) {
+    private AdvisorBean generateAdvisorBean (Method m) {
         Class<?>[] parameterTypes = m.getParameterTypes();
-        Advisor advisor = m.getAnnotation(Advisor.class);
+        Advisor    advisor        = m.getAnnotation(Advisor.class);
         checkAdvisorValid(advisor);
         AdvisorBean ab = new AdvisorBean();
         ab.setMethodName(m.getName());
         ab.setMethodArguments(parameterTypes);
         PointCut[] cutPositions = advisor.cutPosition();
-        String[] cutMethods = advisor.cutMethod();
-        Class<?>[] cutClasses = advisor.value();
+        String[]   cutMethods   = advisor.cutMethod();
+        Class<?>[] cutClasses   = advisor.value();
         for (int i = 0; i < cutPositions.length; i++) {
             if (cutPositions[i] == PointCut.Before) {
                 ab.setBeforeClass(cutClasses[i]);
@@ -72,10 +71,10 @@ public class AOPDefinition {
     }
 
 
-    private void checkAdvisorValid(Advisor advisor) {
+    private void checkAdvisorValid (Advisor advisor) {
         PointCut[] cutPosition = advisor.cutPosition();
-        String[] cutMethod = advisor.cutMethod();
-        Class<?>[] cutClasses = advisor.value();
+        String[]   cutMethod   = advisor.cutMethod();
+        Class<?>[] cutClasses  = advisor.value();
         if (cutPosition.length != cutMethod.length || cutPosition.length != cutClasses.length) {
             throw new ControllerException("所声明切面类型和方法不匹配");
         }
@@ -87,9 +86,9 @@ public class AOPDefinition {
         }
     }
 
-    private List<Method> getAdvisorMethod(Class<?> clazz) {
-        List<Method> list = new ArrayList<>();
-        Method[] methods = clazz.getDeclaredMethods();
+    private List<Method> getAdvisorMethod (Class<?> clazz) {
+        List<Method> list    = new ArrayList<>();
+        Method[]     methods = clazz.getDeclaredMethods();
         for (Method m : methods) {
             if (m.isAnnotationPresent(Advisor.class)) {
                 list.add(m);

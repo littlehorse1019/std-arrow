@@ -1,7 +1,6 @@
 package com.std.server.http;
 
 import com.std.server.servlet.HttpServletResponseWrapper;
-
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -26,28 +25,28 @@ public class HttpWriter extends BufferedWriter {
     /**
      * Response header "Content-Type".
      */
-    public static final String CONTENT_TYPE = "Content-Type";
+    public static final String CONTENT_TYPE   = "Content-Type";
     /**
      * Response header "Date".
      */
-    public static final String DATE = "Date";
+    public static final String DATE           = "Date";
     /**
      * Response header "Expires".
      */
-    public static final String EXPIRES = "Expires";
+    public static final String EXPIRES        = "Expires";
     /**
      * Response header "Last-modified".
      */
-    public static final String LAST_MODIFIED = "Last-modified";
+    public static final String LAST_MODIFIED  = "Last-modified";
     /**
      * Response header "Server".
      */
-    public static final String SERVER = "Server";
+    public static final String SERVER         = "Server";
 
     private final String CRLF = "\r\n";
     private HttpServletResponseWrapper response;
 
-    public HttpWriter(OutputStream outStream) {
+    public HttpWriter (OutputStream outStream) {
         super(new OutputStreamWriter(outStream));
     }
 
@@ -57,7 +56,7 @@ public class HttpWriter extends BufferedWriter {
      * @param length the content-length header entry value
      * @throws IOException indicating an error occurred while writing out to the output stream
      */
-    public void writeContentLength(long length) throws IOException {
+    public void writeContentLength (long length) throws IOException {
         writeHeader(CONTENT_LENGTH, length);
     }
 
@@ -67,7 +66,7 @@ public class HttpWriter extends BufferedWriter {
      * @param type the content-type header entry value
      * @throws IOException indicating an error occurred while writing out to the output stream
      */
-    public void writeContentType(String type) throws IOException {
+    public void writeContentType (String type) throws IOException {
         writeHeader(CONTENT_TYPE, type);
     }
 
@@ -79,9 +78,10 @@ public class HttpWriter extends BufferedWriter {
      * @param instant the date header entry value
      * @throws IOException indicating an error occurred while writing out to the output stream
      */
-    public void writeDate(Instant instant) throws IOException {
+    public void writeDate (Instant instant) throws IOException {
         writeHeader(DATE, instant == null ? null :
-                DateTimeFormatter.RFC_1123_DATE_TIME.format(ZonedDateTime.ofInstant(instant, ZoneId.of("GMT"))));
+                          DateTimeFormatter.RFC_1123_DATE_TIME
+                              .format(ZonedDateTime.ofInstant(instant, ZoneId.of("GMT"))));
     }
 
     /**
@@ -92,9 +92,10 @@ public class HttpWriter extends BufferedWriter {
      * @param instant the expires header entry value
      * @throws IOException indicating an error occurred while writing out to the output stream
      */
-    public void writeExpiration(Instant instant) throws IOException {
+    public void writeExpiration (Instant instant) throws IOException {
         writeHeader(EXPIRES, instant == null ? "Never" :
-                DateTimeFormatter.RFC_1123_DATE_TIME.format(ZonedDateTime.ofInstant(instant, ZoneId.of("GMT"))));
+                             DateTimeFormatter.RFC_1123_DATE_TIME
+                                 .format(ZonedDateTime.ofInstant(instant, ZoneId.of("GMT"))));
     }
 
     /**
@@ -105,9 +106,10 @@ public class HttpWriter extends BufferedWriter {
      * @param instant the last-modified header entry value
      * @throws IOException indicating an error occurred while writing out to the output stream
      */
-    public void writeLastModified(Instant instant) throws IOException {
+    public void writeLastModified (Instant instant) throws IOException {
         writeHeader(LAST_MODIFIED, instant == null ? "Never" :
-                DateTimeFormatter.RFC_1123_DATE_TIME.format(ZonedDateTime.ofInstant(instant, ZoneId.of("GMT"))));
+                                   DateTimeFormatter.RFC_1123_DATE_TIME
+                                       .format(ZonedDateTime.ofInstant(instant, ZoneId.of("GMT"))));
     }
 
     /**
@@ -116,7 +118,7 @@ public class HttpWriter extends BufferedWriter {
      * @param server the server header entry value
      * @throws IOException indicating an error occurred while writing out to the output stream
      */
-    public void writeServer(String server) throws IOException {
+    public void writeServer (String server) throws IOException {
         writeHeader(SERVER, server);
     }
 
@@ -127,9 +129,10 @@ public class HttpWriter extends BufferedWriter {
      * @param code    the response code
      * @throws IOException indicating an error occurred while writing out to the output stream
      */
-    public void writeResponseHeader(String version, ResponseCode code) throws IOException {
-        if (code == null)
+    public void writeResponseHeader (String version, ResponseCode code) throws IOException {
+        if (code == null) {
             throw new IllegalArgumentException();
+        }
         writeHeader(version + " " + code.value() + " " + code.message());
     }
 
@@ -141,7 +144,7 @@ public class HttpWriter extends BufferedWriter {
      * @param version     the HTTP version
      * @throws IOException indicating an error occurred while writing out to the output stream
      */
-    public void writeRequestHeader(String requestType, String uri, String version) throws IOException {
+    public void writeRequestHeader (String requestType, String uri, String version) throws IOException {
         writeHeader(requestType + " " + uri + " " + version);
     }
 
@@ -154,7 +157,7 @@ public class HttpWriter extends BufferedWriter {
      * @param value the header entry value
      * @throws IOException indicating an error occurred while writing out to the output stream
      */
-    public void writeHeader(String key, Object value) throws IOException {
+    public void writeHeader (String key, Object value) throws IOException {
         writeHeader(key, String.valueOf(value));
     }
 
@@ -167,7 +170,7 @@ public class HttpWriter extends BufferedWriter {
      * @param value the header entry value
      * @throws IOException indicating an error occurred while writing out to the output stream
      */
-    public void writeHeader(String key, String value) throws IOException {
+    public void writeHeader (String key, String value) throws IOException {
         writeHeader(key + ":" + value);
     }
 
@@ -180,20 +183,20 @@ public class HttpWriter extends BufferedWriter {
      * @param header the header entry
      * @throws IOException indicating an error occurred while writing out to the output stream
      */
-    public void writeHeader(String header) throws IOException {
+    public void writeHeader (String header) throws IOException {
         write(header + CRLF);
     }
 
-    public void endHeader() throws IOException {
+    public void endHeader () throws IOException {
         write(CRLF);
     }
 
 
-    public HttpServletResponseWrapper getResponse() {
+    public HttpServletResponseWrapper getResponse () {
         return this.response;
     }
 
-    public HttpServletResponseWrapper parseResponse() {
+    public HttpServletResponseWrapper parseResponse () {
         this.response = new HttpServletResponseWrapper();
         return this.response;
     }

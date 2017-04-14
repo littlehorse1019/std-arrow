@@ -2,7 +2,6 @@ package com.std.framework.model.actor;
 
 
 import com.std.framework.model.orm.Obj2TabContainer;
-
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -16,7 +15,7 @@ public class BaseSqlGenerator {
     private Map<String, String> columnsName = null;
     private String primaryKeyName;
 
-    private void initMaps(Obj2TabContainer obj2Tab) {
+    private void initMaps (Obj2TabContainer obj2Tab) {
         this.tableName = obj2Tab.getTableName();
         this.columnsName = obj2Tab.columnsName();
         this.primaryKeyName = obj2Tab.getPrimaryKeyMap();
@@ -25,7 +24,7 @@ public class BaseSqlGenerator {
     /**
      * 预装配表增删改查基础操作的 Sql 提高速率
      */
-    public Map<String, String> genBaseSqlMap(Obj2TabContainer obj2Tab) throws Exception {
+    public Map<String, String> genBaseSqlMap (Obj2TabContainer obj2Tab) throws Exception {
         initMaps(obj2Tab);
         Map<String, String> baseSqlMap = new HashMap<>();
         baseSqlMap.put(BaseSqlEnum.Save.toString(), prepareSaveSql());
@@ -39,7 +38,7 @@ public class BaseSqlGenerator {
     /**
      * 预填充Save基础操作Sql
      */
-    private String prepareSaveSql() throws Exception {
+    private String prepareSaveSql () throws Exception {
         StringBuilder saveSql = new StringBuilder();
         saveSql.append(" INSERT INTO ");
         saveSql.append(tableName);
@@ -60,7 +59,7 @@ public class BaseSqlGenerator {
     /**
      * 预填充Delete基础操作Sql
      */
-    private String prepareDeleteSql() throws Exception {
+    private String prepareDeleteSql () throws Exception {
         StringBuilder deleteSql = new StringBuilder();
         deleteSql.append(" DELETE FROM ");
         deleteSql.append(tableName);
@@ -73,7 +72,7 @@ public class BaseSqlGenerator {
     /**
      * 预填充Update基础操作Sql
      */
-    private String prepareUpdateSql() throws Exception {
+    private String prepareUpdateSql () throws Exception {
         StringBuilder updateSql = new StringBuilder();
         updateSql.append(" UPDATE ");
         updateSql.append(tableName);
@@ -92,7 +91,7 @@ public class BaseSqlGenerator {
     /**
      * 预填充FindByPK基础操作Sql
      */
-    private String prepareFindByPKSql() throws Exception {
+    private String prepareFindByPKSql () throws Exception {
         StringBuilder findByPKSql = new StringBuilder();
         findByPKSql.append(" SELECT ");
         Iterator<String> colName = columnsName.values().iterator();
@@ -111,7 +110,7 @@ public class BaseSqlGenerator {
     /**
      * 预填充FindAll基础操作Sql
      */
-    private String prepareFindAllSql() throws Exception {
+    private String prepareFindAllSql () throws Exception {
         StringBuilder findAllSql = new StringBuilder();
         findAllSql.append(" SELECT * FROM ");
         findAllSql.append(tableName);

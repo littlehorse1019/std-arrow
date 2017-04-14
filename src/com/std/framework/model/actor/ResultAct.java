@@ -1,7 +1,6 @@
 package com.std.framework.model.actor;
 
 import com.std.framework.model.ModelBuilder;
-
 import java.lang.reflect.Field;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
@@ -12,20 +11,20 @@ public class ResultAct<T> {
 
     ColumnAct colAct = null;
 
-    ResultAct(Class clazz) {
+    ResultAct (Class clazz) {
         colAct = new ColumnAct(clazz);
     }
 
     /**
      * 将ResultSet中的值填充到对象实例中
      */
-    T resultFindByPK(Class<? extends Object> tClass, ResultSet rs) throws Exception {
-        T rtnObj = null;
-        ResultSetMetaData rsmd = rs.getMetaData();
-        int columnCount = rsmd.getColumnCount();
-        String[] colNames = new String[columnCount + 1];
-        int[] colTypes = new int[columnCount + 1];
-        Field[] fields = new Field[columnCount + 1];
+    T resultFindByPK (Class<? extends Object> tClass, ResultSet rs) throws Exception {
+        T                 rtnObj      = null;
+        ResultSetMetaData rsmd        = rs.getMetaData();
+        int               columnCount = rsmd.getColumnCount();
+        String[]          colNames    = new String[columnCount + 1];
+        int[]             colTypes    = new int[columnCount + 1];
+        Field[]           fields      = new Field[columnCount + 1];
         ModelBuilder.buildColumnNamesAndTypes(rsmd, colNames, colTypes);
         ModelBuilder.bindColumnNamesAndFileds(tClass, colNames, fields);
         if (rs.next()) {
@@ -41,13 +40,13 @@ public class ResultAct<T> {
     /**
      * 将ResultSet中的值填充到对象实例集合中
      */
-    List<T> resultFindAll(Class<? extends ModelAct> tClass, ResultSet rs) throws Exception {
-        List<T> list = new ArrayList<>();
-        ResultSetMetaData rsmd = rs.getMetaData();
-        int columnCount = rsmd.getColumnCount();
-        String[] colNames = new String[columnCount + 1];
-        int[] colTypes = new int[columnCount + 1];
-        Field[] fields = new Field[columnCount + 1];
+    List<T> resultFindAll (Class<? extends ModelAct> tClass, ResultSet rs) throws Exception {
+        List<T>           list        = new ArrayList<>();
+        ResultSetMetaData rsmd        = rs.getMetaData();
+        int               columnCount = rsmd.getColumnCount();
+        String[]          colNames    = new String[columnCount + 1];
+        int[]             colTypes    = new int[columnCount + 1];
+        Field[]           fields      = new Field[columnCount + 1];
         ModelBuilder.buildColumnNamesAndTypes(rsmd, colNames, colTypes);
         ModelBuilder.bindColumnNamesAndFileds(tClass, colNames, fields);
         while (rs.next()) {

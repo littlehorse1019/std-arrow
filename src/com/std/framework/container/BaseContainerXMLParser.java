@@ -6,27 +6,26 @@ import com.std.framework.container.v.ViewXMLConstants;
 import com.std.framework.core.util.PathUtil;
 import com.std.framework.core.util.StringUtil;
 import com.std.framework.core.xml.XMLValidator;
+import java.util.ArrayList;
+import java.util.List;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import java.util.ArrayList;
-import java.util.List;
 
 public abstract class BaseContainerXMLParser {
 
     protected static String configFilePath;
 
-    protected BaseContainerXMLParser() {
+    protected BaseContainerXMLParser () {
     }
 
-    public static String getConfigResource() {
+    public static String getConfigResource () {
         return configFilePath;
     }
 
-    public static void setConfigResource(String configResource) {
+    public static void setConfigResource (String configResource) {
         if (StringUtil.isBlank(configResource)) {
             String resourePath = PathUtil.getRootClassPath();
             BaseContainerXMLParser.configFilePath = resourePath + XMLValidator.DEFAULT_MVC_FILE_NAME;
@@ -35,20 +34,18 @@ public abstract class BaseContainerXMLParser {
         }
     }
 
-    protected static Document getConfigDOM(String configResource) {
-        Document document = null;
+    protected static Document getConfigDOM (String configResource) {
         try {
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-            DocumentBuilder db = dbf.newDocumentBuilder();
-            document = db.parse(configResource);
-            return document;
+            DocumentBuilder        db  = dbf.newDocumentBuilder();
+            return db.parse(configResource);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return document;
+        return null;
     }
 
-    protected static Node getViewNode() {
+    protected static Node getViewNode () {
         Node viewNode = null;
         try {
             Document configDOM = getConfigDOM(configFilePath);
@@ -60,60 +57,58 @@ public abstract class BaseContainerXMLParser {
         return viewNode;
     }
 
-    protected static Node getModelNode() {
-        Node modelNode = null;
+    protected static Node getModelNode () {
         try {
             Document configDOM = getConfigDOM(configFilePath);
-            modelNode = configDOM.getElementsByTagName(ModelXMLConstants.MODEL_NODE).item(0);
-            return modelNode;
+            assert configDOM != null;
+            return configDOM.getElementsByTagName(ModelXMLConstants.MODEL_NODE).item(0);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return modelNode;
+        return null;
     }
 
-    protected static Node getControllerNode() {
-        Node ctrlNode = null;
+    protected static Node getControllerNode () {
         try {
             Document configDOM = getConfigDOM(configFilePath);
-            ctrlNode = configDOM.getElementsByTagName(ControllerXMLConstants.CONTROLLER_NODE).item(0);
-            return ctrlNode;
+            assert configDOM != null;
+            return configDOM.getElementsByTagName(ControllerXMLConstants.CONTROLLER_NODE).item(0);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return ctrlNode;
+        return null;
     }
 
 
-    protected static List<Node> getNodeListByChildName(Node fatherNode, String nodeName) {
-        NodeList ndList = fatherNode.getChildNodes();
-        List<Node> list = new ArrayList<Node>();
+    protected static List<Node> getNodeListByChildName (Node fatherNode, String nodeName) {
+        NodeList   ndList = fatherNode.getChildNodes();
+        List<Node> list   = new ArrayList<>();
         for (int i = 0; i < ndList.getLength(); i++) {
             if (ndList.item(i).getNodeType() == Node.ELEMENT_NODE
-                    && nodeName.equals(ndList.item(i).getNodeName())) {
+                && nodeName.equals(ndList.item(i).getNodeName())) {
                 list.add(ndList.item(i));
             }
         }
         return list;
     }
 
-    protected static Node getNodeByChildName(Node fatherNode, String nodeName) {
+    protected static Node getNodeByChildName (Node fatherNode, String nodeName) {
         NodeList ndList = fatherNode.getChildNodes();
         for (int i = 0; i < ndList.getLength(); i++) {
             if (ndList.item(i).getNodeType() == Node.ELEMENT_NODE
-                    && (StringUtil.isBlank(nodeName) ||
-                    nodeName.equals(ndList.item(i).getNodeName()))) {
+                && (StringUtil.isBlank(nodeName) ||
+                nodeName.equals(ndList.item(i).getNodeName()))) {
                 return ndList.item(i);
             }
         }
         return null;
     }
 
-    protected static String getElementValue(Node node, String nodeName) {
+    protected static String getElementValue (Node node, String nodeName) {
         NodeList ndList = node.getChildNodes();
         for (int i = 0; i < ndList.getLength(); i++) {
             if (ndList.item(i).getNodeType() == Node.ELEMENT_NODE
-                    && nodeName.equals(ndList.item(i).getNodeName())) {
+                && nodeName.equals(ndList.item(i).getNodeName())) {
                 return ndList.item(i).getFirstChild().getNodeValue();
             }
         }

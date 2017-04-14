@@ -13,59 +13,58 @@ public class DataSourceInfo {
     private static String password;
     private static String driver;
     private static String url;
-    private static int poolsize;
+    private static int    poolsize;
 
-    public static String getUser() {
+    public static String getUser () {
         return user;
     }
 
-    public static void setUser(String user) {
+    public static void setUser (String user) {
         DataSourceInfo.user = user;
     }
 
-    public static String getPassword() {
+    public static String getPassword () {
         return password;
     }
 
-    public static void setPassword(String password) {
+    public static void setPassword (String password) {
         DataSourceInfo.password = password;
     }
 
-    public static String getDriver() {
+    public static String getDriver () {
         return driver;
     }
 
-    public static void setDriver(String driver) {
+    public static void setDriver (String driver) {
         DataSourceInfo.driver = driver;
     }
 
-    public static String getUrl() {
+    public static String getUrl () {
         return url;
     }
 
-    public static void setUrl(String url) {
+    public static void setUrl (String url) {
         DataSourceInfo.url = url;
     }
 
-    public static int getPoolsize() {
+    public static int getPoolsize () {
         return poolsize;
     }
 
-    public static void setPoolsize(int poolsize) {
+    public static void setPoolsize (int poolsize) {
         DataSourceInfo.poolsize = poolsize;
     }
 
     /**
-     * @param dataSourceNode
      * @return 读取数据库连接文件，将连接参数保存到静态变量中
      * @author Luox
      */
-    public static void init(Node dataSourceNode) throws Exception {
+    public static void init (Node dataSourceNode) throws Exception {
 
         try {
             for (Node node = dataSourceNode.getFirstChild(); node != null; node = node.getNextSibling()) {
                 if (node.getNodeType() == Node.ELEMENT_NODE) {
-                    String name = node.getNodeName();
+                    String name  = node.getNodeName();
                     String value = node.getFirstChild().getNodeValue();
                     if (ModelXMLConstants.USER.equalsIgnoreCase(name)) {
                         setUser(value);

@@ -3,7 +3,6 @@ package com.std.framework.core.extraction;
 
 import com.std.framework.annotation.Global;
 import com.std.framework.view.interceptor.BaseInterceptor;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,17 +13,17 @@ public class GlobalInterceptorExtraction implements Extraction {
 
     private Class<BaseInterceptor> clazz = BaseInterceptor.class;
 
-    public List<Class<?>> extract(List<String> classFileList) throws Exception {
+    public List<Class<?>> extract (List<String> classFileList) throws Exception {
         List<Class<?>> classList = new ArrayList<Class<?>>();
         for (String classFile : classFileList) {
             try {
                 Class<?> classInFile = Class.forName(classFile);
                 // 是否继承自CoreInterceptor实现类  parent.isAssignableFrom(child)
                 if (clazz.isAssignableFrom(classInFile)
-                        // 排除CoreInterceptor该类自身
-                        && !classInFile.getSimpleName().equals(clazz.getSimpleName())
-                        // 是否存在@Global注解
-                        && classInFile.isAnnotationPresent(Global.class)) {
+                    // 排除CoreInterceptor该类自身
+                    && !classInFile.getSimpleName().equals(clazz.getSimpleName())
+                    // 是否存在@Global注解
+                    && classInFile.isAnnotationPresent(Global.class)) {
                     classList.add(classInFile);
                 }
             } catch (ClassNotFoundException e) {

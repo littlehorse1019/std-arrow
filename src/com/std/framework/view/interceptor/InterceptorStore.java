@@ -3,7 +3,6 @@ package com.std.framework.view.interceptor;
 
 import com.std.framework.model.connection.AutoTx;
 import com.std.framework.view.handle.BaseAction;
-
 import java.lang.reflect.Method;
 import java.util.LinkedList;
 import java.util.Queue;
@@ -13,13 +12,13 @@ import java.util.Queue;
  */
 public class InterceptorStore {
 
-    private final static Object syncLock = new Object();
-    private static InterceptorStore interceptorStore = null;
+    private final static Object           syncLock         = new Object();
+    private static       InterceptorStore interceptorStore = null;
 
-    private InterceptorStore() {
+    private InterceptorStore () {
     }
 
-    public static InterceptorStore instance() {
+    public static InterceptorStore instance () {
         if (interceptorStore == null) {
             synchronized (syncLock) {
                 interceptorStore = new InterceptorStore();
@@ -28,9 +27,9 @@ public class InterceptorStore {
         return interceptorStore;
     }
 
-    public Queue<BaseInterceptor> getInterceptorQueue(BaseAction action, Method method) {
-        Queue<BaseInterceptor> queue = new LinkedList<>();
-        String methodName = getMethodInterceptorMappingName(action.getClass(), method);
+    public Queue<BaseInterceptor> getInterceptorQueue (BaseAction action, Method method) {
+        Queue<BaseInterceptor> queue      = new LinkedList<>();
+        String                 methodName = getMethodInterceptorMappingName(action.getClass(), method);
         if (!MethodInterceptorStation.isCleared(methodName)) {
             queue.addAll(GlobalInterceptorStation.getGlobalQueue());
             queue.addAll(ClassInterceptorStation.getQueueByClass(action.getClass().getName()));
@@ -42,13 +41,13 @@ public class InterceptorStore {
         return queue;
     }
 
-    public void loadInterceptor() throws Exception {
+    public void loadInterceptor () throws Exception {
         GlobalInterceptorStation.loadInterceptor();
         ClassInterceptorStation.loadInterceptor();
         MethodInterceptorStation.loadInterceptor();
     }
 
-    private String getMethodInterceptorMappingName(Class<? extends BaseAction> clazz, Method method) {
+    private String getMethodInterceptorMappingName (Class<? extends BaseAction> clazz, Method method) {
         return clazz.getName() + "-" + method.getName();
     }
 

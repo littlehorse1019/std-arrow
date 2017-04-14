@@ -1,33 +1,31 @@
 package com.std.framework.model.connection;
 
-import org.w3c.dom.Node;
-
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Enumeration;
 import java.util.Vector;
+import org.w3c.dom.Node;
 
 public class ConnectionsPool {
 
-    private final static Object syncLock = new Object();
-    private static ConnectionsPool connPool = null;
-    private String jdbcDriver = ""; // 数据库驱动
-    private String dbUrl = ""; // 数据 URL
-    private String dbUsername = ""; // 数据库用户名
-    private String dbPassword = ""; // 数据库用户密码
-    private int initialConnections = 20; // 连接池的初始大小
-    private int incrementalConnections = 10;// 连接池自动增加的大小
-    private int maxConnections = 500; // 连接池最大的大小
-    private Vector<PooledConnection> connections = null; // 存放连接池中数据库连接的向量 , 初始时为 null,它中存放的对象为 PooledConnection 型
+    private final static Object                   syncLock               = new Object();
+    private static       ConnectionsPool          connPool               = null;
+    private              String                   jdbcDriver             = ""; // 数据库驱动
+    private              String                   dbUrl                  = ""; // 数据 URL
+    private              String                   dbUsername             = ""; // 数据库用户名
+    private              String                   dbPassword             = ""; // 数据库用户密码
+    private              int                      initialConnections     = 20; // 连接池的初始大小
+    private              int                      incrementalConnections = 10;// 连接池自动增加的大小
+    private              int                      maxConnections         = 500; // 连接池最大的大小
+    private              Vector<PooledConnection> connections            = null; // 存放连接池中数据库连接的向量 , 初始时为 null,它中存放的对象为 PooledConnection 型
 
-    ;
 
-    private ConnectionsPool() {
+    private ConnectionsPool () {
     }
 
-    public static ConnectionsPool instance() {
+    public static ConnectionsPool instance () {
         if (connPool == null) {
             synchronized (syncLock) {
                 connPool = new ConnectionsPool();
@@ -39,7 +37,7 @@ public class ConnectionsPool {
     /**
      * 创建一个数据库连接池，连接池中的可用连接的数量采用类成员 initialConnections 中设置的值
      */
-    public synchronized void createPool() throws Exception {
+    public synchronized void createPool () throws Exception {
         // 确保连接池没有创建
         // 如果连接池己经创建了，保存连接的向量 connections 不会为空
         if (connections != null) {
@@ -48,7 +46,7 @@ public class ConnectionsPool {
         // 实例化 JDBC Driver 中指定的驱动类实例
         Class.forName(this.jdbcDriver).newInstance();// 注册 JDBC 驱动程序
         // 创建保存连接的向量 , 初始时有 0 个元素
-        connections = new Vector<PooledConnection>();
+        connections = new Vector<>();
         // 根据 initialConnections 中设置的值，创建连接。
         createConnections(this.initialConnections);
     }
@@ -56,7 +54,7 @@ public class ConnectionsPool {
     /**
      * 创建由 numConnections 指定数目的数据库连接 , 并把这些连接 放入 connections 向量中
      */
-    private void createConnections(int numConnections) throws SQLException {
+    private void createConnections (int numConnections) throws SQLException {
         // 循环创建指定数目的数据库连接
         for (int x = 0; x < numConnections; x++) {
             // 是否连接池中的数据库连接的数量己经达到最大？最大值由类成员 maxConnections
@@ -79,13 +77,13 @@ public class ConnectionsPool {
     /**
      * 创建一个新的数据库连接并返回它
      */
-    private Connection newConnection() throws SQLException {
+    private Connection newConnection () throws SQLException {
         // 创建一个数据库连接
         Connection conn = DriverManager.getConnection(dbUrl, dbUsername, dbPassword);
         // 如果这是第一次创建数据库连接，即检查数据库，获得此数据库允许支持的最大客户连接数目   connections.size()==0 表示目前没有连接己被创建
         if (connections.size() == 0) {
-            DatabaseMetaData metaData = conn.getMetaData();
-            int driverMaxConnections = metaData.getMaxConnections();
+            DatabaseMetaData metaData             = conn.getMetaData();
+            int              driverMaxConnections = metaData.getMaxConnections();
             // 数据库返回的 driverMaxConnections 若为 0 ，表示此数据库没有最大连接限制，或数据库的最大连接限制不知道
             // driverMaxConnections 为返回的一个整数，表示此数据库允许客户连接的数目
             // 如果连接池中设置的最大连接数量大于数据库允许的连接数目 , 则置连接池的最大连接数目为数据库允许的最大数目
@@ -99,7 +97,7 @@ public class ConnectionsPool {
     /**
      * 通过调用 getFreeConnection() 函数返回一个可用的数据库连接 , 如果当前没有可用的数据库连接，并且更多的数据库连接不能创建（如连接池大小的限制），此函数等待一会再尝试获取。
      */
-    public synchronized Connection applyConnection() throws SQLException {
+    public synchronized Connection applyConnection () throws SQLException {
         // 确保连接池己被创建
         if (connections == null) {
             return null; // 连接池还没创建，则返回 null
@@ -118,7 +116,7 @@ public class ConnectionsPool {
      * 本函数从连接池向量 connections 中返回一个可用的的数据库连接，如果当前没有可用的数据库连接，本函数则根据 incrementalConnections 设置 的值创建几个数据库连接，并放入连接池中。
      * 如果创建后，所有的连接仍都在使用中，则返回 null
      */
-    private Connection applyFreeConnection() throws SQLException {
+    private Connection applyFreeConnection () throws SQLException {
         // 从连接池中获得一个可用的数据库连接
         Connection conn = findFreeConnection();
         if (conn == null) {
@@ -137,14 +135,14 @@ public class ConnectionsPool {
     /**
      * 查找连接池中所有的连接，查找一个可用的数据库连接， 如果没有可用的连接，返回 null
      */
-    private Connection findFreeConnection() throws SQLException {
-        Connection conn = null;
-        PooledConnection pConn = null;
+    private Connection findFreeConnection () throws SQLException {
+        Connection       conn = null;
+        PooledConnection pConn;
         // 获得连接池向量中所有的对象
         Enumeration<PooledConnection> enumerate = connections.elements();
         // 遍历所有的对象，看是否有可用的连接
         while (enumerate.hasMoreElements()) {
-            pConn = (PooledConnection) enumerate.nextElement();
+            pConn = enumerate.nextElement();
             if (!pConn.isBusy()) {
                 // 如果此对象不忙，则获得它的数据库连接并把它设为忙
                 conn = pConn.getConnection();
@@ -158,17 +156,17 @@ public class ConnectionsPool {
     /**
      * 此函数返回一个数据库连接到连接池中，并把此连接置为空闲。 所有使用连接池获得的数据库连接均应在不使用此连接时返回它。
      */
-    public void releaseConnection(Connection conn) {
+    public void releaseConnection (Connection conn) {
         // 确保连接池存在，如果连接没有创建（不存在），直接返回
         if (connections == null) {
             System.out.println(" 连接池不存在，无法返回此连接到连接池中 !");
             return;
         }
-        PooledConnection pConn = null;
+        PooledConnection              pConn     = null;
         Enumeration<PooledConnection> enumerate = connections.elements();
         // 遍历连接池中的所有连接，找到这个要返回的连接对象
         while (enumerate.hasMoreElements()) {
-            pConn = (PooledConnection) enumerate.nextElement();
+            pConn = enumerate.nextElement();
             // 先找到连接池中的要返回的连接对象
             if (conn == pConn.getConnection()) {
                 // 找到了 , 设置此连接为空闲状态
@@ -181,17 +179,17 @@ public class ConnectionsPool {
     /**
      * 刷新连接池中所有的连接对象
      */
-    public synchronized void refreshConnections() throws SQLException {
+    public synchronized void refreshConnections () throws SQLException {
         // 确保连接池己创新存在
         if (connections == null) {
             System.out.println(" 连接池不存在，无法刷新 !");
             return;
         }
-        PooledConnection pConn = null;
+        PooledConnection              pConn     = null;
         Enumeration<PooledConnection> enumerate = connections.elements();
         while (enumerate.hasMoreElements()) {
             // 获得一个连接对象
-            pConn = (PooledConnection) enumerate.nextElement();
+            pConn = enumerate.nextElement();
             // 如果对象忙则等 5 秒 ,5 秒后直接刷新
             if (pConn.isBusy()) {
                 wait(5000); // 等 5 秒
@@ -206,16 +204,16 @@ public class ConnectionsPool {
     /**
      * 关闭连接池中所有的连接，并清空连接池。
      */
-    public synchronized void closeConnectionPool() throws SQLException {
+    public synchronized void closeConnectionPool () throws SQLException {
         // 确保连接池存在，如果不存在，返回
         if (connections == null) {
             System.out.println(" 连接池不存在，无法关闭 !");
             return;
         }
-        PooledConnection pConn = null;
+        PooledConnection              pConn     = null;
         Enumeration<PooledConnection> enumerate = connections.elements();
         while (enumerate.hasMoreElements()) {
-            pConn = (PooledConnection) enumerate.nextElement();
+            pConn = enumerate.nextElement();
             // 如果忙，等 5 秒
             if (pConn.isBusy()) {
                 wait(5000); // 等 5 秒
@@ -232,7 +230,7 @@ public class ConnectionsPool {
     /**
      * 关闭一个数据库连接
      */
-    private void closeConnection(Connection conn) {
+    private void closeConnection (Connection conn) {
         try {
             conn.close();
         } catch (SQLException e) {
@@ -244,7 +242,7 @@ public class ConnectionsPool {
      * 使程序等待给定的毫秒数
      */
 
-    private void wait(int mSeconds) {
+    private void wait (int mSeconds) {
         try {
             Thread.sleep(mSeconds);
         } catch (InterruptedException e) {
@@ -255,7 +253,7 @@ public class ConnectionsPool {
      * 返回连接池的初始大小
      */
 
-    public int getInitialConnections() {
+    public int getInitialConnections () {
         return this.initialConnections;
     }
 
@@ -263,7 +261,7 @@ public class ConnectionsPool {
      * 设置连接池的初始大小
      */
 
-    public void setInitialConnections(int initialConnections) {
+    public void setInitialConnections (int initialConnections) {
         this.initialConnections = initialConnections;
     }
 
@@ -271,7 +269,7 @@ public class ConnectionsPool {
      * 返回连接池自动增加的大小
      */
 
-    public int getIncrementalConnections() {
+    public int getIncrementalConnections () {
         return this.incrementalConnections;
     }
 
@@ -279,7 +277,7 @@ public class ConnectionsPool {
      * 设置连接池自动增加的大小
      */
 
-    public void setIncrementalConnections(int incrementalConnections) {
+    public void setIncrementalConnections (int incrementalConnections) {
         this.incrementalConnections = incrementalConnections;
     }
 
@@ -287,21 +285,21 @@ public class ConnectionsPool {
      * 返回连接池中最大的可用连接数量
      */
 
-    public int getMaxConnections() {
+    public int getMaxConnections () {
         return this.maxConnections;
     }
 
     /**
      * 设置连接池中最大可用的连接数量
      */
-    public void setMaxConnections(int maxConnections) {
+    public void setMaxConnections (int maxConnections) {
         this.maxConnections = maxConnections;
     }
 
     /**
      * 读取数据库连接文件，将连接参数保存到静态变量中
      */
-    private void initConnPoolDataSource(Node dataSourceNode) throws Exception {
+    private void initConnPoolDataSource (Node dataSourceNode) throws Exception {
         DataSourceInfo.init(dataSourceNode);
         dbUsername = DataSourceInfo.getUser();
         dbPassword = DataSourceInfo.getPassword();
@@ -312,16 +310,16 @@ public class ConnectionsPool {
         }
     }
 
-    public void loadDataSource(Node dataSourceNode) throws Exception {
+    public void loadDataSource (Node dataSourceNode) throws Exception {
         initConnPoolDataSource(dataSourceNode);
         createPool();
     }
 
-    public int getCurrentPoolSize() {
+    public int getCurrentPoolSize () {
         return connections.size();
     }
 
-    public int getCurrentFreeConnPool() {
+    public int getCurrentFreeConnPool () {
         int freeSize = 0;
         for (PooledConnection pooledConn : connections) {
             if (!pooledConn.isBusy()) {

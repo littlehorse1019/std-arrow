@@ -1,7 +1,6 @@
 package com.std.framework.core.extraction;
 
 import com.std.framework.annotation.Job;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +9,7 @@ import java.util.List;
  */
 public class JobExtraction implements Extraction {
 
-    public List<Class<?>> extract(List<String> classFileList) throws Exception {
+    public List<Class<?>> extract (List<String> classFileList) throws Exception {
         List<Class<?>> classList = new ArrayList<Class<?>>();
         for (String classFile : classFileList) {
             try {

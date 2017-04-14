@@ -1,17 +1,16 @@
 package com.std.server.servlet;
 
 import com.std.server.routes.URL;
-
 import java.util.Map;
 
 public class HttpServletRequestWrapper implements HttpServletRequest {
 
-    private String method;
-    private String action;
+    private String                method;
+    private String                action;
     private Map<String, String[]> headers;
     private Map<String, String[]> paramters;
 
-    private HttpServletRequestWrapper() {
+    private HttpServletRequestWrapper () {
     }
 
     /**
@@ -22,8 +21,8 @@ public class HttpServletRequestWrapper implements HttpServletRequest {
      * @param body
      * @return
      */
-    public static HttpServletRequestWrapper wrap(String action, String url,
-                                                 String version, Map<String, String[]> headers, StringBuilder body) {
+    public static HttpServletRequestWrapper wrap (String action, String url,
+        String version, Map<String, String[]> headers, StringBuilder body) {
         HttpServletRequestWrapper request = new HttpServletRequestWrapper();
         return request;
     }
@@ -32,7 +31,7 @@ public class HttpServletRequestWrapper implements HttpServletRequest {
      * @see com.std.server.servlet.HttpServletRequest#getRequestURL()
      */
     @Override
-    public URL getRequestURL() {
+    public URL getRequestURL () {
         // TODO Auto-generated method stub
         return null;
     }
@@ -41,7 +40,7 @@ public class HttpServletRequestWrapper implements HttpServletRequest {
      * @see com.std.server.servlet.HttpServletRequest#getRequestURI()
      */
     @Override
-    public String getRequestURI() {
+    public String getRequestURI () {
         // TODO Auto-generated method stub
         return this.action;
     }
@@ -50,7 +49,7 @@ public class HttpServletRequestWrapper implements HttpServletRequest {
      * @see com.std.server.servlet.HttpServletRequest#getQueryString()
      */
     @Override
-    public String getQueryString() {
+    public String getQueryString () {
         // TODO Auto-generated method stub
         return null;
     }
@@ -59,7 +58,7 @@ public class HttpServletRequestWrapper implements HttpServletRequest {
      * @see com.std.server.servlet.HttpServletRequest#getRemoteAddr()
      */
     @Override
-    public String getRemoteAddr() {
+    public String getRemoteAddr () {
         // TODO Auto-generated method stub
         return null;
     }
@@ -68,7 +67,7 @@ public class HttpServletRequestWrapper implements HttpServletRequest {
      * @see com.std.server.servlet.HttpServletRequest#getRemoteHost()
      */
     @Override
-    public String getRemoteHost() {
+    public String getRemoteHost () {
         // TODO Auto-generated method stub
         return null;
     }
@@ -77,7 +76,7 @@ public class HttpServletRequestWrapper implements HttpServletRequest {
      * @see com.std.server.servlet.HttpServletRequest#getRemotePort()
      */
     @Override
-    public String getRemotePort() {
+    public String getRemotePort () {
         // TODO Auto-generated method stub
         return null;
     }
@@ -86,7 +85,7 @@ public class HttpServletRequestWrapper implements HttpServletRequest {
      * @see com.std.server.servlet.HttpServletRequest#getLocalAddr()
      */
     @Override
-    public String getLocalAddr() {
+    public String getLocalAddr () {
         // TODO Auto-generated method stub
         return null;
     }
@@ -95,7 +94,7 @@ public class HttpServletRequestWrapper implements HttpServletRequest {
      * @see com.std.server.servlet.HttpServletRequest#getLocalName()
      */
     @Override
-    public String getLocalName() {
+    public String getLocalName () {
         // TODO Auto-generated method stub
         return null;
     }
@@ -104,7 +103,7 @@ public class HttpServletRequestWrapper implements HttpServletRequest {
      * @see com.std.server.servlet.HttpServletRequest#getMethod()
      */
     @Override
-    public String getMethod() {
+    public String getMethod () {
         // TODO Auto-generated method stub
         return this.method;
     }
@@ -113,7 +112,7 @@ public class HttpServletRequestWrapper implements HttpServletRequest {
      * @see com.std.server.servlet.HttpServletRequest#getHeader(java.lang.String)
      */
     @Override
-    public String[] getHeader(String name) {
+    public String[] getHeader (String name) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -122,7 +121,7 @@ public class HttpServletRequestWrapper implements HttpServletRequest {
      * @see com.std.server.servlet.HttpServletRequest#getHeaders(java.lang.String)
      */
     @Override
-    public Map<String, String[]> getHeaders(String name) {
+    public Map<String, String[]> getHeaders (String name) {
         // TODO Auto-generated method stub
         return this.headers;
     }
@@ -131,7 +130,7 @@ public class HttpServletRequestWrapper implements HttpServletRequest {
      * @see com.std.server.servlet.HttpServletRequest#getHeaderNames()
      */
     @Override
-    public String[] getHeaderNames() {
+    public String[] getHeaderNames () {
         // TODO Auto-generated method stub
         return null;
     }
@@ -140,7 +139,7 @@ public class HttpServletRequestWrapper implements HttpServletRequest {
      * @see com.std.server.servlet.HttpServletRequest#getParameter(java.lang.String)
      */
     @Override
-    public String getParameter(String name) {
+    public String getParameter (String name) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -149,7 +148,7 @@ public class HttpServletRequestWrapper implements HttpServletRequest {
      * @see com.std.server.servlet.HttpServletRequest#getParameterValues(java.lang.String)
      */
     @Override
-    public String[] getParameterValues(String name) {
+    public String[] getParameterValues (String name) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -158,7 +157,7 @@ public class HttpServletRequestWrapper implements HttpServletRequest {
      * @see com.std.server.servlet.HttpServletRequest#getParameterNames()
      */
     @Override
-    public String[] getParameterNames() {
+    public String[] getParameterNames () {
         // TODO Auto-generated method stub
         return null;
     }
@@ -167,7 +166,7 @@ public class HttpServletRequestWrapper implements HttpServletRequest {
      * @see com.std.server.servlet.HttpServletRequest#getParameterMap()
      */
     @Override
-    public Map<String, String[]> getParameterMap() {
+    public Map<String, String[]> getParameterMap () {
         // TODO Auto-generated method stub
         return this.paramters;
     }

@@ -5,7 +5,7 @@ import java.util.function.Function;
 public class PerformanceUtil {
 
 
-    public static void showCosts(Object[] params, Function<Object[], Void> function) {
+    public static void showCosts (Object[] params, Function<Object[], Void> function) {
         long begin = System.currentTimeMillis();
         function.apply(params);
         long end = System.currentTimeMillis();

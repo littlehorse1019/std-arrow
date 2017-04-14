@@ -12,23 +12,23 @@ public class MalformedRequestException extends RuntimeException {
 
     private static final long serialVersionUID = -2390720763190202369L;
 
-    public MalformedRequestException() {
+    public MalformedRequestException () {
     }
 
-    public MalformedRequestException(String message) {
+    public MalformedRequestException (String message) {
         super(message);
     }
 
-    public MalformedRequestException(String message, Throwable cause) {
+    public MalformedRequestException (String message, Throwable cause) {
         super(message, cause);
     }
 
-    public MalformedRequestException(Throwable cause) {
+    public MalformedRequestException (Throwable cause) {
         super(cause);
     }
 
-    public MalformedRequestException(String message, Throwable cause,
-                                     boolean enableSuppression, boolean writableStackTrace) {
+    public MalformedRequestException (String message, Throwable cause,
+        boolean enableSuppression, boolean writableStackTrace) {
         super(message, cause, enableSuppression, writableStackTrace);
     }
 }

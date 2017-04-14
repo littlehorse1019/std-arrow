@@ -2,7 +2,6 @@ package com.std.framework.model.orm.dialact.oracle;
 
 import com.std.framework.model.connection.ConnectionsPool;
 import com.std.framework.model.orm.BaseORMValidator;
-
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -16,7 +15,7 @@ import java.util.Map;
  */
 public class OracleValidatorBase extends BaseORMValidator {
 
-    public boolean validTab(String tableName) throws Exception {
+    public boolean validTab (String tableName) throws Exception {
         Connection conn = ConnectionsPool.instance().applyConnection();
         // ◊ÈΩ®≤‚ ‘Sql
         StringBuilder testSql = new StringBuilder();
@@ -25,7 +24,7 @@ public class OracleValidatorBase extends BaseORMValidator {
         testSql.append("'");
         // ÷¥––≤‚ ‘Sql
         Statement stmt = null;
-        ResultSet rs = null;
+        ResultSet rs   = null;
         try {
             stmt = conn.createStatement();
             rs = stmt.executeQuery(testSql.toString());
@@ -42,13 +41,13 @@ public class OracleValidatorBase extends BaseORMValidator {
         return true;
     }
 
-    public boolean validSeq(Map<String, String> seqMap) throws Exception {
+    public boolean validSeq (Map<String, String> seqMap) throws Exception {
         Connection conn = ConnectionsPool.instance().applyConnection();
         // ◊ÈΩ®≤‚ ‘Sql
         StringBuilder testSql = new StringBuilder();
         testSql.append(" SELECT * FROM USER_SEQUENCES T WHERE T.SEQUENCE_NAME = '");
-        Iterator<String> seqName = seqMap.values().iterator();
-        String sequenceName = "";
+        Iterator<String> seqName      = seqMap.values().iterator();
+        String           sequenceName = "";
         if (seqName.hasNext()) {
             sequenceName = seqName.next();
             testSql.append(sequenceName);
@@ -56,7 +55,7 @@ public class OracleValidatorBase extends BaseORMValidator {
         testSql.append("'");
         // ÷¥––≤‚ ‘Sql
         Statement stmt = null;
-        ResultSet rs = null;
+        ResultSet rs   = null;
         try {
             stmt = conn.createStatement();
             rs = stmt.executeQuery(testSql.toString());
@@ -73,7 +72,7 @@ public class OracleValidatorBase extends BaseORMValidator {
         return true;
     }
 
-    public boolean validCol(String tableName, Map<String, String> colMap) throws Exception {
+    public boolean validCol (String tableName, Map<String, String> colMap) throws Exception {
         Connection conn = ConnectionsPool.instance().applyConnection();
         // ◊ÈΩ®≤‚ ‘Sql
         StringBuilder testSql = new StringBuilder();
@@ -82,8 +81,8 @@ public class OracleValidatorBase extends BaseORMValidator {
         testSql.append("'");
         // ÷¥––≤‚ ‘Sql
         List<String> colArray = new ArrayList<String>();
-        Statement stmt = null;
-        ResultSet rs = null;
+        Statement    stmt     = null;
+        ResultSet    rs       = null;
         try {
             stmt = conn.createStatement();
             rs = stmt.executeQuery(testSql.toString());

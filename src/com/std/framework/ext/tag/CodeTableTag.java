@@ -2,18 +2,17 @@ package com.std.framework.ext.tag;
 
 import com.std.framework.core.util.StringUtil;
 import com.std.framework.model.ModelHelper;
-
-import javax.servlet.jsp.JspException;
-import javax.servlet.jsp.JspWriter;
-import javax.servlet.jsp.tagext.TagSupport;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import javax.servlet.jsp.JspException;
+import javax.servlet.jsp.JspWriter;
+import javax.servlet.jsp.tagext.TagSupport;
 
 /**
  * @author Luox 下拉列表标签<select><option>..数据库动态加载</option></select>
  */
-@SuppressWarnings("serial")
+@SuppressWarnings ("serial")
 public class CodeTableTag extends TagSupport {
 
     private String ctId;
@@ -24,68 +23,68 @@ public class CodeTableTag extends TagSupport {
     private String type;
     private String whereClause;
 
-    public String getCtId() {
+    public String getCtId () {
         return ctId;
     }
 
-    public void setCtId(String ctId) {
+    public void setCtId (String ctId) {
         this.ctId = ctId;
     }
 
-    public String getTagName() {
+    public String getTagName () {
         return tagName;
     }
 
-    public void setTagName(String tagName) {
+    public void setTagName (String tagName) {
         this.tagName = tagName;
     }
 
-    public String getOnChange() {
+    public String getOnChange () {
         return onChange;
     }
 
-    public void setOnChange(String onChange) {
+    public void setOnChange (String onChange) {
         this.onChange = onChange;
     }
 
-    public String getCssClass() {
+    public String getCssClass () {
         return cssClass;
     }
 
-    public void setCssClass(String cssClass) {
+    public void setCssClass (String cssClass) {
         this.cssClass = cssClass;
     }
 
-    public String getDefaultValue() {
+    public String getDefaultValue () {
         return defaultValue;
     }
 
-    public void setDefaultValue(String defaultValue) {
+    public void setDefaultValue (String defaultValue) {
         this.defaultValue = defaultValue;
     }
 
-    public String getType() {
+    public String getType () {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType (String type) {
         this.type = type;
     }
 
-    public String getWhereClause() {
+    public String getWhereClause () {
         return whereClause;
     }
 
-    public void setWhereClause(String whereClause) {
+    public void setWhereClause (String whereClause) {
         this.whereClause = whereClause;
     }
 
     @Override
-    public int doStartTag() throws JspException {
+    public int doStartTag () throws JspException {
         try {
-            TCodeTable tCodeTable = getCodeTableParam(ctId);
-            List<TCodeDic> codeList = null;
-            String codeTableStr = "";
+            TCodeTable     tCodeTable   = getCodeTableParam(ctId);
+            List<TCodeDic> codeList     = null;
+            String         codeTableStr = "";
 
             if (StringUtil.notBlank(tCodeTable.getTableName())) {
                 codeList = doTransCodeList(tCodeTable);
@@ -104,22 +103,22 @@ public class CodeTableTag extends TagSupport {
     }
 
     @Override
-    public int doEndTag() throws JspException {
+    public int doEndTag () throws JspException {
         return EVAL_PAGE;
     }
 
     @Override
-    public void release() {
+    public void release () {
         super.release();
     }
 
     /**
      * 获取CODETABLE数据配置
      */
-    private TCodeTable getCodeTableParam(String ctId) throws Exception {
+    private TCodeTable getCodeTableParam (String ctId) throws Exception {
         TCodeTable tCodeTable = null;
 
-        String sql = "SELECT * FROM T_CODE_TABLE T WHERE T.CODE_TABLE_ID = ?";
+        String       sql       = "SELECT * FROM T_CODE_TABLE T WHERE T.CODE_TABLE_ID = ?";
         List<String> paramList = new ArrayList<String>();
         paramList.add(ctId);
         List<TCodeTable> list = ModelHelper.findORMClassListBySql(new TCodeTable(), sql, paramList);
@@ -132,9 +131,9 @@ public class CodeTableTag extends TagSupport {
     /**
      * 获取SELECTION列表OPTION数据
      */
-    private List<TCodeDic> doTransCodeList(TCodeTable tCodeTable) throws Exception {
+    private List<TCodeDic> doTransCodeList (TCodeTable tCodeTable) throws Exception {
         String sql = "SELECT " + tCodeTable.getCodeColumn() + " as code," + tCodeTable.getDescColumn()
-                + " as description" + " FROM " + tCodeTable.getTableName();
+            + " as description" + " FROM " + tCodeTable.getTableName();
 
         if (StringUtil.notBlank(whereClause)) {
             sql = sql + " WHERE " + whereClause;
@@ -148,7 +147,7 @@ public class CodeTableTag extends TagSupport {
     /**
      * 形成HTML标签字符串
      */
-    private String generateCodeTable(TCodeTable tCodeTable, List<TCodeDic> codeList) {
+    private String generateCodeTable (TCodeTable tCodeTable, List<TCodeDic> codeList) {
         StringBuilder rtnStr = new StringBuilder();
 
         if (StringUtil.isBlank(type) || type.equals("select")) {
@@ -169,7 +168,7 @@ public class CodeTableTag extends TagSupport {
                 TCodeDic next = iterator.next();
                 if (next.getCode().equals(defaultValue)) {
                     rtnStr.append("<option value='" + next.getCode() + "' selected >" + next.getDescription()
-                            + " </option>");
+                                      + " </option>");
                 } else {
                     rtnStr.append("<option value='" + next.getCode() + "'>" + next.getDescription() + " </option>");
                 }
@@ -184,7 +183,7 @@ public class CodeTableTag extends TagSupport {
                     TCodeDic next = iterator.next();
                     if (next.getCode().equals(defaultValue)) {
                         rtnStr.append("<input type='text' id='" + tagName + "' name = '" + tagName + "' value='"
-                                + next.getDescription() + "' disabled />");
+                                          + next.getDescription() + "' disabled />");
                     }
                 }
             }

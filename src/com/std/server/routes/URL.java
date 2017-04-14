@@ -10,34 +10,34 @@ import java.util.Map;
  */
 public class URL {
 
-    private String path;
-    private String params;
-    private String query;
-    private String frag;
+    private String                path;
+    private String                params;
+    private String                query;
+    private String                frag;
     private Map<String, String[]> parameters;
 
-    public static URL parseUrl(String urlString) {
+    public static URL parseUrl (String urlString) {
         URL url = new URL();
         return url;
     }
 
-    public String getPath() {
+    public String getPath () {
         return path;
     }
 
-    public String getParams() {
+    public String getParams () {
         return params;
     }
 
-    public String getQuery() {
+    public String getQuery () {
         return query;
     }
 
-    public String getFrag() {
+    public String getFrag () {
         return frag;
     }
 
-    public Map<String, String[]> getParameters() {
+    public Map<String, String[]> getParameters () {
         return parameters;
     }
 }

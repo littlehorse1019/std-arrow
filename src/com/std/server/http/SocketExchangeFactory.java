@@ -2,7 +2,6 @@ package com.std.server.http;
 
 import com.std.server.Exchange;
 import com.std.server.ExchangeFactory;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -16,17 +15,16 @@ import java.nio.channels.SocketChannel;
  * SocketExchangeFactory
  *
  * @author Administrator
- * @since 1.0
- * implements ExchangeFactory by SocketServer-Socket, listen on TCP/IP communication
+ * @since 1.0 implements ExchangeFactory by SocketServer-Socket, listen on TCP/IP communication
  */
 public class SocketExchangeFactory implements ExchangeFactory {
 
     private ServerSocketChannel serverChannel;
 
-    public SocketExchangeFactory(int port) {
+    public SocketExchangeFactory (int port) {
         try {
-            SocketAddress serverAddress = new InetSocketAddress(port);
-            ServerSocketChannel sChannel = ServerSocketChannel.open();
+            SocketAddress       serverAddress = new InetSocketAddress(port);
+            ServerSocketChannel sChannel      = ServerSocketChannel.open();
             sChannel.bind(serverAddress);
             sChannel.configureBlocking(true);
             this.serverChannel = sChannel;
@@ -36,21 +34,21 @@ public class SocketExchangeFactory implements ExchangeFactory {
     }
 
     @Override
-    public boolean isClosed() throws IOException {
+    public boolean isClosed () throws IOException {
         return !serverChannel.isOpen();
     }
 
     @Override
-    public Exchange create() throws IOException {
+    public Exchange create () throws IOException {
 
         SocketChannel cChannel = serverChannel.accept();
 
-        InputStream inStream = Channels.newInputStream(cChannel);
+        InputStream  inStream  = Channels.newInputStream(cChannel);
         OutputStream outStream = Channels.newOutputStream(cChannel);
 
         return new Exchange(inStream, outStream) {
             @Override
-            public void close() throws IOException {
+            public void close () throws IOException {
                 super.close();
                 cChannel.close();
             }
@@ -58,7 +56,7 @@ public class SocketExchangeFactory implements ExchangeFactory {
     }
 
     @Override
-    public void close() throws Exception {
+    public void close () throws Exception {
         serverChannel.close();
     }
 

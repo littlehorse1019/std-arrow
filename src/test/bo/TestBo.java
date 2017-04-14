@@ -5,74 +5,74 @@ import com.std.framework.annotation.PrimaryKey;
 import com.std.framework.model.orm.MapByClass;
 
 
-@Entity(MapByClass.class)
+@Entity (MapByClass.class)
 public class TestBo {
 
     @PrimaryKey
     private Integer id;
-    private String name;
+    private String  name;
     private Integer age;
-    private String lolLevel;
-    private String war3Level;
-    private String javaLevel;
+    private String  lolLevel;
+    private String  war3Level;
+    private String  javaLevel;
 
     @Override
-    public String toString() {
+    public String toString () {
         return "TestBo{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", age=" + age +
-                ", lolLevel='" + lolLevel + '\'' +
-                ", war3Level='" + war3Level + '\'' +
-                ", javaLevel='" + javaLevel + '\'' +
-                '}';
+            "id=" + id +
+            ", name='" + name + '\'' +
+            ", age=" + age +
+            ", lolLevel='" + lolLevel + '\'' +
+            ", war3Level='" + war3Level + '\'' +
+            ", javaLevel='" + javaLevel + '\'' +
+            '}';
     }
 
-    public Integer getId() {
+    public Integer getId () {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId (Integer id) {
         this.id = id;
     }
 
-    public String getName() {
+    public String getName () {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName (String name) {
         this.name = name;
     }
 
-    public Integer getAge() {
+    public Integer getAge () {
         return age;
     }
 
-    public void setAge(Integer age) {
+    public void setAge (Integer age) {
         this.age = age;
     }
 
-    public String getLolLevel() {
+    public String getLolLevel () {
         return lolLevel;
     }
 
-    public void setLolLevel(String lolLevel) {
+    public void setLolLevel (String lolLevel) {
         this.lolLevel = lolLevel;
     }
 
-    public String getWar3Level() {
+    public String getWar3Level () {
         return war3Level;
     }
 
-    public void setWar3Level(String war3Level) {
+    public void setWar3Level (String war3Level) {
         this.war3Level = war3Level;
     }
 
-    public String getJavaLevel() {
+    public String getJavaLevel () {
         return javaLevel;
     }
 
-    public void setJavaLevel(String javaLevel) {
+    public void setJavaLevel (String javaLevel) {
         this.javaLevel = javaLevel;
     }
 }

@@ -1,18 +1,17 @@
 package test.others;
 
-import org.junit.Test;
-import test.bo.TestBo;
-
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import org.junit.Test;
+import test.bo.TestBo;
 
 public class TestReflection {
 
     @Test
-    public void doTest() throws Exception {
+    public void doTest () throws Exception {
 
-        TestBo testBo = new TestBo();
-        Class<? extends TestBo> clazz = testBo.getClass();
+        TestBo                  testBo = new TestBo();
+        Class<? extends TestBo> clazz  = testBo.getClass();
         //setter¸³Öµ
         long nanoTime1 = System.nanoTime();
         for (int i = 0; i < 100000; i++) {
@@ -31,8 +30,8 @@ public class TestReflection {
         System.out.println(nanoTime4 - nanoTime3);
 
         //field·´Éä¸³Öµ
-        long nanoTime5 = System.nanoTime();
-        Field field = clazz.getDeclaredField("name");
+        long  nanoTime5 = System.nanoTime();
+        Field field     = clazz.getDeclaredField("name");
         field.setAccessible(true);
         for (int i = 0; i < 100000; i++) {
             field.set(testBo, "luoxiao");

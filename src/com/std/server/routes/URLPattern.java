@@ -16,7 +16,7 @@ public class URLPattern {
 
     private Pattern pattern;
 
-    public URLPattern(String patternStr) {
+    public URLPattern (String patternStr) {
         this.pattern = URLPattern.compile(patternStr);
     }
 
@@ -27,7 +27,7 @@ public class URLPattern {
      * @return the given regular expression compiled into a value
      * @throws PatternSyntaxException indicating the expression's syntax is invalid
      */
-    public static Pattern compile(String pattern) {
+    public static Pattern compile (String pattern) {
         return Pattern.compile(URLPattern.escape(pattern));
     }
 
@@ -39,19 +39,19 @@ public class URLPattern {
      * @param pattern the url value
      * @return an escaped url value
      */
-    public static String escape(String pattern) {
+    public static String escape (String pattern) {
         return pattern.replace("/?", "/\\?").replace('{', '(').replace('}', ')');
     }
 
     /**
      * url grammar as " <scheme>://<user>:<password>@<host>:<port>/<path>;<params>?<query>#<frag>
      * decode url <path> and test matches with pattern
-     *
-     * @param url
-     * @return
      */
-    public boolean matches(String url) {
-        int pathEndIdx = url.indexOf(";") > 0 ? url.indexOf(";") : url.indexOf("?") > 0 ? url.indexOf("?") : url.indexOf("#") > 0 ? url.indexOf("#") : url.length();
+    public boolean matches (String url) {
+        int pathEndIdx = url.indexOf(";") > 0 ? url.indexOf(";") : url.indexOf("?") > 0 ? url.indexOf("?")
+                                                                                        : url.indexOf("#") > 0 ? url
+                                                                                            .indexOf("#") : url
+                                                                                              .length();
         String path = url.substring(0, pathEndIdx);
         return this.pattern.matcher(path).matches();
     }

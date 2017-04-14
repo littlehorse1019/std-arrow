@@ -9,7 +9,7 @@ import org.junit.Test;
 public class AopTest {
 
     @Test
-    public void doTest() {
+    public void doTest () {
         long flag1 = System.nanoTime();
 
         ProxyCfgBean proxyCfg = new ProxyCfgBean();
@@ -32,7 +32,6 @@ public class AopTest {
         intercepetor2.setAfterClass(AfterAop.class);
         intercepetor2.setAfterMethod("afterTest");
         intercepetor2.setAfterArguments(new Class<?>[]{String.class, String.class});
-
 
         proxyCfg.addAdvisorBean(intercepetor1);
         proxyCfg.addAdvisorBean(intercepetor2);

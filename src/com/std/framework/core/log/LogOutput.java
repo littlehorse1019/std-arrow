@@ -6,6 +6,6 @@ package com.std.framework.core.log;
 
 public interface LogOutput {
 
-    public void writeLog(Object msgObj) throws Exception;
+    public void writeLog (Object msgObj) throws Exception;
 
 }

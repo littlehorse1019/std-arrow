@@ -4,6 +4,8 @@
 package test.server;
 
 
+import static com.std.server.http.Status.ok;
+
 import com.std.server.http.HttpHandler;
 import com.std.server.http.HttpServer;
 import com.std.server.routes.Controller;
@@ -11,8 +13,6 @@ import com.std.server.routes.Get;
 import com.std.server.routes.Post;
 import com.std.server.servlet.HttpServletRequest;
 import com.std.server.servlet.HttpServletResponse;
-
-import static com.std.server.http.Status.ok;
 
 /**
  * @author
@@ -27,18 +27,18 @@ import static com.std.server.http.Status.ok;
  */
 public class ServerTest {
 
-    public static void main(String args[]) {
+    public static void main (String args[]) {
 
         HttpServer server = HttpServer.bind(8080);
         server.accept(new Controller() {
-            @Get("/test/get")
-            public HttpHandler testGet(HttpServletRequest request, HttpServletResponse response) {
+            @Get ("/test/get")
+            public HttpHandler testGet (HttpServletRequest request, HttpServletResponse response) {
                 System.out.println("Test HTTP GET success!");
                 return ok();
             }
 
-            @Post("/test/post")
-            public HttpHandler testPost(HttpServletRequest request, HttpServletResponse response) {
+            @Post ("/test/post")
+            public HttpHandler testPost (HttpServletRequest request, HttpServletResponse response) {
                 System.out.println("Test HTTP POST success!");
                 return ok();
             }

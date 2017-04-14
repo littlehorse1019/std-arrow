@@ -11,6 +11,7 @@ import com.std.framework.model.connection.ConnectionsPool;
 import com.std.framework.model.connection.Session;
 import com.std.framework.model.connection.SessionFactory;
 import com.std.framework.view.handle.BaseAction;
+import java.util.List;
 import test.aop.BookFacade;
 import test.bo.TestBo;
 import test.intcept.ClassInterceptor1;
@@ -20,37 +21,35 @@ import test.intcept.MethodInterceptor2;
 import test.ioc.IOCTest;
 import test.job.TestJob;
 
-import java.util.List;
-
-@Interceptor({ClassInterceptor1.class, ClassInterceptor2.class})
+@Interceptor ({ClassInterceptor1.class, ClassInterceptor2.class})
 public class ActionTest extends BaseAction {
 
     Log log = LogFactory.getLogger();
     private BookFacade bookFacade;
-    private String name;
-    private String password;
-    private Integer age;
+    private String     name;
+    private String     password;
+    private Integer    age;
 
-    public void setBookFacade(BookFacade bookFacade) {
+    public void setBookFacade (BookFacade bookFacade) {
         this.bookFacade = bookFacade;
     }
 
-    public void setName(String name) {
+    public void setName (String name) {
         this.name = name;
     }
 
-    public void setPassword(String password) {
+    public void setPassword (String password) {
         this.password = password;
     }
 
-    public void setAge(Integer age) {
+    public void setAge (Integer age) {
         this.age = age;
     }
 
     @ActionService
     @Transactional
     @Clear
-    public void testing() {
+    public void testing () {
         doTestIOCAOP();
         doTestJob();
         log.info("无参数方法调用: ActionTest - test => Name : " + name + ", PassWord : " + password + ", Age : " + age);
@@ -60,12 +59,12 @@ public class ActionTest extends BaseAction {
         // render.toJsp("/Test1");
     }
 
-    private void doTestJob() {
+    private void doTestJob () {
         TestJob job = new TestJob();
         job.testJob();
     }
 
-    private void doTestIOCAOP() {
+    private void doTestIOCAOP () {
         System.out.println("---------------IOC测试---------------");
         IOCTest.testIOC();
         System.out.println("---------------AOP测试---------------");
@@ -73,14 +72,14 @@ public class ActionTest extends BaseAction {
         bookFacade.addBook("时间都去哪儿啦?", "罗潇著作");
     }
 
-    private List<TestBo> doTestModelView() {
+    private List<TestBo> doTestModelView () {
 
         System.out.println("---------------VIEW　AND MODEL测试---------------");
 
         Session session = SessionFactory.getCurrentSession();
 
         log.info("数据库操作开始(增删改查)" + System.currentTimeMillis());
-        TestBo tb1 = new TestBo();
+        TestBo       tb1  = new TestBo();
         List<TestBo> list = session.list(tb1);
         tb1.setAge(25);
         tb1.setJavaLevel("软件架构师");
@@ -116,16 +115,16 @@ public class ActionTest extends BaseAction {
     }
 
     @ActionService
-    @Interceptor({MethodInterceptor1.class, MethodInterceptor2.class})
-    public void testingParam(User user) {
+    @Interceptor ({MethodInterceptor1.class, MethodInterceptor2.class})
+    public void testingParam (User user) {
         log.info("有参数方法调用: ActionTest - test => Name : " + user.getName() + ", PassWord : " + user.getPassword()
-                + ", Age : " + user.getAge());
+                     + ", Age : " + user.getAge());
         render.setReqAttr("user", "admin");
         render.forwardJsp("/Test2");
     }
 
     // 是否将属性值填充回表单
-    public boolean isNeedFormed() {
+    public boolean isNeedFormed () {
         return true;
     }
 

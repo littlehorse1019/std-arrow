@@ -4,14 +4,14 @@ import java.sql.SQLException;
 
 public class Transaction {
 
-    public static Transaction getCurrentTransaction() {
+    public static Transaction getCurrentTransaction () {
         return new Transaction();
     }
 
     /**
      * 开启事务，保存本地Theadlocal Connection
      */
-    public void begin() {
+    public void begin () {
         try {
             TransactionHolder.beginConnection();
         } catch (SQLException e) {
@@ -22,7 +22,7 @@ public class Transaction {
     /**
      * 提交事务，释放本地Theadlocal Connection
      */
-    public void commit() {
+    public void commit () {
         try {
             TransactionHolder.commitConnection();
         } catch (SQLException e) {

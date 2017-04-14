@@ -14,14 +14,14 @@ public enum LogEnum {
     private int levelNum;
 
     // 构造函数，枚举类型只能为私有
-    private LogEnum(int levelNum) {
+    private LogEnum (int levelNum) {
         this.levelNum = levelNum;
     }
 
-    public static LogEnum getLogLevel(String level) throws Exception {
-        Field[] declaredFields = LogEnum.class.getDeclaredFields();
-        LogEnum[] enumNameArray = LogEnum.values();
-        LogEnum logEnum = null;
+    public static LogEnum getLogLevel (String level) throws Exception {
+        Field[]   declaredFields = LogEnum.class.getDeclaredFields();
+        LogEnum[] enumNameArray  = LogEnum.values();
+        LogEnum   logEnum        = null;
         for (int i = 0; i < declaredFields.length; i++) {
             Field field = declaredFields[i];
             if (field.getType() == LogEnum.class && field.getName().equals(level)) {
@@ -36,11 +36,11 @@ public enum LogEnum {
         }
     }
 
-    public int getLevelNum() {
+    public int getLevelNum () {
         return levelNum;
     }
 
-    public String toString(LogEnum le) {
+    public String toString (LogEnum le) {
         switch (le) {
             case DEBUG:
                 return "[DEBUG]";

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mvc>
+  <!-- Model模块配置开始-->
+  <model>
+    <dataSource>
+      <!-- hlxjavaee,hlxjavaee,orcl -->
+      <user>dcFrame</user>
+      <password>dcFrame</password>
+      <driver>oracle.jdbc.driver.OracleDriver</driver>
+      <!-- 139.196.56.37 -->
+      <url>jdbc:oracle:thin:@127.0.0.1:1521:oracle</url>
+      <dialact>oracle</dialact>
+      <poolsize>20</poolsize>
+    </dataSource>
+  </model>
+  <!-- Model模块配置结束-->
+
+  <!-- Controller模块配置开始 -->
+  <controller>
+    <iocs>
+      <bean class="com.std.aop.BookFacadeImpl" id="bookFacadeImpl"/>
+      <bean class="com.std.action.ActionTest" id="actionTest" type="prototype">
+        <property name="bookFacade">
+          <ref reference="bookFacadeImpl"/>
+        </property>
+      </bean>
+
+      <bean class="com.std.ioc.TestClass1" id="testClass1" type="singleton">
+        <property name="value1">
+          <value>testClass1_value1</value>
+        </property>
+        <property name="tc1">
+          <ref reference="testClass2"/>
+        </property>
+        <property name="list1">
+          <list>
+            <value>testClass1_list1</value>
+            <ref reference="testClass3"/>
+          </list>
+        </property>
+        <property name="map1">
+          <map>
+            <entry key="key1">
+              <value>testClass1_map1_1</value>
+            </entry>
+            <entry key="key2">
+              <ref reference="testClass2"/>
+            </entry>
+          </map>
+        </property>
+      </bean>
+
+      <bean class="com.std.ioc.TestClass2" id="testClass2" type="prototype">
+        <property name="value2">
+          <value>testClass2_value2</value>
+        </property>
+        <property name="tc2">
+          <ref reference="testClass3"/>
+        </property>
+        <property name="list2">
+          <list>
+            <value>testClass2_list2_1</value>
+            <ref reference="testClass3"/>
+          </list>
+        </property>
+        <property name="map2">
+          <map>
+            <entry key="key1">
+              <value>testClass2_map2_1</value>
+            </entry>
+            <entry key="key2">
+              <ref reference="testClass3"/>
+            </entry>
+          </map>
+        </property>
+      </bean>
+
+      <bean class="com.std.ioc.TestClass3" id="testClass3">
+        <property name="value3">
+          <value>testClass3_value3</value>
+        </property>
+        <property name="list3">
+          <list>
+            <value>testClass3_list3_1</value>
+            <value>testClass3_list3_2</value>
+          </list>
+        </property>
+        <property name="map3">
+          <map>
+            <entry key="key1">
+              <value>testClass3_map3_1</value>
+            </entry>
+            <entry key="key2">
+              <value>testClass3_map3_2</value>
+            </entry>
+          </map>
+        </property>
+      </bean>
+
+    </iocs>
+
+    <aops>
+      <advisor></advisor>
+      <pointcut></pointcut>
+    </aops>
+  </controller>
+  <!-- Controller模块配置结束 -->
+
+  <!-- View模块配置开始 -->
+  <view>
+    <accept>
+      <encoding>GBK</encoding>
+    </accept>
+    <send>
+      <encoding>GBK</encoding>
+      <Pragma>no-cache</Pragma>
+      <Cache-Control>no-cache</Cache-Control>
+      <Expires>0</Expires>
+    </send>
+  </view>
+  <!-- View模块配置结束 -->
+</mvc>

@@ -1,5 +1,0 @@
-借鉴Django Rest框架
-1.models -> Rest服务转化
-2.Rest资源关联关系的处理(一对一，多对多，一对多，嵌套显示等)
-3.Rest的各类操作(基于Odata4.0标准)配置，serializer的定制
-4.Rest服务展示页面，结合BootStrap

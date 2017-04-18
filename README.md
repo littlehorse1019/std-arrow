@@ -67,7 +67,7 @@ public class ActionTest extends CoreAction {
 ```java
 @Interceptor( { MethodInterceptor1.class, MethodInterceptor2.class })
 public void testing(User user) {
-	}
+}
 ```
 
 ### ORM Support:

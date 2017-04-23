@@ -7,6 +7,10 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+/**
+ * 自定义Entity注解
+ * 用于注解在DO类上，自动进行ORM关系映射
+ */
 @Retention (RetentionPolicy.RUNTIME)
 @Target (ElementType.TYPE)
 public @interface Entity {

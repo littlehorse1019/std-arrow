@@ -10,7 +10,7 @@ import java.util.List;
 import org.w3c.dom.Node;
 
 /**
- * @author Luox ¸ÃÀàÓÃÓÚ±£´æÅäÖÃÎÄ¼şÖĞÀàµÄÅäÖÃÔªËØ¶ÔÏó¹ØÏµ
+ * @author Luox è¯¥ç±»ç”¨äºä¿å­˜é…ç½®æ–‡ä»¶ä¸­ç±»çš„é…ç½®å…ƒç´ å¯¹è±¡å…³ç³»
  */
 public class AOPDefinition {
 
@@ -26,7 +26,7 @@ public class AOPDefinition {
     }
 
     public void loadAOPDefine2Cache (Node advisorNode, AOPCache aopCache) {
-        //TODO ½âÎöAOP XMLÀàĞÍÅäÖÃ
+        //TODO è§£æAOP XMLç±»å‹é…ç½®
     }
 
     public void loadAOPDefine2Cache (Class<?> clazz, AOPCache aopCache) {
@@ -76,13 +76,13 @@ public class AOPDefinition {
         String[]   cutMethod   = advisor.cutMethod();
         Class<?>[] cutClasses  = advisor.value();
         if (cutPosition.length != cutMethod.length || cutPosition.length != cutClasses.length) {
-            throw new ControllerException("ËùÉùÃ÷ÇĞÃæÀàĞÍºÍ·½·¨²»Æ¥Åä");
+            throw new ControllerException("æ‰€å£°æ˜åˆ‡é¢ç±»å‹å’Œæ–¹æ³•ä¸åŒ¹é…");
         }
         if (cutPosition.length > 2 || cutMethod.length > 2 || cutClasses.length > 2) {
-            throw new ControllerException("ËùÉùÃ÷ÇĞÃæÀà²»ÄÜ³¬¹ı2¸ö(Before,After)");
+            throw new ControllerException("æ‰€å£°æ˜åˆ‡é¢ç±»ä¸èƒ½è¶…è¿‡2ä¸ª(Before,After)");
         }
         if (cutPosition.length == 2 && cutPosition[0] == cutPosition[1]) {
-            throw new ControllerException("ËùÉùÃ÷ÇĞÃæÀàĞÍ²»ÄÜÍ¬Îª" + cutPosition[1]);
+            throw new ControllerException("æ‰€å£°æ˜åˆ‡é¢ç±»å‹ä¸èƒ½åŒä¸º" + cutPosition[1]);
         }
     }
 

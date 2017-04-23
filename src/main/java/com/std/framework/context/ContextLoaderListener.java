@@ -16,7 +16,7 @@ import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
 /**
- * @author Luox stdÈİÆ÷ÉÏÏÂÎÄ³õÊ¼»¯Èë¿Ú£¬ContextLoaderListener
+ * @author Luox stdå®¹å™¨ä¸Šä¸‹æ–‡åˆå§‹åŒ–å…¥å£ï¼ŒContextLoaderListener
  */
 public class ContextLoaderListener implements ServletContextListener {
 
@@ -25,7 +25,7 @@ public class ContextLoaderListener implements ServletContextListener {
     public void contextInitialized (ServletContextEvent sec) {
         try {
 
-            writeContextLog("Std¿ò¼Ü³õÊ¼»¯¼ÓÔØ¿ªÊ¼ ");
+            writeContextLog("Stdæ¡†æ¶åˆå§‹åŒ–åŠ è½½å¼€å§‹ ");
 
             initSysEnv(sec);
 
@@ -35,7 +35,7 @@ public class ContextLoaderListener implements ServletContextListener {
 
             initPlugins(sec);
 
-            writeContextLog("Std¿ò¼Ü³õÊ¼»¯¼ÓÔØ½áÊø ");
+            writeContextLog("Stdæ¡†æ¶åˆå§‹åŒ–åŠ è½½ç»“æŸ ");
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -44,7 +44,7 @@ public class ContextLoaderListener implements ServletContextListener {
     }
 
     public void contextDestroyed (ServletContextEvent sec) {
-        System.out.println("ÏµÍ³ÖÕÖ¹»ò³öÏÖÒì³££¬Std Context×Ô¶¯Ïú»Ù..");
+        System.out.println("ç³»ç»Ÿç»ˆæ­¢æˆ–å‡ºç°å¼‚å¸¸ï¼ŒStd Contextè‡ªåŠ¨é”€æ¯..");
         System.exit(0);
     }
 
@@ -66,7 +66,7 @@ public class ContextLoaderListener implements ServletContextListener {
         BaseContainerXMLParser.setConfigResource(configFilePath);
         boolean valid = XMLValidator.validMVCConfig();
         if (!valid) {
-            throw new Exception(BaseContainerXMLParser.getConfigResource() + "ÅäÖÃÎÄ¼ş¸ñÊ½Ğ£Ñé´íÎó!");
+            throw new Exception(BaseContainerXMLParser.getConfigResource() + "é…ç½®æ–‡ä»¶æ ¼å¼æ ¡éªŒé”™è¯¯!");
         }
     }
 
@@ -83,7 +83,7 @@ public class ContextLoaderListener implements ServletContextListener {
 
     private void writeContextLog (String logStr) {
         System.out.println("========================================================");
-        System.out.println("======       " + logStr + " £º" + System.currentTimeMillis() + "       ======");
+        System.out.println("======       " + logStr + " ï¼š" + System.currentTimeMillis() + "       ======");
         System.out.println("========================================================");
     }
 

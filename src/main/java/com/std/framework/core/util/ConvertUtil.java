@@ -8,14 +8,14 @@ import java.util.Date;
 import java.util.regex.Pattern;
 
 /**
- * @author Luox ¶ÔÏóÀàĞÍ×ª»»Ïà¹Ø·½·¨¹¤¾ß¼¯
+ * @author Luox å¯¹è±¡ç±»å‹è½¬æ¢ç›¸å…³æ–¹æ³•å·¥å…·é›†
  */
 public class ConvertUtil {
 
     private static SimpleDateFormat dateFormat;
 
     /**
-     * ½«×Ö¶ÎÖµ×ª»»³ÉÏàÓ¦sql ×Ö·û´® ÀàĞÍ
+     * å°†å­—æ®µå€¼è½¬æ¢æˆç›¸åº”sql å­—ç¬¦ä¸² ç±»å‹
      */
     public static String castToSqlType (Object value, Class<?> targetType) throws ParseException {
         String rtnStr = "";
@@ -34,7 +34,7 @@ public class ConvertUtil {
     }
 
     /**
-     * ½«value×ª»»³ÉÄ¿±êÀàĞÍÊµÀı
+     * å°†valueè½¬æ¢æˆç›®æ ‡ç±»å‹å®ä¾‹
      */
     public static Object castToFieldType (Object value, Class<?> targetType) throws ParseException {
         Object rtnValue = null;
@@ -101,14 +101,14 @@ public class ConvertUtil {
     }
 
     /**
-     * ½«value×ª»»³É¼òµ¥ÀàĞÍµÄ¶ÔÏó
+     * å°†valueè½¬æ¢æˆç®€å•ç±»å‹çš„å¯¹è±¡
      */
     public static Object castToSimpleType (Object value, Class<?> targetType) throws ParseException {
         return targetType.cast(value);
     }
 
     /**
-     * »ñÈ¡Ô­ĞÍ¶ÔÏóµÄÇ¿ÖÆ×ª»»×Ö·û
+     * è·å–åŸå‹å¯¹è±¡çš„å¼ºåˆ¶è½¬æ¢å­—ç¬¦
      */
     public static String primitiveToObjCastString (Class<?> returnType) {
         if (returnType != void.class) {
@@ -137,7 +137,7 @@ public class ConvertUtil {
     }
 
     /**
-     * ½«×Ö·û´®×ª»»ÎªÏàÓ¦µÄÀà
+     * å°†å­—ç¬¦ä¸²è½¬æ¢ä¸ºç›¸åº”çš„ç±»
      */
     @SuppressWarnings ("rawtypes")
     public static Class stringToClass (String typeString) {
@@ -150,7 +150,7 @@ public class ConvertUtil {
     }
 
     /**
-     * ÅĞ¶ÏÊÇ·ñÎª»ù±¾Êı¾İÀàĞÍ
+     * åˆ¤æ–­æ˜¯å¦ä¸ºåŸºæœ¬æ•°æ®ç±»å‹
      */
     public static boolean isBaseDataType (Class<?> clazz) throws Exception {
         return (clazz.equals(String.class) || clazz.equals(Integer.class) || clazz.equals(Byte.class)

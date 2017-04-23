@@ -10,7 +10,7 @@ import java.util.Map;
 import java.util.Objects;
 
 /**
- * @author Luox Json¶ÔÏó×ª»»Ïà¹Ø·½·¨¹¤¾ß¼¯
+ * @author Luox Jsonå¯¹è±¡è½¬æ¢ç›¸å…³æ–¹æ³•å·¥å…·é›†
  */
 @SuppressWarnings ({"unchecked", "rawtypes"})
 public class JsonUtil {

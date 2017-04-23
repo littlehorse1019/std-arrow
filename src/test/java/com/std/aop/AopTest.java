@@ -37,7 +37,7 @@ public class AopTest {
         proxyCfg.addAdvisorBean(intercepetor2);
 
         long flag2 = System.nanoTime();
-        System.out.println("»·¾³×¼±¸ºÄÊ±" + (flag2 - flag1) / 1000000000.0 + "Ãë");
+        System.out.println("ç¯å¢ƒå‡†å¤‡è€—æ—¶" + (flag2 - flag1) / 1000000000.0 + "ç§’");
 
         ProxyGenerator pg = new ProxyGenerator();
         pg.bind(proxyCfg);
@@ -49,16 +49,16 @@ public class AopTest {
         }
 
         long flag3 = System.nanoTime();
-        System.out.println("¶ÔÏó¹¹½¨ºÄÊ±" + (flag3 - flag2) / 1000000000.0 + "Ãë");
+        System.out.println("å¯¹è±¡æ„å»ºè€—æ—¶" + (flag3 - flag2) / 1000000000.0 + "ç§’");
 
         BookFacade bf = (BookFacade) create;
-        bf.addBook("¡¶Java±à³ÌË¼Ïë¡·");
-        bf.addBook("¡¶°ëĞ¡Ê±¾«Í¨J2EE¡·", "ÂŞäìÖø×÷");
+        bf.addBook("ã€ŠJavaç¼–ç¨‹æ€æƒ³ã€‹");
+        bf.deleteBook("ã€ŠåŠå°æ—¶ç²¾é€šJ2EEã€‹");
 
         long flag4 = System.nanoTime();
-        System.out.println("´úÀíµ÷ÓÃºÄÊ±" + (flag4 - flag3) / 1000000000.0 + "Ãë");
+        System.out.println("ä»£ç†è°ƒç”¨è€—æ—¶" + (flag4 - flag3) / 1000000000.0 + "ç§’");
 
         long flag5 = System.nanoTime();
-        System.out.println("×ÜºÄÊ±" + (flag5 - flag1) / 1000000000.0 + "Ãë");
+        System.out.println("æ€»è€—æ—¶" + (flag5 - flag1) / 1000000000.0 + "ç§’");
     }
 }

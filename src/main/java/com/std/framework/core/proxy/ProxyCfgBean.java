@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author Luox AOP Bean属性设置承载类
+ * @author Luox AOP Bean灞炴�ц缃壙杞界被
  */
 public class ProxyCfgBean {
 

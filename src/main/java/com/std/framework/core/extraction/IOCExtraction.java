@@ -8,7 +8,7 @@ import java.util.List;
 
 
 /**
- * @author Luox Controller ×¢½âÀà³éÈ¡Æ÷ ÔÚ¹¤³ÌÏÂËùÓĞÀàÎÄ¼şÃû£¨°üÀ¨Ö¸¶¨µÄjar°üÖĞµÄÀà£©¼¯ºÏÖĞ£¬¸½´øAutowiredºÍController×¢½âµÄÀà¡£
+ * @author Luox Controller æ³¨è§£ç±»æŠ½å–å™¨ åœ¨å·¥ç¨‹ä¸‹æ‰€æœ‰ç±»æ–‡ä»¶åï¼ˆåŒ…æ‹¬æŒ‡å®šçš„jaråŒ…ä¸­çš„ç±»ï¼‰é›†åˆä¸­ï¼Œé™„å¸¦Autowiredå’ŒControlleræ³¨è§£çš„ç±»ã€‚
  */
 public class IOCExtraction implements Extraction {
 

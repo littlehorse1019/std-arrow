@@ -1,22 +1,22 @@
 package com.std.framework.container.c;
 
 /**
- * @author Luox ControllerÄ£¿éXMLÅäÖÃ½Úµã³£Á¿
+ * @author Luox Controlleræ¨¡å—XMLé…ç½®èŠ‚ç‚¹å¸¸é‡
  */
 public class ControllerXMLConstants {
 
     /**
-     * ÈİÆ÷ÅäÖÃ¸ù½Úµã
+     * å®¹å™¨é…ç½®æ ¹èŠ‚ç‚¹
      */
     public static final String CONTROLLER_NODE = "controller";
 
     /**
-     * ioc¸ù½Úµã
+     * iocæ ¹èŠ‚ç‚¹
      */
     public static final String IOC_NODE = "iocs";
 
     /**
-     * aop¸ù½Úµã
+     * aopæ ¹èŠ‚ç‚¹
      */
     public static final String AOP_NODE = "aops";
 

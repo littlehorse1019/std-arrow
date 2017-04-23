@@ -3,10 +3,10 @@ package com.std.framework.core.proxy;
 import java.lang.reflect.Method;
 
 /**
- * ´úÀíÀàµÄ´úÀí³ÌĞò½Ó¿Ú
+ * ä»£ç†ç±»çš„ä»£ç†ç¨‹åºæ¥å£
  */
 public interface ProxyHandler {
 
-    // ´úÀí¶ÔÏóµÄÊµ¼Êµ÷ÓÃ·½·¨
-    public Object invoke (Method method, Object... args);
+    // ä»£ç†å¯¹è±¡çš„å®é™…è°ƒç”¨æ–¹æ³•
+    Object invoke (Method method, Object... args);
 }

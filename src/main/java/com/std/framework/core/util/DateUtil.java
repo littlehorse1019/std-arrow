@@ -6,7 +6,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 /**
- * @author Luox ÈÕÆÚÊ±¼äÏà¹Ø·½·¨¹¤¾ß¼¯
+ * @author Luox æ—¥æœŸæ—¶é—´ç›¸å…³æ–¹æ³•å·¥å…·é›†
  */
 public class DateUtil {
 
@@ -14,7 +14,7 @@ public class DateUtil {
     static final String formatPattern_Short = "yyyyMMdd";
 
     /**
-     * »ñÈ¡µ±Ç°ÈÕÆÚ
+     * è·å–å½“å‰æ—¥æœŸ
      */
     public static String getCurrentDate () {
         SimpleDateFormat format = new SimpleDateFormat(formatPattern);
@@ -22,7 +22,7 @@ public class DateUtil {
     }
 
     /**
-     * »ñÈ¡ÖÆ¶¨ºÁÃëÊıÖ®Ç°µÄÈÕÆÚ
+     * è·å–åˆ¶å®šæ¯«ç§’æ•°ä¹‹å‰çš„æ—¥æœŸ
      */
     public static String getDesignatedDate (long timeDiff) {
         SimpleDateFormat format     = new SimpleDateFormat(formatPattern);
@@ -32,19 +32,19 @@ public class DateUtil {
     }
 
     /**
-     * »ñÈ¡Ç°¼¸ÌìµÄÈÕÆÚ
+     * è·å–å‰å‡ å¤©çš„æ—¥æœŸ
      */
     public static String getPrefixDate (String count) {
         Calendar cal = Calendar.getInstance();
         int      day = 0 - Integer.parseInt(count);
-        cal.add(Calendar.DATE, day); // int amount ´ú±íÌìÊı
+        cal.add(Calendar.DATE, day); // int amount ä»£è¡¨å¤©æ•°
         Date             datNew = cal.getTime();
         SimpleDateFormat format = new SimpleDateFormat(formatPattern);
         return format.format(datNew);
     }
 
     /**
-     * ÈÕÆÚ×ª»»³É×Ö·û´®
+     * æ—¥æœŸè½¬æ¢æˆå­—ç¬¦ä¸²
      */
     public static String dateToString (Date date) {
         SimpleDateFormat format = new SimpleDateFormat(formatPattern);
@@ -52,7 +52,7 @@ public class DateUtil {
     }
 
     /**
-     * ×Ö·û´®×ª»»ÈÕÆÚ
+     * å­—ç¬¦ä¸²è½¬æ¢æ—¥æœŸ
      */
     public static Date stringToDate (String str) {
         SimpleDateFormat format = new SimpleDateFormat(formatPattern);
@@ -76,7 +76,7 @@ public class DateUtil {
     }
 
     /**
-     * javaÖĞ¼ÆËãÁ½¸öÊ±¼äÈç£º¡°21:57¡±ºÍ¡°08:20¡±Ïà²îµÄ·ÖÖÓÊı¡¢Ğ¡Ê±Êı java¼ÆËãÁ½¸öÊ±¼ä²îĞ¡Ê± ·ÖÖÓ Ãë .
+     * javaä¸­è®¡ç®—ä¸¤ä¸ªæ—¶é—´å¦‚ï¼šâ€œ21:57â€å’Œâ€œ08:20â€ç›¸å·®çš„åˆ†é’Ÿæ•°ã€å°æ—¶æ•° javaè®¡ç®—ä¸¤ä¸ªæ—¶é—´å·®å°æ—¶ åˆ†é’Ÿ ç§’ .
      */
     public void timeSubtract () {
         SimpleDateFormat dfs   = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -89,13 +89,13 @@ public class DateUtil {
             e.printStackTrace();
         }
 
-        long between = (end.getTime() - begin.getTime()) / 1000;// ³ıÒÔ1000ÊÇÎªÁË×ª»»³ÉÃë
+        long between = (end.getTime() - begin.getTime()) / 1000;// é™¤ä»¥1000æ˜¯ä¸ºäº†è½¬æ¢æˆç§’
 
         long day1    = between / (24 * 3600);
         long hour1   = between % (24 * 3600) / 3600;
         long minute1 = between % 3600 / 60;
         long second1 = between % 60;
-        System.out.println("" + day1 + "Ìì" + hour1 + "Ğ¡Ê±" + minute1 + "·Ö" + second1 + "Ãë");
+        System.out.println("" + day1 + "å¤©" + hour1 + "å°æ—¶" + minute1 + "åˆ†" + second1 + "ç§’");
     }
 
 }

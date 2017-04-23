@@ -9,14 +9,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author Luox ¶¯Ì¬´úÀíÉú³ÉÆ÷£¬¸ù¾İ´úÀíÅäÖÃÉèÖÃ£¬Éú³É´úÀíÀà(×Ö·û±àÂëÉú³ÉÕæÕıµÄAOPÀà) ´úÀíÊôĞÔÉèÖÃÔÚ¸ÃÀàÖ®ÖĞ£¬ËùÒÔ²»ÄÜÊ¹ÓÃ¾²Ì¬·½·¨£¬Ã¿´ÎÉú³É´úÀíÒªnewÒ»¸öĞÂµÄProxyGenerator.
+ * @author Luox åŠ¨æ€ä»£ç†ç”Ÿæˆå™¨ï¼Œæ ¹æ®ä»£ç†é…ç½®è®¾ç½®ï¼Œç”Ÿæˆä»£ç†ç±»(å­—ç¬¦ç¼–ç ç”ŸæˆçœŸæ­£çš„AOPç±») ä»£ç†å±æ€§è®¾ç½®åœ¨è¯¥ç±»ä¹‹ä¸­ï¼Œ
+ * æ‰€ä»¥ä¸èƒ½ä½¿ç”¨é™æ€æ–¹æ³•ï¼Œæ¯æ¬¡ç”Ÿæˆä»£ç†è¦newä¸€ä¸ªæ–°çš„ProxyGenerator.
  */
 public class ProxyGenerator {
 
     private static int proxyCount;
     private ProxyCfgBean proxyCfg = null;
 
-    // °ó¶¨±»´úÀíÀàÏà¹ØµÄËùÓĞÊôĞÔÅäÖÃ
+    // ç»‘å®šè¢«ä»£ç†ç±»ç›¸å…³çš„æ‰€æœ‰å±æ€§é…ç½®
     public void bind (ProxyCfgBean proxyCfg) {
         this.proxyCfg = proxyCfg;
     }
@@ -61,7 +62,7 @@ public class ProxyGenerator {
                 }
             }
 
-            //ÅĞ¶ÏÇĞÈëÊÂ¼şÊÇ·ñÍêÈ«ÎÇºÏ
+            //åˆ¤æ–­åˆ‡å…¥äº‹ä»¶æ˜¯å¦å®Œå…¨å»åˆ
             private boolean isMatchingAdvisor (Class<?> advisotClass, AdvisorBean advisorBean, String methodName,
                 Object[] args, PointCut cutPosition) {
                 if (advisotClass == null) {
@@ -93,7 +94,7 @@ public class ProxyGenerator {
     }
 
     /**
-     * ´úÀíÀàÉú³É£¬´«Èë¶¯Ì¬´úÀí»Øµ÷ÀàºÍÖ¸¶¨´úÀí·½·¨¼¯ºÏ
+     * ä»£ç†ç±»ç”Ÿæˆï¼Œä¼ å…¥åŠ¨æ€ä»£ç†å›è°ƒç±»å’ŒæŒ‡å®šä»£ç†æ–¹æ³•é›†åˆ
      */
     private Object newProxyInstance (ProxyHandler handler, Class<?> clazz) throws Exception {
         List<Method>   proxyMethods = getProxyMethods(clazz);
@@ -104,7 +105,7 @@ public class ProxyGenerator {
         return proxy;
     }
 
-    // ³éÈ¡±»´úÀí·½·¨¼¯ºÏ
+    // æŠ½å–è¢«ä»£ç†æ–¹æ³•é›†åˆ
     private List<Method> getProxyMethods (Class<?> targetClazz) throws SecurityException, NoSuchMethodException {
         List<Method> methodList = new ArrayList<>();
         for (AdvisorBean advisorBean : proxyCfg.getAdvisorBeanList()) {
@@ -115,7 +116,7 @@ public class ProxyGenerator {
         return methodList;
     }
 
-    // ³éÈ¡BeforeµÄ½Ó¿ÚÊµÏÖ¼¯ºÏ
+    // æŠ½å–Beforeçš„æ¥å£å®ç°é›†åˆ
     private Method getBeforeMethods (Class<?> interceptorClazz, AdvisorBean advisorBean) {
         String     beforeMethod    = advisorBean.getBeforeMethod();
         Class<?>[] beforeArguments = advisorBean.getBeforeArguments();
@@ -128,7 +129,7 @@ public class ProxyGenerator {
         return null;
     }
 
-    // ³éÈ¡AfterµÄ½Ó¿ÚÊµÏÖ¼¯ºÏ
+    // æŠ½å–Afterçš„æ¥å£å®ç°é›†åˆ
     private Method getAfterMethods (Class<?> interceptorClazz, AdvisorBean advisorBean) {
         String     afterMethod    = advisorBean.getAfterMethod();
         Class<?>[] afterArguments = advisorBean.getAfterArguments();
@@ -142,6 +143,6 @@ public class ProxyGenerator {
     }
 
     private void throwAdvisorException () {
-        throw new ControllerException("Î´ÕÒµ½Ö¸¶¨µÄÇĞÃæ·½·¨£¬ÇëÈ·±£advisorÃû³ÆÕıÈ·²¢ÇÒ²ÎÊıºÍ±»ÔöÇ¿·½·¨Ò»ÖÂ!");
+        throw new ControllerException("æœªæ‰¾åˆ°æŒ‡å®šçš„åˆ‡é¢æ–¹æ³•ï¼Œè¯·ç¡®ä¿advisoråç§°æ­£ç¡®å¹¶ä¸”å‚æ•°å’Œè¢«å¢å¼ºæ–¹æ³•ä¸€è‡´!");
     }
 }

@@ -10,7 +10,7 @@ import com.std.framework.core.log.LogFactory;
 
 
 /**
- * @author Luox Controller模块上下文初始化入口
+ * @author Luox Controller妯″潡涓婁笅鏂囧垵濮嬪寲鍏ュ彛
  */
 public class ControllerManager extends ContainerManager {
 
@@ -22,17 +22,17 @@ public class ControllerManager extends ContainerManager {
     }
 
     private static void loadAOP () throws Exception {
-        logger.debug(">>>>>Stupideer 框架装载... >>>>>>>验证AOP配置...");
+        logger.debug(">>>>>Stupideer 妗嗘灦瑁呰浇... >>>>>>>楠岃瘉AOP閰嶇疆...");
         boolean valid = new AOPValidator().valid();
-        logger.debug(">>>>>Stupideer 框架装载... >>>>>>>加载AOP配置...");
+        logger.debug(">>>>>Stupideer 妗嗘灦瑁呰浇... >>>>>>>鍔犺浇AOP閰嶇疆...");
         AOPCache aopCache = AOPCache.instance();
         aopCache.loadAOP(valid);
     }
 
     private static void loadIOC () throws Exception {
-        logger.debug(">>>>>Stupideer 框架装载... >>>>>>>验证IOC配置...");
+        logger.debug(">>>>>Stupideer 妗嗘灦瑁呰浇... >>>>>>>楠岃瘉IOC閰嶇疆...");
         if (new IOCValidator().valid()) {
-            logger.debug(">>>>>Stupideer 框架装载... >>>>>>>加载IOC配置...");
+            logger.debug(">>>>>Stupideer 妗嗘灦瑁呰浇... >>>>>>>鍔犺浇IOC閰嶇疆...");
             IOCCache iocCache = IOCCache.instance();
             iocCache.loadIOC();
         }

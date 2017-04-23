@@ -12,17 +12,12 @@ public class BookFacadeImpl implements BookFacade {
     @Advisor (value = {BeforeAop.class, AfterAop.class}, cutPosition = {PointCut.Before, PointCut.After}, cutMethod = {
         "beforeTest", "afterTest"})
     public void addBook (String bookName) {
-        System.out.println(hahaha + "BookFacadeImpl增加一本书 :" + bookName);
+        System.out.println(hahaha + "BookFacadeImpl澧炲姞涓�鏈功 :" + bookName);
     }
 
     @Advisor (value = AfterAop.class, cutPosition = PointCut.After, cutMethod = "afterTest")
-    public void addBook (String bookName, String userName) {
-        System.out.println(hahaha + "BookFacadeImpl删除一本书 :" + bookName);
-    }
-
-    @Override
     public void deleteBook (String bookName) {
-
+        System.out.println(hahaha + "BookFacadeImpl鍒犻櫎涓�鏈功 :" + bookName);
     }
 
 } 

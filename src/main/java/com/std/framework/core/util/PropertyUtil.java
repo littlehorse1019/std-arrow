@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.util.Properties;
 
 /**
- * @author Luox Properties¶ÔÏóÏà¹Ø·½·¨¹¤¾ß¼¯
+ * @author Luox Propertieså¯¹è±¡ç›¸å…³æ–¹æ³•å·¥å…·é›†
  */
 public class PropertyUtil {
 

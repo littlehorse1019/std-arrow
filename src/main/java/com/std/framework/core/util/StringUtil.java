@@ -15,7 +15,7 @@ import java.util.regex.Pattern;
 import javax.xml.bind.annotation.adapters.HexBinaryAdapter;
 
 /**
- * @author Luox �ַ���������ط������߼�
+ * @author Luox StringUtil通用方法
  */
 @SuppressWarnings ("unused")
 public class StringUtil {
@@ -26,16 +26,16 @@ public class StringUtil {
         'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y',
         'Z', '$', '_'};
     /**
-     * ���֤У��λ
+     * CHECK_DIGIT
      */
     public static        String[] CHECK_DIGIT = {"1", "0", "X", "9", "8", "7", "6", "5", "4", "3", "2"};
     /**
-     * ���֤��Ȩ����
+     * GENE
      */
-    public static        int[]    gene        = {7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2, 1};
+    public static        int[]    GENE        = {7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2, 1};
 
     /**
-     * ����ĸ��Сд
+     * 首字母转小写
      */
     public static String firstCharToLowerCase (String str) {
         char firstChar = str.charAt(0);
@@ -48,7 +48,7 @@ public class StringUtil {
     }
 
     /**
-     * ����ĸ���д
+     * 首字母转大写
      */
     public static String firstCharToUpperCase (String str) {
         char firstChar = str.charAt(0);
@@ -61,7 +61,7 @@ public class StringUtil {
     }
 
     /**
-     * �ַ���Ϊ null ����Ϊ "" ʱ���� true
+     * 字符转是否为空或者""
      */
     public static boolean isBlank (String str) {
         boolean b = Objects.isNull(str) || Objects.equals("", str.trim());
@@ -69,7 +69,7 @@ public class StringUtil {
     }
 
     /**
-     * �ַ�����Ϊ null ���Ҳ�Ϊ "" ʱ���� true
+     * 字符串不为空或""
      */
     public static boolean notBlank (String str) {
         boolean b = Objects.isNull(str) || Objects.equals("", str.trim());
@@ -77,7 +77,7 @@ public class StringUtil {
     }
 
     /**
-     * �ַ�����Ϊ null ���Ҳ�Ϊ "" ʱ���� true
+     * 多个字符串不为空或""
      */
     public static boolean notBlank (String... strings) {
         if (strings == null) {
@@ -92,7 +92,7 @@ public class StringUtil {
     }
 
     /**
-     * �ַ��������Ϊ null���� true
+     * 对象都不为空
      */
     public static boolean notNull (Object... paras) {
         if (paras == null) {
@@ -107,7 +107,7 @@ public class StringUtil {
     }
 
     /**
-     * �������6λ�������ֺ���ĸ���ַ�
+     * 获取随机6字符
      */
     public static String randomMath () {
         char[] character = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
@@ -125,8 +125,8 @@ public class StringUtil {
     }
 
     /**
-     * �ж��Ƿ�Ϊemail
-     * @return ��email����true; ����email����false
+     * @param email
+     * @return
      */
     public static boolean isEmail (String email) {
         if (email == null || email.equals("")) {
@@ -139,8 +139,7 @@ public class StringUtil {
     }
 
     /**
-     * �ж��ַ����Ƿ�Ϊ����
-     * @return �����ַ���true; �������ַ���false
+     * 是否是数字
      */
     public static boolean isNum (String num) {
         if (num == null || num.equals("")) {
@@ -152,7 +151,7 @@ public class StringUtil {
     }
 
     /**
-     * �ж��Ƿ�Ϊ�ֻ���
+     * 是否电话号码
      */
     public static boolean isMobile (String mo) {
         if (mo == null || mo.equals("")) {
@@ -164,7 +163,7 @@ public class StringUtil {
     }
 
     /**
-     * �ж��Ƿ�Ϊ���֤��^(\d{15}|(\d{17}[xX\d]))$
+     * 是否身份证号
      */
     public static boolean isIdentityCard (String card) {
         if (card == null || card.equals("")) {
@@ -220,15 +219,15 @@ public class StringUtil {
         }
         int sum = 0;
         for (int i = 0; i < 17; i++) {
-            sum += Integer.parseInt(card.substring(i, i + 1)) * gene[i];
+            sum += Integer.parseInt(card.substring(i, i + 1)) * GENE[i];
         }
         return CHECK_DIGIT[sum % 11];
     }
 
     /**
-     * ����ַ�������
+     * 获取n位随机字符
      */
-    public static String getRandmStr (int length) {
+    public static String getRandomStr (int length) {
         char[] tempCs = {'1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i',
             'o', 'p', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'z', 'x', 'c', 'v', 'b', 'n', 'm'};
         Random       random = new Random();
@@ -239,7 +238,6 @@ public class StringUtil {
         return sb.toString();
     }
 
-    // @desc:���ַ�������ת����int������
     public static int toNum (String str) {
         return Integer.parseInt(str);
     }
@@ -252,13 +250,7 @@ public class StringUtil {
         return i;
     }
 
-    /**
-     * @desc:�滻�ַ���
-     * @param:str:Ҫ�滻���ַ���
-     * @param:tag:�滻�ַ���
-     * @param:reStr:�滻����ַ���
-     * @return:String
-     */
+
     public static String replace (String str, String tag, String reStr) {
         if (isBlank(str)) {
             return "";
@@ -281,8 +273,7 @@ public class StringUtil {
     }
 
     /**
-     * ��֤�ַ����Ƿ�Ϊ���ڸ�ʽ
-     * @return true �� false ��
+     * 是否日期类型
      */
     public static boolean isDateType (String... args) {
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
@@ -299,7 +290,7 @@ public class StringUtil {
     }
 
     /**
-     * ��֤�ַ����Ƿ�Ϊfloat��doub type��true����Ҫ���зǿ���֤ false����֤�ǿ��ַ�
+     * 是否浮点数类型
      */
     public static boolean isFloat (boolean type, String... args) {
         boolean isTag = true;
@@ -343,7 +334,7 @@ public class StringUtil {
         return false;
     }
 
-    public static String getPrimarykeyId () {
+    public static String getPrimaryKeyId () {
         return UUID.randomUUID().toString();
     }
 
@@ -357,7 +348,7 @@ public class StringUtil {
     }
 
     /**
-     * 256��ʽ����
+     * SHA256 加密
      */
     public static String SHA256 (String str) {
         String resultStr = "";
@@ -373,15 +364,15 @@ public class StringUtil {
     }
 
     /**
-     * ��ʽ��ʱ��
+     * 日期转字符
      */
-    public static String formartDate (Date date, String formart) {
-        SimpleDateFormat format = new SimpleDateFormat(formart);
+    public static String formatDate (Date date, String formatter) {
+        SimpleDateFormat format = new SimpleDateFormat(formatter);
         return format.format(date);
     }
 
     /**
-     * ���ַ��ܽ��м���
+     * 对称加密算法
      */
     public static String DoEncrypt (String str) {
         StringBuffer enStrBuff = new StringBuffer();
@@ -396,11 +387,7 @@ public class StringUtil {
     }
 
     /**
-     * @param @param  str
-     * @param @return �趨�ļ�
-     * @return String ��������
-     * @Title: DoDecrypt
-     * @Description: ��������н��ܵķ���
+     * 对称解密算法
      */
     public static String DoDecrypt (String str) {
         String       deStr     = str.toLowerCase();
@@ -417,7 +404,6 @@ public class StringUtil {
     }
 
     public static String getRandom () {
-
         Random        random = new Random();
         int           length = character.length;
         int           n      = random.nextInt(length);
@@ -459,7 +445,7 @@ public class StringUtil {
     }
 
     /**
-     * ��֤url�Ƿ�����http://,https://��ͷ
+     * 是否Http请求
      */
     public static boolean isHttpProtocol (String url) {
         if ("http://".equals(url.substring(0, 7)) || "https://".equals(url.substring(0, 8))) {
@@ -481,7 +467,7 @@ public class StringUtil {
         } else {
             df = new DecimalFormat("###,##0");
         }
-        double number = 0.0;
+        double number;
         try {
             number = Double.parseDouble(text);
         } catch (Exception e) {

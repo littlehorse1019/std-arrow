@@ -13,7 +13,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 /**
- * @author Luox IOCÅäÖÃĞ£ÑéÆ÷(ÅäÖÃºÏ·¨ĞÔĞ£Ñé£¬²¢·Ç¸ñÊ½Ğ£Ñé)
+ * @author Luox IOCé…ç½®æ ¡éªŒå™¨(é…ç½®åˆæ³•æ€§æ ¡éªŒï¼Œå¹¶éæ ¼å¼æ ¡éªŒ)
  */
 public class IOCValidator {
 
@@ -40,7 +40,7 @@ public class IOCValidator {
     private boolean isAllRefHaveBeaned (List<String> refIdList, List<String> beanIdList) throws Exception {
         for (String refId : refIdList) {
             if (!beanIdList.contains(refId)) {
-                throw new ControllerException("mvc_configÅäÖÃÖĞÕÒ²»µ½refÒıÓÃ'" + refId + "'Ëù¶ÔÓ¦µÄbeanÉùÃ÷!");
+                throw new ControllerException("mvc_configé…ç½®ä¸­æ‰¾ä¸åˆ°refå¼•ç”¨'" + refId + "'æ‰€å¯¹åº”çš„beanå£°æ˜!");
             }
         }
         return true;
@@ -52,7 +52,7 @@ public class IOCValidator {
                 Class.forName(clazz);
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
-                throw new ControllerException("mvc_configÅäÖÃÖĞÀà" + clazz + "²¢²»´æÔÚ!");
+                throw new ControllerException("mvc_configé…ç½®ä¸­ç±»" + clazz + "å¹¶ä¸å­˜åœ¨!");
             }
         }
         return true;

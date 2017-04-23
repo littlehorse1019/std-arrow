@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 /**
- * @author Luox Êı¾İ¿âÊÂÎñ¹ØÁªconn³ÖÓĞÕß
+ * @author Luox æ•°æ®åº“äº‹åŠ¡å…³è”connæŒæœ‰è€…
  */
 
 public class TransactionHolder {
@@ -41,7 +41,7 @@ public class TransactionHolder {
     }
 
     /**
-     * »ñÈ¡Êı¾İ¿âÁ¬½Ó³ØÖĞµÄconn,ÉèÖÃautoCommitÀàĞÍ²¢¼ÓÈëµ½ThreadLocalÖĞ
+     * è·å–æ•°æ®åº“è¿æ¥æ± ä¸­çš„conn,è®¾ç½®autoCommitç±»å‹å¹¶åŠ å…¥åˆ°ThreadLocalä¸­
      */
     public static Connection getConn () throws Exception {
         Connection conn = threadConnection.get();
@@ -53,7 +53,7 @@ public class TransactionHolder {
     }
 
     /**
-     * ÊÍ·ÅÊı¾İ¿âÁ¬½Ó£¬¼ø±ğÊÇ·ñÔÚÊÂÎñÖ´ĞĞµ±ÖĞ
+     * é‡Šæ”¾æ•°æ®åº“è¿æ¥ï¼Œé‰´åˆ«æ˜¯å¦åœ¨äº‹åŠ¡æ‰§è¡Œå½“ä¸­
      */
     public static void releaseConnection (Connection connection) {
         if (transStatus.get() == null || transStatus.get() == txFinished) {

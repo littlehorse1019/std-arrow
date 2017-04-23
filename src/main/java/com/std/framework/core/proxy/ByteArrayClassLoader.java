@@ -11,11 +11,10 @@ public class ByteArrayClassLoader extends ClassLoader {
 
     /**
      * Creates a new instance of ByteArrayClassLoader
-     *
      * @param a map from binary class names to class files stored as byte arrays
      */
     public ByteArrayClassLoader (Map<String, byte[]> classes) {
-//		super(new URL[]{}); //Ê¹ÓÃURLClassLoader
+//		super(new URL[]{}); //Ê¹ï¿½ï¿½URLClassLoader
         this.classes = classes;
 //		File file = new File(PathPub.getRootClassPath());
 //		URL url = file.toURI().toURL();

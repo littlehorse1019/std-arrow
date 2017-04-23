@@ -13,7 +13,6 @@ import java.nio.channels.SocketChannel;
 
 /**
  * SocketExchangeFactory
- *
  * @author Administrator
  * @since 1.0 implements ExchangeFactory by SocketServer-Socket, listen on TCP/IP communication
  */

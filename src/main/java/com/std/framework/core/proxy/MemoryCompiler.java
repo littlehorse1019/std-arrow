@@ -11,13 +11,18 @@ import javax.tools.JavaFileObject;
 import javax.tools.ToolProvider;
 
 /**
- * @author Luox ╠╬юЮн╙дз╢Ф╠ЮрКфВ й╣ожак╦Ы╬щ╠╩╢ЗюМ╥╫╥╗╤╞л╛иЗЁит╢нд╪Чё╛╡╒тздз╢Фжп╫Ьпп╠ЮрК пХр╙н╙╠ЮрК╧ЩЁлж╦╤╗╠ЮрК╣дюЮб╥╬╤ё╨хГоб-> C:\myproject>javac -help сц╥╗ё╨javac <я║оН> <т╢нд╪Ч>
- *         фДжпё╛©идэ╣дя║оН╟Эю╗ё╨ -g иЗЁикЫсп╣Вйтпео╒ -g:none ╡╩иЗЁихн╨н╣Вйтпео╒ -g:{lines,vars,source} ж╩иЗЁидЁп╘╣Вйтпео╒ -nowarn ╡╩иЗЁихн╨н╬╞╦Ф -verbose
- *         йДЁЖсп╧ь╠ЮрКфВуЩтзж╢пп╣д╡ывВ╣доШо╒ -deprecation йДЁЖй╧сцря╧Щй╠╣д API ╣дт╢н╩жц -classpath <б╥╬╤> ж╦╤╗╡Иурсц╩╖юЮнд╪Ч╣дн╩жц -cp <б╥╬╤> ж╦╤╗╡Иурсц╩╖юЮнд╪Ч╣дн╩жц
- *         -sourcepath <б╥╬╤> ж╦╤╗╡ИурйДхКт╢нд╪Ч╣дн╩жц -bootclasspath <б╥╬╤> ╦╡╦грЩ╣╪юЮнд╪Ч╣дн╩жц -extdirs <д©б╪> ╦╡╦г╟╡в╟╣дю╘у╧д©б╪╣дн╩жц -endorseddirs <д©б╪>
- *         ╦╡╦гг╘цШ╣д╠Йв╪б╥╬╤╣дн╩жц -d <д©б╪> ж╦╤╗╢Ф╥еиЗЁи╣дюЮнд╪Ч╣дн╩жц -encoding <╠ЮбК> ж╦╤╗т╢нд╪Чй╧сц╣двж╥Ш╠ЮбК -source <╟Ф╠╬> лА╧╘сКж╦╤╗╟Ф╠╬╣дт╢╪Фхщпт -target <╟Ф╠╬> иЗЁиль╤╗
+ * @author Luox О©╫О©╫О©╫О©╫н╙О©╫з╢О©╫О©╫О©╫О©╫О©╫О©╫ й╣О©╫О©╫О©╫к╦О©╫О©╫щ╠О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫л╛О©╫О©╫О©╫О©╫т╢О©╫д╪О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫з╢О©╫О©╫п╫О©╫О©╫п╠О©╫О©╫О©╫ О©╫О©╫р╙н╙О©╫О©╫О©╫О©╫О©╫О©╫О©╫ж╦О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫б╥О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫->
+ *         C:\myproject>javac -help О©╫ц╥О©╫О©╫О©╫javac <я║О©╫О©╫> <т╢О©╫д╪О©╫>
+ *         О©╫О©╫О©╫пёО©╫О©╫О©╫О©╫э╣О©╫я║О©╫О©╫О©╫О©╫О©╫О©╫О©╫ -g О©╫О©╫О©╫О©╫О©╫О©╫О©╫п╣О©╫О©╫О©╫О©╫О©╫о╒ -g:none О©╫О©╫О©╫О©╫О©╫О©╫О©╫н╨н╣О©╫О©╫О©╫О©╫О©╫о╒ -g:{lines,vars,source} ж╩О©╫О©╫О©╫О©╫дЁп╘О©╫О©╫О©╫О©╫О©╫О©╫о╒ -nowarn
+ *         О©╫О©╫О©╫О©╫О©╫О©╫О©╫н╨н╬О©╫О©╫О©╫ -verbose
+ *         О©╫О©╫О©╫О©╫п╧ь╠О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫ж╢О©╫п╣д╡О©╫О©╫О©╫О©╫О©╫О©╫О©╫о╒ -deprecation О©╫О©╫О©╫й╧О©╫О©╫О©╫я╧О©╫й╠О©╫О©╫ API О©╫О©╫т╢н╩О©╫О©╫ -classpath <б╥О©╫О©╫> ж╦О©╫О©╫О©╫О©╫О©╫О©╫О©╫ц╩О©╫О©╫О©╫О©╫д╪О©╫О©╫О©╫н╩О©╫О©╫ -cp
+ *         <б╥О©╫О©╫> ж╦О©╫О©╫О©╫О©╫О©╫О©╫О©╫ц╩О©╫О©╫О©╫О©╫д╪О©╫О©╫О©╫н╩О©╫О©╫
+ *         -sourcepath <б╥О©╫О©╫> ж╦О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫т╢О©╫д╪О©╫О©╫О©╫н╩О©╫О©╫ -bootclasspath <б╥О©╫О©╫> О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫д╪О©╫О©╫О©╫н╩О©╫О©╫ -extdirs <д©б╪>
+ *         О©╫О©╫О©╫г╟О©╫в╟О©╫О©╫О©╫О©╫у╧д©б╪О©╫О©╫н╩О©╫О©╫ -endorseddirs <д©б╪>
+ *         О©╫О©╫О©╫О©╫г╘О©╫О©╫О©╫д╠О©╫в╪б╥О©╫О©╫О©╫О©╫н╩О©╫О©╫ -d <д©б╪> ж╦О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫и╣О©╫О©╫О©╫О©╫д╪О©╫О©╫О©╫н╩О©╫О©╫ -encoding <О©╫О©╫О©╫О©╫> ж╦О©╫О©╫т╢О©╫д╪О©╫й╧О©╫ц╣О©╫О©╫ж╥О©╫О©╫О©╫О©╫О©╫ -source <О©╫Ф╠╬>
+ *         О©╫А╧╘О©╫О©╫ж╦О©╫О©╫О©╫Ф╠╬О©╫О©╫т╢О©╫О©╫О©╫О©╫О©╫О©╫ -target <О©╫Ф╠╬> О©╫О©╫О©╫О©╫О©╫ь╤О©╫
  *         VM
- *         ╟Ф╠╬╣дюЮнд╪Ч -version ╟Ф╠╬пео╒ -help йДЁЖ╠Йв╪я║оН╣длАр╙ -X йДЁЖ╥г╠Йв╪я║оН╣длАр╙ -J<╠Йж╬> ж╠╫с╫╚ <╠Йж╬> ╢╚╣щ╦Ьткппй╠о╣мЁ
+ *         О©╫Ф╠╬О©╫О©╫О©╫О©╫О©╫д╪О©╫ -version О©╫Ф╠╬О©╫О©╫о╒ -help О©╫О©╫О©╫О©╫О©╫в╪я║О©╫О©╫О©╫О©╫О©╫р╙ -X О©╫О©╫О©╫О©╫г╠О©╫в╪я║О©╫О©╫О©╫О©╫О©╫р╙ -J<О©╫О©╫ж╬> ж╠О©╫с╫О©╫ <О©╫О©╫ж╬> О©╫О©╫О©╫щ╦О©╫О©╫О©╫О©╫О©╫й╠о╣мЁ
  */
 public class MemoryCompiler {
 
@@ -28,31 +33,31 @@ public class MemoryCompiler {
     }
 
     /**
-     * ╦Ы╬щж╦╤╗╣д╫с©зиЗЁи╢ЗюМюЮ╣дт╢нд╪Ч╡╒╫Ьпп╠ЮрКё╛вН╨С╥╣╩ь╢ЗюМюЮй╣юЩ╤тоС
+     * О©╫О©╫О©╫О©╫ж╦О©╫О©╫О©╫д╫с©О©╫О©╫О©╫О©╫и╢О©╫О©╫О©╫О©╫О©╫О©╫т╢О©╫д╪О©╫О©╫О©╫О©╫О©╫О©╫п╠О©╫О©╫Кё╛О©╫О©╫С╥╣╩ь╢О©╫О©╫О©╫О©╫О©╫й╣О©╫О©╫О©╫О©╫О©╫О©╫
      */
     public Object generatorProxyInMemory (Class<?> clazz, List<Method> proxyMethods) throws ClassNotFoundException,
         InstantiationException, IllegalAccessException {
-        // иЗЁи╤╞л╛╢ЗюМюЮ╢ЗбК
+        // О©╫О©╫О©╫и╤О©╫л╛О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫
         String source = writeJavaSourceFileForMemory(clazz, proxyMethods);
-        // ╢╢╫╗дз╢Фнд╪Ч╧эюМфВ
+        // О©╫О©╫О©╫О©╫О©╫з╢О©╫О©╫д╪О©╫О©╫О©╫О©╫О©╫О©╫О©╫
         JavaCompiler      compiler    = ToolProvider.getSystemJavaCompiler();
         MemoryFileManager filemanager = new MemoryFileManager(compiler.getStandardFileManager(null, null, null));
-        // ╢╢╫╗╢ЗюМюЮ╣двж╫збК
+        // О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫ж╫О©╫О©╫О©╫
         JavaFileObject                     file             = filemanager.makeSource(instanceName, source);
         Iterable<? extends JavaFileObject> compilationUnits = Arrays.asList(file);
         String                             classpath        = PathUtil.getRootClassPath();
         Iterable<String> options = Arrays
-            .asList("-d", classpath, "-cp", classpath); // ╠ЮрКя║оНё╛╫╚╠ЮрК╡ЗиЗ╣дюЮнд╪Ч╥етз╣╠г╟д©б╪об
+            .asList("-d", classpath, "-cp", classpath); // О©╫О©╫О©╫О©╫я║О©╫Нё╛О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫д╪О©╫О©╫О©╫О©╫з╣О©╫г╟д©б╪О©╫О©╫
         JavaCompiler.CompilationTask task = compiler
             .getTask(null, filemanager, null, options, null, compilationUnits);
         task.call();
-        // ╪сть╢ЗюМюЮё╛╥╣╩ьй╣юЩ
+        // О©╫О©╫О©╫ь╢О©╫О©╫О©╫О©╫Юё╛О©╫О©╫О©╫О©╫й╣О©╫О©╫
         Class<?> proxyClazz = filemanager.getClassLoader(null).loadClass(instanceName);
         return proxyClazz.newInstance();
     }
 
     /**
-     * ╫╚╢ЗюМюЮ╣дт╢╢ЗбКп╢хКдз╢Ф
+     * О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫т╢О©╫О©╫О©╫О©╫п╢О©╫О©╫О©╫з╢О©╫
      */
     private String writeJavaSourceFileForMemory (Class<?> clazz, List<Method> proxyMethods) {
         StringBuilder sb = new StringBuilder();
@@ -75,7 +80,7 @@ public class MemoryCompiler {
         for (Method method : proxyMethods) {
             sb.append("\tpublic ");
             Class<?> returnType = method.getReturnType();
-            // йЩвИюЮпм╥╣╩ьвж╢╝льйБ╢╕юМ
+            // О©╫О©╫О©╫О©╫О©╫О©╫О©╫м╥О©╫О©╫О©╫О©╫ж╢О©╫О©╫О©╫О©╫Б╢╕О©╫О©╫
             if (returnType.isArray()) {
                 sb.append(returnType.getCanonicalName());
             } else {
@@ -85,13 +90,13 @@ public class MemoryCompiler {
             sb.append("(");
 
             Class<?>[] parameters = method.getParameterTypes();
-            // ╦ц╠Да©сцю╢╦╫╪стзпн╡н╡нйЩцШЁф╨Сё╛сцю╢гЬ╥ж╡нйЩап╠Мжп╣д╤тоСё╛юЩхГ String arg0,String arg1...
+            // О©╫ц╠О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫н╡н╡О©╫О©╫О©╫О©╫О©╫О©╫ф╨О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫ж╡О©╫О©╫О©╫О©╫п╠О©╫О©╫п╣д╤О©╫О©╫О©╫О©╫О©╫О©╫О©╫ String arg0,String arg1...
             int i = 0;
-            // ╦цвж╥Ш╢╝сцю╢╠ё╢Фпн╡н╣д╡нйЩцШЁфё╛ ╣Всцinvoke╥╫╥╗╣дй╠╨Р╩Асц╣╫уБп╘ цШЁф╣дап╠М
+            // О©╫О©╫О©╫ж╥О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫н╡н╣д╡О©╫О©╫О©╫О©╫О©╫О©╫фёО©╫ О©╫О©╫О©╫О©╫invokeО©╫О©╫О©╫О©╫О©╫О©╫й╠О©╫О©╫О©╫О©╫ц╣О©╫О©╫О©╫п╘ О©╫О©╫О©╫ф╣О©╫О©╫п╠О©╫
             String args = "";
-            // ╦цвж╥Ш╢╝╠ё╢Факпн╡н╣двж╫збКнд╪Чё╛╬моЯObject.classуБяЫ╣дё╛сцю╢ в╙╥╒╣ВсцгКгСй╠╣д╡нйЩюЮпм
+            // О©╫О©╫О©╫ж╥О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫н╡н╣О©╫О©╫ж╫О©╫О©╫О©╫О©╫д╪О©╫О©╫О©╫О©╫О©╫О©╫О©╫Object.classО©╫О©╫О©╫О©╫О©╫дёО©╫О©╫О©╫О©╫О©╫ в╙О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫й╠О©╫д╡О©╫О©╫О©╫О©╫О©╫О©╫О©╫
             String pclazz = "";
-            // п╢хКпн╡нап╠М
+            // п╢О©╫О©╫О©╫н╡О©╫О©╫п╠О©╫
             for (Class<?> parameter : parameters) {
                 sb.append(parameter.getCanonicalName()).append(" arg").append(i);
                 args += "arg" + i;
@@ -116,7 +121,7 @@ public class MemoryCompiler {
             sb.append("\t\t}\n\t\tcatch (Exception e)\n\t\t{\n\t\t\te.printStackTrace();\n\t\t}\n");
             sb.append("\t\treturn");
 
-            // ╩Ы╠╬йЩ╬щюЮпмв╙╩╩Object Otherwise --> ClassCastException: Object cannot be cast to primitive type
+            // О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫в╙О©╫О©╫Object Otherwise --> ClassCastException: Object cannot be cast to primitive type
             String castString = ConvertUtil.primitiveToObjCastString(returnType);
             sb.append(castString.equals("") ? castString : castString + " obj ");
             sb.append(";");

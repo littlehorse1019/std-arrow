@@ -4,7 +4,6 @@ package com.std.server.http;
  * ResponseCode
  * <p>
  * A representation of an HTTP response code.
- *
  * @author Ian Caffey
  * @since 1.0
  */
@@ -72,7 +71,6 @@ public enum ResponseCode {
      * <p>
      * The value and message are concatenated with the HTTP server's default HTTP version, so it is pertinent to not
      * prepend the response code to the message or the response code will be invalid.
-     *
      * @param value   the response code
      * @param message the response message
      */
@@ -83,7 +81,6 @@ public enum ResponseCode {
 
     /**
      * Returns the response code.
-     *
      * @return the response code
      */
     public int value () {
@@ -92,7 +89,6 @@ public enum ResponseCode {
 
     /**
      * Returns the user-friendly response message.
-     *
      * @return the response message
      */
     public String message () {

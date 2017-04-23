@@ -6,7 +6,6 @@ public interface HttpHandler {
 
     /**
      * Handler
-     *
      * @author LUOXIAO
      * @since 1.0
      */

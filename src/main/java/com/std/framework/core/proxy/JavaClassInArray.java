@@ -19,7 +19,6 @@ public class JavaClassInArray extends SimpleJavaFileObject {
 
     /**
      * Constructs a JavaClassInArray object.
-     *
      * @param name binary name of the class to be stored in this file object
      */
     public JavaClassInArray (String name, Map<String, byte[]> classes) {

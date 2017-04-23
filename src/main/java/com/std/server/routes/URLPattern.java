@@ -8,7 +8,6 @@ import java.util.regex.PatternSyntaxException;
  * <p>
  * A lightweight utility class replicating {@code Pattern} static method functionality while escaping patterns to be
  * capable of matching url values.
- *
  * @author LUOXIAO
  * @since 1.0
  */
@@ -22,7 +21,6 @@ public class URLPattern {
 
     /**
      * Escapes the query string and compiles the given regular expression into a value.
-     *
      * @param pattern The expression to be compiled
      * @return the given regular expression compiled into a value
      * @throws PatternSyntaxException indicating the expression's syntax is invalid
@@ -35,7 +33,6 @@ public class URLPattern {
      * Returns a {@code Pattern} string capable of using core Java regular expressions with a query string.
      * <p>
      * The question mark trailing the initial forward slash is escaped to treat it as a literal value.
-     *
      * @param pattern the url value
      * @return an escaped url value
      */

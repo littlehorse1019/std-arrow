@@ -4,7 +4,6 @@ import java.io.IOException;
 
 /**
  * Server
- *
  * @author Administrator
  * @since 1.0 generic server superclass, supply base method for request-response server
  */

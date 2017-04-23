@@ -6,7 +6,6 @@ import java.io.OutputStream;
 
 /**
  * Exchange
- *
  * @author Administrator
  * @since 1.0 Hold the inputStream and outputStream in one request-response communication.
  */
@@ -33,7 +32,6 @@ public class Exchange implements AutoCloseable {
 
     /**
      * Close input and output streams, AutoCloseable guarantee resource close
-     *
      * @author Administrator
      */
     public void close () throws IOException {

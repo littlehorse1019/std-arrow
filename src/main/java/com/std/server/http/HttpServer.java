@@ -28,7 +28,6 @@ public class HttpServer extends Server {
      * Create a new {@code Route} with a "Get" request type and specified path
      * <p>
      * The method returns the newly created route to allow customizing the routes parameter ordering and patterns.
-     *
      * @param path the route path
      * @return the newly created route
      */
@@ -40,7 +39,6 @@ public class HttpServer extends Server {
      * Create a new {@code Route} with a "Post" request type and specified path
      * <p>
      * The method returns the newly created route to allow customizing the routes parameter ordering and patterns.
-     *
      * @param path the route path
      * @return the newly created route
      */
@@ -52,7 +50,6 @@ public class HttpServer extends Server {
      * Create a new {@code Route} with a "Delete" request type and specified path
      * <p>
      * The method returns the newly created route to allow customizing the routes parameter ordering and patterns.
-     *
      * @param path the route path
      * @return the newly created route
      */
@@ -69,7 +66,6 @@ public class HttpServer extends Server {
      * Delete}.
      * <p>
      * The method return type must be a {@code HttpHandler}.
-     *
      * @param controller the controller instance (if there are instance methods representing routes)
      */
     public HttpServer accept (Controller controller) {
@@ -89,7 +85,6 @@ public class HttpServer extends Server {
      * Each class is restricted to containing static routes.
      * <p>
      * Use {@code accept(Controller)} for already instantiated controllers.
-     *
      * @param c the controller class
      */
     public HttpServer accept (Class<? extends Controller> c) {

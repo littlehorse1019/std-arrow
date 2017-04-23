@@ -28,7 +28,6 @@ public class Router implements HttpHandler {
      * Delete}.
      * <p>
      * The method return type must be a {@code HttpHandler}.
-     *
      * @param controllers the controllers containing annotated route methods
      * @return a new {@code Router}
      */
@@ -55,7 +54,6 @@ public class Router implements HttpHandler {
      * Each class is restricted to containing static routes.
      * <p>
      * Use {@code Router.asRouter(Controller...)} for already instantiated controllers.
-     *
      * @param classes the classes containing annotated route methods
      * @return a new {@code Router}
      */
@@ -79,7 +77,6 @@ public class Router implements HttpHandler {
      * Delete}.
      * <p>
      * The method return type must be a {@code HttpHandler}.
-     *
      * @param controller the controller instance (if there are instance methods representing routes)
      * @param router     the target router
      */
@@ -99,7 +96,6 @@ public class Router implements HttpHandler {
      * Each class is restricted to containing static routes.
      * <p>
      * Use {@code Router.addRoutes(Controller, Router)} for already instantiated controllers.
-     *
      * @param c      the controller class
      * @param router the target router
      */
@@ -115,7 +111,6 @@ public class Router implements HttpHandler {
      * Delete}.
      * <p>
      * The method return type must be a {@code HttpHandler}.
-     *
      * @param controllerClass the controller class
      * @param controller      the controller instance (if there are instance methods representing routes)
      * @param router          the target router
@@ -163,7 +158,6 @@ public class Router implements HttpHandler {
      * Creates a new {@code Route} with a "GET" request type and the specified path.
      * <p>
      * The method returns the newly created route to allow customizing the routes parameter ordering and patterns.
-     *
      * @param path the route path
      * @return the newly created route
      */
@@ -178,7 +172,6 @@ public class Router implements HttpHandler {
      * Creates a new {@code Route} with a "POST" request type and the specified path.
      * <p>
      * The method returns the newly created route to allow customizing the routes parameter ordering and patterns.
-     *
      * @param path the route path
      * @return the newly created route
      */
@@ -193,7 +186,6 @@ public class Router implements HttpHandler {
      * Creates a new {@code Route} with a "DELETE" request type and the specified path.
      * <p>
      * The method returns the newly created route to allow customizing the routes parameter ordering and patterns.
-     *
      * @param path the route path
      * @return the newly created route
      */
@@ -205,7 +197,6 @@ public class Router implements HttpHandler {
 
     /**
      * Adds a new route to the router.
-     *
      * @param route the route
      * @return {@code this} for method-chaining
      */
@@ -228,7 +219,6 @@ public class Router implements HttpHandler {
      * Locates the route that matches the incoming request url.
      * <p>
      * A route must be an absolute match to the request url to be considered.
-     *
      * @param url the url
      * @return the best route that matched the url
      * @throws RoutingException indicating a route could not be found that matches the request type and url pair
@@ -250,7 +240,6 @@ public class Router implements HttpHandler {
     /**
      * Accepts an incoming HTTP exchange, represented by a {@code HttpReader} for parsing the incoming request and a
      * {@code HttpWriter} for writing out a response.
-     *
      * @param reader the HTTP reader for parsing the incoming HTTP request
      * @param writer the HTTP writer for writing out the HTTP response
      * @throws IOException indicating an error occurred while reading in the request or writing out the response

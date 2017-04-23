@@ -4,7 +4,6 @@ import java.io.IOException;
 
 /**
  * ExchangeFactory
- *
  * @author Administrator
  */
 

@@ -12,7 +12,6 @@ import java.time.format.DateTimeFormatter;
 
 /**
  * HttpWriter
- *
  * @author LUOXIAO
  * @since 1.0
  */
@@ -52,7 +51,6 @@ public class HttpWriter extends BufferedWriter {
 
     /**
      * Writes out the "Content-Length" header entry to the response output stream, appending "\r\n".
-     *
      * @param length the content-length header entry value
      * @throws IOException indicating an error occurred while writing out to the output stream
      */
@@ -62,7 +60,6 @@ public class HttpWriter extends BufferedWriter {
 
     /**
      * Writes out the "Content-Type" header entry to the response output stream, appending "\r\n".
-     *
      * @param type the content-type header entry value
      * @throws IOException indicating an error occurred while writing out to the output stream
      */
@@ -74,7 +71,6 @@ public class HttpWriter extends BufferedWriter {
      * Writes out the "Date" header entry to the response output stream, appending "\r\n".
      * <p>
      * The date is formatted using {@code DateTimeFormatter.RFC_1123_DATE_TIME}.
-     *
      * @param instant the date header entry value
      * @throws IOException indicating an error occurred while writing out to the output stream
      */
@@ -88,7 +84,6 @@ public class HttpWriter extends BufferedWriter {
      * Writes out the "Expires" header entry to the response output stream, appending "\r\n".
      * <p>
      * The date is formatted using {@code DateTimeFormatter.RFC_1123_DATE_TIME}.
-     *
      * @param instant the expires header entry value
      * @throws IOException indicating an error occurred while writing out to the output stream
      */
@@ -102,7 +97,6 @@ public class HttpWriter extends BufferedWriter {
      * Writes out the "Last-modified" header entry to the response output stream, appending "\r\n".
      * <p>
      * The date is formatted using {@code DateTimeFormatter.RFC_1123_DATE_TIME}.
-     *
      * @param instant the last-modified header entry value
      * @throws IOException indicating an error occurred while writing out to the output stream
      */
@@ -114,7 +108,6 @@ public class HttpWriter extends BufferedWriter {
 
     /**
      * Writes out the "Server" header entry to the response output stream, appending "\r\n".
-     *
      * @param server the server header entry value
      * @throws IOException indicating an error occurred while writing out to the output stream
      */
@@ -124,7 +117,6 @@ public class HttpWriter extends BufferedWriter {
 
     /**
      * Writes out the response header entry to the response output stream, appending "\r\n".
-     *
      * @param version the HTTP version
      * @param code    the response code
      * @throws IOException indicating an error occurred while writing out to the output stream
@@ -138,7 +130,6 @@ public class HttpWriter extends BufferedWriter {
 
     /**
      * Writes out the request header entry to the response output stream, appending "\r\n".
-     *
      * @param requestType the request type
      * @param uri         the request url
      * @param version     the HTTP version
@@ -152,7 +143,6 @@ public class HttpWriter extends BufferedWriter {
      * Writes out a header entry to the response output stream, appending "\r\n".
      * <p>
      * The header entry value is written using {@code String.valueOf(Object)}.
-     *
      * @param key   the header entry key
      * @param value the header entry value
      * @throws IOException indicating an error occurred while writing out to the output stream
@@ -165,7 +155,6 @@ public class HttpWriter extends BufferedWriter {
      * Writes out a header entry to the response output stream, appending "\r\n".
      * <p>
      * The header entry value is written using {@code String.valueOf(Object)}.
-     *
      * @param key   the header entry key
      * @param value the header entry value
      * @throws IOException indicating an error occurred while writing out to the output stream
@@ -179,7 +168,6 @@ public class HttpWriter extends BufferedWriter {
      * Writes out a header entry to the response output stream, appending "\r\n".
      * <p>
      * The header entry value is written using {@code String.valueOf(Object)}.
-     *
      * @param header the header entry
      * @throws IOException indicating an error occurred while writing out to the output stream
      */

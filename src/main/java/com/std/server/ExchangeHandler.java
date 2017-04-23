@@ -2,7 +2,6 @@ package com.std.server;
 
 /**
  * ExchangeHandler
- *
  * @author luoxiao
  */
 public interface ExchangeHandler {

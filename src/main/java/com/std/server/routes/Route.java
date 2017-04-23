@@ -11,7 +11,6 @@ import java.lang.reflect.Method;
  * Route
  * <p>
  * This class represent one route way to accept request, it includes URL pattern and parameter mapping
- *
  * @author luoxiao
  * @since 1.0
  */
@@ -57,7 +56,6 @@ public class Route {
 
     /**
      * matches annotation path and request url
-     *
      * @return boolean
      */
     public boolean matches (String url) {

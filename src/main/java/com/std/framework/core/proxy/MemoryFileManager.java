@@ -18,7 +18,6 @@ public final class MemoryFileManager extends ForwardingJavaFileManager {
 
     /**
      * Construct a memory file manager which delegates to the specified file manager for unknown sources.
-     *
      * @param fileManager a file manager used to look up class files on class path, etc.
      */
     public MemoryFileManager (JavaFileManager fileManager) {
@@ -32,7 +31,6 @@ public final class MemoryFileManager extends ForwardingJavaFileManager {
 
     /**
      * Get a class loader which first search the classes stored by this file manager.
-     *
      * @return a class loader for compiled files
      */
     @Override

@@ -96,7 +96,6 @@ public final class CronExpression implements Serializable, Cloneable {
     /**
      * Constructs a new <CODE>CronExpression</CODE> based on the specified
      * parameter.
-     *
      * @param cronExpression String representation of the cron expression the new object should represent
      * @throws java.text.ParseException if the string expression cannot be parsed into a valid
      *                                  <CODE>CronExpression</CODE>
@@ -114,7 +113,6 @@ public final class CronExpression implements Serializable, Cloneable {
     /**
      * Constructs a new {@code CronExpression} as a copy of an existing
      * instance.
-     *
      * @param expression The existing cron expression to be copied
      */
     public CronExpression (CronExpression expression) {
@@ -137,7 +135,6 @@ public final class CronExpression implements Serializable, Cloneable {
     /**
      * Indicates whether the specified cron expression can be parsed into a
      * valid cron expression
-     *
      * @param cronExpression the expression to evaluate
      * @return a boolean indicating whether the given expression is a valid cron expression
      */
@@ -161,7 +158,6 @@ public final class CronExpression implements Serializable, Cloneable {
      * Indicates whether the given date satisfies the cron expression. Note that
      * milliseconds are ignored, so two Dates falling on different milliseconds
      * of the same second will always have the same result here.
-     *
      * @param date the date to evaluate
      * @return a boolean indicating whether the given date satisfies the cron expression
      */
@@ -181,7 +177,6 @@ public final class CronExpression implements Serializable, Cloneable {
     /**
      * Returns the next date/time <I>after</I> the given date/time which
      * satisfies the cron expression.
-     *
      * @param date the date/time at which to begin the search for the next valid date/time
      * @return the next valid date/time
      */
@@ -192,7 +187,6 @@ public final class CronExpression implements Serializable, Cloneable {
     /**
      * Returns the next date/time <I>after</I> the given date/time which does
      * <I>not</I> satisfy the expression
-     *
      * @param date the date/time at which to begin the search for the next invalid date/time
      * @return the next valid date/time
      */
@@ -1404,7 +1398,6 @@ public final class CronExpression implements Serializable, Cloneable {
     /**
      * Advance the calendar to the particular hour paying particular attention
      * to daylight saving problems.
-     *
      * @param cal  the calendar to operate on
      * @param hour the hour to set
      */
@@ -1488,7 +1481,6 @@ public final class CronExpression implements Serializable, Cloneable {
 
     /**
      * Returns the string representation of the <CODE>CronExpression</CODE>
-     *
      * @return a string representation of the <CODE>CronExpression</CODE>
      */
     @Override

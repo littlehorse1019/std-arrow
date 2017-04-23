@@ -4,7 +4,6 @@ package com.std.server.http;
  * MalformedRequestException
  * <p>
  * An exception representing a failure to process an incoming HTTP request.
- *
  * @author LUOXIAO
  * @since 1.0
  */

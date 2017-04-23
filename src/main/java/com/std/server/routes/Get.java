@@ -7,7 +7,6 @@ import java.lang.annotation.Target;
 
 /**
  * Get annotation
- *
  * @author LUOXIAO
  * @since 1.0
  */

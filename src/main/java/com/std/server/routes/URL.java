@@ -4,7 +4,6 @@ import java.util.Map;
 
 /**
  * URL, class represent to Http url action
- *
  * @author Administrator
  * @since 1.0
  */

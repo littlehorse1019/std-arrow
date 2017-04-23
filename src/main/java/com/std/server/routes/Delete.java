@@ -7,7 +7,6 @@ import java.lang.annotation.Target;
 
 /**
  * Delete annotation
- *
  * @author LUOXIAO
  * @since 1.0
  */

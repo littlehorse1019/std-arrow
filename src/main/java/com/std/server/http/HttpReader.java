@@ -14,7 +14,6 @@ import java.util.Map;
  * <p>
  * By dividing the ReadState stage,  avoid parse all request-text in one time, we can divide parse part
  * according to the situation , improve performance
- *
  * @author LUOXIAO read input stream , parse HTTP request, and wrap to {@code HttpServletRequest}.
  * @since 1.0
  */

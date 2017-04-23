@@ -15,7 +15,7 @@ import java.util.regex.Pattern;
 import javax.xml.bind.annotation.adapters.HexBinaryAdapter;
 
 /**
- * @author Luox ×Ö·û´®´¦ÀíÏà¹Ø·½·¨¹¤¾ß¼¯
+ * @author Luox ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß¼ï¿½
  */
 @SuppressWarnings ("unused")
 public class StringUtil {
@@ -26,16 +26,16 @@ public class StringUtil {
         'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y',
         'Z', '$', '_'};
     /**
-     * Éí·ÝÖ¤Ð£ÑéÎ»
+     * ï¿½ï¿½ï¿½Ö¤Ð£ï¿½ï¿½Î»
      */
     public static        String[] CHECK_DIGIT = {"1", "0", "X", "9", "8", "7", "6", "5", "4", "3", "2"};
     /**
-     * Éí·ÝÖ¤¼ÓÈ¨Òò×Ó
+     * ï¿½ï¿½ï¿½Ö¤ï¿½ï¿½È¨ï¿½ï¿½ï¿½ï¿½
      */
     public static        int[]    gene        = {7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2, 1};
 
     /**
-     * Ê××ÖÄ¸±äÐ¡Ð´
+     * ï¿½ï¿½ï¿½ï¿½Ä¸ï¿½ï¿½Ð¡Ð´
      */
     public static String firstCharToLowerCase (String str) {
         char firstChar = str.charAt(0);
@@ -48,7 +48,7 @@ public class StringUtil {
     }
 
     /**
-     * Ê××ÖÄ¸±ä´óÐ´
+     * ï¿½ï¿½ï¿½ï¿½Ä¸ï¿½ï¿½ï¿½Ð´
      */
     public static String firstCharToUpperCase (String str) {
         char firstChar = str.charAt(0);
@@ -61,7 +61,7 @@ public class StringUtil {
     }
 
     /**
-     * ×Ö·û´®Îª null »òÕßÎª "" Ê±·µ»Ø true
+     * ï¿½Ö·ï¿½ï¿½ï¿½Îª null ï¿½ï¿½ï¿½ï¿½Îª "" Ê±ï¿½ï¿½ï¿½ï¿½ true
      */
     public static boolean isBlank (String str) {
         boolean b = Objects.isNull(str) || Objects.equals("", str.trim());
@@ -69,7 +69,7 @@ public class StringUtil {
     }
 
     /**
-     * ×Ö·û´®²»Îª null ¶øÇÒ²»Îª "" Ê±·µ»Ø true
+     * ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½Îª null ï¿½ï¿½ï¿½Ò²ï¿½Îª "" Ê±ï¿½ï¿½ï¿½ï¿½ true
      */
     public static boolean notBlank (String str) {
         boolean b = Objects.isNull(str) || Objects.equals("", str.trim());
@@ -77,7 +77,7 @@ public class StringUtil {
     }
 
     /**
-     * ×Ö·û´®²»Îª null ¶øÇÒ²»Îª "" Ê±·µ»Ø true
+     * ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½Îª null ï¿½ï¿½ï¿½Ò²ï¿½Îª "" Ê±ï¿½ï¿½ï¿½ï¿½ true
      */
     public static boolean notBlank (String... strings) {
         if (strings == null) {
@@ -92,7 +92,7 @@ public class StringUtil {
     }
 
     /**
-     * ×Ö·û´®ËùÓÐÏî²»Îª null·µ»Ø true
+     * ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½î²»Îª nullï¿½ï¿½ï¿½ï¿½ true
      */
     public static boolean notNull (Object... paras) {
         if (paras == null) {
@@ -107,7 +107,7 @@ public class StringUtil {
     }
 
     /**
-     * Ëæ»úÉú³É6Î»°üÀ¨Êý×ÖºÍ×ÖÄ¸µÄ×Ö·û
+     * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½6Î»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öºï¿½ï¿½ï¿½Ä¸ï¿½ï¿½ï¿½Ö·ï¿½
      */
     public static String randomMath () {
         char[] character = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
@@ -125,9 +125,8 @@ public class StringUtil {
     }
 
     /**
-     * ÅÐ¶ÏÊÇ·ñÎªemail
-     *
-     * @return ÊÇemail·µ»Øtrue; ²»ÊÇemail·µ»Øfalse
+     * ï¿½Ð¶ï¿½ï¿½Ç·ï¿½Îªemail
+     * @return ï¿½ï¿½emailï¿½ï¿½ï¿½ï¿½true; ï¿½ï¿½ï¿½ï¿½emailï¿½ï¿½ï¿½ï¿½false
      */
     public static boolean isEmail (String email) {
         if (email == null || email.equals("")) {
@@ -140,9 +139,8 @@ public class StringUtil {
     }
 
     /**
-     * ÅÐ¶Ï×Ö·û´®ÊÇ·ñÎªÊý×Ö
-     *
-     * @return ÊÇÊý×Ö·µ»Øtrue; ²»ÊÇÊý×Ö·µ»Øfalse
+     * ï¿½Ð¶ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½Ç·ï¿½Îªï¿½ï¿½ï¿½ï¿½
+     * @return ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½true; ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½false
      */
     public static boolean isNum (String num) {
         if (num == null || num.equals("")) {
@@ -154,7 +152,7 @@ public class StringUtil {
     }
 
     /**
-     * ÅÐ¶ÏÊÇ·ñÎªÊÖ»úºÅ
+     * ï¿½Ð¶ï¿½ï¿½Ç·ï¿½Îªï¿½Ö»ï¿½ï¿½ï¿½
      */
     public static boolean isMobile (String mo) {
         if (mo == null || mo.equals("")) {
@@ -166,7 +164,7 @@ public class StringUtil {
     }
 
     /**
-     * ÅÐ¶ÏÊÇ·ñÎªÉí·ÝÖ¤ºÅ^(\d{15}|(\d{17}[xX\d]))$
+     * ï¿½Ð¶ï¿½ï¿½Ç·ï¿½Îªï¿½ï¿½ï¿½Ö¤ï¿½ï¿½^(\d{15}|(\d{17}[xX\d]))$
      */
     public static boolean isIdentityCard (String card) {
         if (card == null || card.equals("")) {
@@ -183,15 +181,15 @@ public class StringUtil {
         if (card.length() == 18) {
             int yearPrefix = Integer.parseInt(card.substring(6, 8));
             if (yearPrefix < 19 || yearPrefix > 21) {
-                return false;// ³öÉúÈÕÆÚ±ØÐë´óÓÚ1900ÄêÐ¡ÓÚ2100Äê
+                return false;// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½1900ï¿½ï¿½Ð¡ï¿½ï¿½2100ï¿½ï¿½
             }
             int month = Integer.parseInt(card.substring(10, 12));
             if (month > 12 || month == 0) {
-                return false; // ÑéÖ¤ÔÂ
+                return false; // ï¿½ï¿½Ö¤ï¿½ï¿½
             }
             int day = Integer.parseInt(card.substring(12, 14));
             if (day > 31 || day == 0) {
-                return false; // ÑéÖ¤ÈÕ
+                return false; // ï¿½ï¿½Ö¤ï¿½ï¿½
             }
             String checkDigit = getCheckDigitFor18(card);
             if (checkDigit.equals("-1")) {
@@ -205,7 +203,7 @@ public class StringUtil {
         } else if (card.length() == 15) {
             int month = Integer.parseInt(card.substring(8, 10));
             if (month > 12 || month == 0) {
-                return false; // ÑéÖ¤ÔÂ
+                return false; // ï¿½ï¿½Ö¤ï¿½ï¿½
             }
             int day = Integer.parseInt(card.substring(10, 12));
             if (day > 31 || day == 0) {
@@ -228,7 +226,7 @@ public class StringUtil {
     }
 
     /**
-     * Ëæ»ú×Ö·û´®Éú³É
+     * ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
      */
     public static String getRandmStr (int length) {
         char[] tempCs = {'1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i',
@@ -241,7 +239,7 @@ public class StringUtil {
         return sb.toString();
     }
 
-    // @desc:½«×Ö·ûÐÍÊý¾Ý×ª»»³ÉintÐÍÊý¾Ý
+    // @desc:ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½ï¿½ï¿½intï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     public static int toNum (String str) {
         return Integer.parseInt(str);
     }
@@ -255,10 +253,10 @@ public class StringUtil {
     }
 
     /**
-     * @desc:Ìæ»»×Ö·û´®
-     * @param:str:ÒªÌæ»»µÄ×Ö·û´®
-     * @param:tag:Ìæ»»×Ö·û´®
-     * @param:reStr:Ìæ»»ºóµÄ×Ö·û´®
+     * @desc:ï¿½æ»»ï¿½Ö·ï¿½ï¿½ï¿½
+     * @param:str:Òªï¿½æ»»ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½
+     * @param:tag:ï¿½æ»»ï¿½Ö·ï¿½ï¿½ï¿½
+     * @param:reStr:ï¿½æ»»ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½
      * @return:String
      */
     public static String replace (String str, String tag, String reStr) {
@@ -278,14 +276,13 @@ public class StringUtil {
         try {
             return dateFormat.parse(str);
         } catch (Exception e) {
-            throw new Exception("[" + str + "]²»ÄÜ×ª»»³ÉÈÕÆÚ¸ñÊ½ÐÎÈç(yyyy-MM-dd HH:mm:ss)");
+            throw new Exception("[" + str + "]ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú¸ï¿½Ê½ï¿½ï¿½ï¿½ï¿½(yyyy-MM-dd HH:mm:ss)");
         }
     }
 
     /**
-     * ÑéÖ¤×Ö·û´®ÊÇ·ñÎªÈÕÆÚ¸ñÊ½
-     *
-     * @return true ÊÇ false ·ñ
+     * ï¿½ï¿½Ö¤ï¿½Ö·ï¿½ï¿½ï¿½ï¿½Ç·ï¿½Îªï¿½ï¿½ï¿½Ú¸ï¿½Ê½
+     * @return true ï¿½ï¿½ false ï¿½ï¿½
      */
     public static boolean isDateType (String... args) {
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
@@ -302,7 +299,7 @@ public class StringUtil {
     }
 
     /**
-     * ÑéÖ¤×Ö·û´®ÊÇ·ñÎªfloat£¬doub type£ºtrue¡£ÐèÒª½øÐÐ·Ç¿ÕÑéÖ¤ false²»ÑéÖ¤·Ç¿Õ×Ö·û
+     * ï¿½ï¿½Ö¤ï¿½Ö·ï¿½ï¿½ï¿½ï¿½Ç·ï¿½Îªfloatï¿½ï¿½doub typeï¿½ï¿½trueï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½Ð·Ç¿ï¿½ï¿½ï¿½Ö¤ falseï¿½ï¿½ï¿½ï¿½Ö¤ï¿½Ç¿ï¿½ï¿½Ö·ï¿½
      */
     public static boolean isFloat (boolean type, String... args) {
         boolean isTag = true;
@@ -360,7 +357,7 @@ public class StringUtil {
     }
 
     /**
-     * 256·½Ê½¼ÓÃÜ
+     * 256ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½
      */
     public static String SHA256 (String str) {
         String resultStr = "";
@@ -376,7 +373,7 @@ public class StringUtil {
     }
 
     /**
-     * ¸ñÊ½»¯Ê±¼ä
+     * ï¿½ï¿½Ê½ï¿½ï¿½Ê±ï¿½ï¿½
      */
     public static String formartDate (Date date, String formart) {
         SimpleDateFormat format = new SimpleDateFormat(formart);
@@ -384,7 +381,7 @@ public class StringUtil {
     }
 
     /**
-     * ¶Ô×Ö·û´Ü½øÐÐ¼ÓÃÜ
+     * ï¿½ï¿½ï¿½Ö·ï¿½ï¿½Ü½ï¿½ï¿½Ð¼ï¿½ï¿½ï¿½
      */
     public static String DoEncrypt (String str) {
         StringBuffer enStrBuff = new StringBuffer();
@@ -400,10 +397,10 @@ public class StringUtil {
 
     /**
      * @param @param  str
-     * @param @return Éè¶¨ÎÄ¼þ
-     * @return String ·µ»ØÀàÐÍ
+     * @param @return ï¿½è¶¨ï¿½Ä¼ï¿½
+     * @return String ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
      * @Title: DoDecrypt
-     * @Description: ¶ÔÃÜÂë½øÐÐ½âÃÜµÄ·½·¨
+     * @Description: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð½ï¿½ï¿½ÜµÄ·ï¿½ï¿½ï¿½
      */
     public static String DoDecrypt (String str) {
         String       deStr     = str.toLowerCase();
@@ -462,7 +459,7 @@ public class StringUtil {
     }
 
     /**
-     * ÑéÖ¤urlÊÇ·ñÊÇÒÑhttp://,https://¿ªÍ·
+     * ï¿½ï¿½Ö¤urlï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½http://,https://ï¿½ï¿½Í·
      */
     public static boolean isHttpProtocol (String url) {
         if ("http://".equals(url.substring(0, 7)) || "https://".equals(url.substring(0, 8))) {
